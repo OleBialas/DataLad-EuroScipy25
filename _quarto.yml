@@ -7,9 +7,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-  back-to-top-navigation: true
-
+      - text: Exercises
+        menu:
+          - text: Part 1
+            href: notebooks/exercises1.qmd
+          - text: Part 2
+            href: notebooks/exercises2.qmd
+      - text: Slides
+        menu:
+          - text: Introduction
+            href: slides/intro.qmd
+          - text: Exercise Review 1
+            href: notebooks/review1.qmd
+          - text: Exercise Review 2
+            href: notebooks/review2.qmd
 
 format:
   html:
