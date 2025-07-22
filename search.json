@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DataLad Workshop at EuroScipy 2025",
+    "section": "",
+    "text": "Welcome to the website for the DataLad Workshop at EuroScipy 2025! Here, you can access all exercise materials and slides. The rest of this page walks you through the installation and provides you with additional materials to learn more about DataLad."
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "DataLad Workshop at EuroScipy 2025",
+    "section": "Installation",
+    "text": "Installation\n\nGit\n\nInstall git https://git-scm.com/downloads\nConfigure your git user name: git config --global user.name \"user\"\nConfigure your git user email: git config --global user.email \"user@mail.com\"\n\n\n\nPython\n\nuv\n\nInstall uv: https://docs.astral.sh/uv/getting-started/installation/\nClone this repo: git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025\nInstall the environment: cd DataLad-Tutorial-EuroScipy2025; uv sync\nActivate the environment: .venv\\Scripts\\activate (on Windows) or source .venv/bin/activate (on Linux/macOS)\n\n\n\npixi\n\nInstall pixi: https://pixi.sh/latest/#installation\nClone this repo: git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025\nInstall the environment: cd DataLad-Tutorial-EuroScipy2025; pixi install\nActivate the environment: pixi shell\n\n\n\nconda\n\nInstall conda: https://conda-forge.org/download/\nClone this repo: git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025\nInstall the environment: cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml\nActivate the environment: conda activate datalad\n\n\n\n\nother\n\nCreate a new virtual environment\ninstall the dependencies with pip: pip install git-annex datalad datalad-next pandas"
+  }
+]
