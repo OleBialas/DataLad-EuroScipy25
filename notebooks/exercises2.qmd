@@ -16,7 +16,7 @@ jupyter: bash
 | `git log -3` | View the last `3` entries in the `git log` |
 
 :::{#exr-}
-Cretate a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
+Create a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
 :::
 ::: {.callout-tip}
 ## Solution
@@ -73,7 +73,7 @@ git log -2
 | Code | Description |
 | --- | --- |
 |`datalad run "python script.py"` | Run the `python` script `script.py` |
-|`datalad run -i "data.csv" -o "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
+|`datalad run --input "data.csv" --output "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
 | `git log` | View the dataset's histroy stored in the `git log` |
 | `datalad rerun a268d8ca22b6` | Rerun the command from the `git log` with the checksum starting with `a268d8ca22b6e87959` |
 | `datalad rerun --since a268d8ca22b6` | Rerun ALL commands `--since` the one with the checksum starting with `a268d8ca22b6e87959` |
@@ -93,20 +93,37 @@ You should see `FileNotFoundError: [Errno 2] No such file or directory` because 
 
 :::{#exr-run}
 (Put all tables in the same folder to avoid complicated glob pattern)
-Run the same script with `-i "*/*table*.csv"` and  `-o "results/penguin_culmens.csv"`
+Run the same script with the `data/` folder as `--input` and the file `"results/penguin_culmens.csv"` as `--output`.
 :::
+::: {.callout-tip}
+# Solution
 ```{bash}
 datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/aggregate_culmen_data.py"
 ```
+:::
 
 :::{#exr-}
 View the most recent entry in the `git log`
 :::
+::: {.callout-tip}
+# Solution
 ```{bash}
 git log -1
 ```
+:::
 
-:::{#exr-img}
+:::{#exr-}
+Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
+:::
+::: {.callout-tip}
+# Solution
+In the code below, `$(git rev-parse HEAD)` gets the checksum for the latest commit but you can also open `git log` and copy-paste the checksum.
+```{bash}
+datalad rerun $(git rev-parse HEAD)
+```
+:::
+
+:::{#exr-}
 Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/penguin_culmens.csv` as `--input` and produces `results/culmen_length_vs_depth.png` as an output.
 :::
 ```{bash}
@@ -114,65 +131,13 @@ datalad run --input "results/penguin_culmens.csv" --output "results/culmen_lengt
 ```
 
 :::{#exr-}
-Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
+Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run everything `--since` this commit (i.e. the data aggregation and plotting scripts).
 :::
-```{bash}
-datalad rerun $(git rev-parse HEAD)
-```
-
-:::{#exr-}
-Open the git log to find the checksum of the commit for the run command from @exr-img and re-run everything `--since` this commit.
-:::
+::: {.callout-tip}
+# Solution
+In the code below, `$(git rev-parse HEAD)` gets the checksum for the second latest commit but you can also open `git log` and copy-paste the checksum.
 ```{bash}
 datalad rerun --since $(git rev-parse HEAD~1)
 ```
-
-## Distributing your DataSet
-
-Maybe skip the local remote, just do github and mention that datalad supports many remotes via extensions (e.g. OSF)
-
-| Code | Description |
-| --- | --- |
-| `datalad siblings` | List all siblings of the current dataset |
-| `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |
-| `datalad push --to github` | Push the dataset `--to` the sibling `github` |
-
-:::{#exr-}
-List all `siblings` of the penguins dataset
 :::
-```{bash}
-datalad siblings
-```
-
-:::{#exr-}
-Create a special remote (does this create the data ven if we didn't do `datalad get*`)
-:::
-```{bash}
-mkdir usbdrive
-git annex initremote usbdrive type=directory directory=usbdrive encryption=none autoenable=true
-datalad siblings
-```
-
-:::{#exr-}
-Create a github sibling and link it to the local remote
-:::
-```{bash}
-datalad create-sibling-github penguins --publish-depends usbdrive
-datalad siblings
-```
-
-:::{#exr-}
-Push the data to the github remote
-:::
-```{bash}
-datalad push --to github
-```
-
-:::{#exr-}
-Clone the dataset from the new github remote
-:::
-```{bash}
-datalad clone https://github.com/OleBialas/penguins.git
-datalad get *
-```
 

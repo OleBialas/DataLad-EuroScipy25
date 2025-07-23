@@ -1,0 +1,635 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "67741e4a",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "name: \"Using and Modifying DataLad DataSets\"\n",
+    "format: html\n",
+    "jupyter: bash\n",
+    "---\n",
+    "\n",
+    "## Consuming Existing Datasets\n",
+    "\n",
+    "| Linux/macOS | Windows | Description |\n",
+    "| --- | --- | --- |\n",
+    "| `ls -a` | `dir /a` | List the content of the current directory (including hidden files) |\n",
+    "| `ls -a data` | `dir /a data` | List the content of the `data` directory |\n",
+    "| `du -sh` | `dir /s` | Get the disk usage of the current directory |\n",
+    "| `du -sh data` | `dir /s data` Get the disk usage of the `data` directory |\n",
+    "| `cd data` | `cd data` | Change the directory to `data`|\n",
+    ": Terminal commands\n",
+    "\n",
+    "| Command | Description |\n",
+    "| --- | --- | \n",
+    "| `datalad clone https://example.com` | Clone the data set from `example.com` |\n",
+    "| `datalad get folder/` | Get the file content of the `folder/` |\n",
+    "| `datalad get folder/image.png` | Get the file content of the file `image.png` |\n",
+    "| `datalad drop folder/` | Drop the file content of the `folder/` |\n",
+    ": DataLad and git-annex commands\n",
+    "\n",
+    ":::{#exr-}\n",
+    "\n",
+    "Clone the dataset from https://gin.g-node.org/obi/penguins\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "22b30fac",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datalad clone https://gin.g-node.org/obi/penguins"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "80a1b386",
+   "metadata": {},
+   "source": [
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Change the directory to `penguins` and list the directory's content\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution\n",
+    "On Linux/macOS:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "8b89f2e9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\u001b[0m\u001b[01;34m.\u001b[0m   \u001b[01;34m.datalad\u001b[0m  .gitattributes  README.md  \u001b[01;34mdata\u001b[0m\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\u001b[01;34m..\u001b[0m  \u001b[01;34m.git\u001b[0m      LICENSE.txt     \u001b[01;34mcode\u001b[0m       \u001b[01;34mexamples\u001b[0m\n"
+     ]
+    }
+   ],
+   "source": [
+    "cd penguins\n",
+    "ls -a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8f454d42",
+   "metadata": {},
+   "source": [
+    "On Windows:\n",
+    "```powershell\n",
+    "cd pegnuins\n",
+    "dir /a\n",
+    "```\n",
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Check the disk usage of the `penguins` directory\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution\n",
+    "On Linux/macOS:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "c643e2c4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "11M\t.\n"
+     ]
+    }
+   ],
+   "source": [
+    "du -sh"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ad268d1a",
+   "metadata": {},
+   "source": [
+    "On Windows:\n",
+    "```powershell\n",
+    "dir /s\n",
+    "```\n",
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Get the content of the `examples` subdirectory\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "5cd25532",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datalad get examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "788f092d",
+   "metadata": {},
+   "source": [
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Check the disk usage of the `penguins` directory again\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution\n",
+    "On Linux/macOS:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8ee10532",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "11M\t.\n"
+     ]
+    }
+   ],
+   "source": [
+    "du -sh"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c8832599",
+   "metadata": {},
+   "source": [
+    "On Windows:\n",
+    "```powershell\n",
+    "dir /s\n",
+    "```\n",
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Drop the content of `examples/chinstrap.jpg` and check the disk usage again\n",
+    ":::\n",
+    "::: {.callout-tip}\n",
+    "## Solution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "7b821923",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\u001b[1;1mdrop\u001b[0m(\u001b[1;32mok\u001b[0m): examples/chinstrap.jpg (\u001b[1;35mfile\u001b[0m)\n"
+     ]
+    }
+   ],
+   "source": [
+    "datalad drop examples/chinstrap.jpg"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "93c54527",
+   "metadata": {},
+   "source": [
+    "On Linux/macOS:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "6b50f8fd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "6.7M\t.\n"
+     ]
+    }
+   ],
+   "source": [
+    "du -sh"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7c2e1ec6",
+   "metadata": {},
+   "source": [
+    "On Windows:\n",
+    "```powershell\n",
+    "dir /s\n",
+    "```\n",
+    ":::\n",
+    "\n",
+    "## Checking File Identity and Location with git-annex\n",
+    "\n",
+    "| Command | Description |\n",
+    "| `git annex info` | Show the git-annex information for the whole dataset |\n",
+    "| `git annex info folder/image.png` | Show the git-annex information for the file `image.png`|\n",
+    "| `git annex whereis folder/image.png` | List the repositories that have the file content for `image.png` |\n",
+    "\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Display the `git annex info` for the file `examples/gentoo.jpg`. What is the *size* of that file? Is it *present* on your machine?\n",
+    ":::\n",
+    "::: {.callout-tip}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "6da7a37e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "file: examples/gentoo.jpg\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "size: 4.81 megabytes\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "key: MD5E-s4812332--3ee0c65f57a008ffa2a55b3d59d8c203.jpg\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "present: true\n"
+     ]
+    }
+   ],
+   "source": [
+    "git annex info examples/gentoo.jpg"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "616ac965",
+   "metadata": {},
+   "source": [
+    "The file is 4.81 megabtyes and it should be present since we previouslt loaded the content of the `examples` folder.\n",
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Display the `git-annex info` of the whole data set. How many annexed files are there in the working tree?\n",
+    ":::\n",
+    "::: {.callout-tip}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "7b849711",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "trusted repositories: 0\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "semitrusted repositories: 5\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t00000000-0000-0000-0000-000000000001 -- web\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t00000000-0000-0000-0000-000000000002 -- bittorrent\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t323c286f-ca09-419c-a5e8-529301abbde9 -- olebi@iBots-7:~/projects/new_penguins\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t49708dd9-2023-4962-b38d-ed2ba412e760 -- olebi@iBots-7:~/projects/DataLad-EuroScipy25/notebooks/penguins [here]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tafa909d9-b37e-4dcd-a35f-b984fb3a7af5 -- git@f4e88adb09c0:/data/repos/obi/penguins.git [origin]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "untrusted repositories: 0\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "transfers in progress: none\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "available local disk space: 880.59 gigabytes (+100 megabytes reserved)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "local annex keys: 2\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "local annex size: 6.32 megabytes\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "annexed files in working tree: 6\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "size of annexed files in working tree: 10.84 megabytes\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "combined annex size of all repositories: 27.99 megabytes\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "annex sizes of repositories: \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t10.84 MB: 323c286f-ca09-419c-a5e8-529301abbde9 -- olebi@iBots-7:~/projects/new_penguins\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t10.84 MB: afa909d9-b37e-4dcd-a35f-b984fb3a7af5 -- git@f4e88adb09c0:/data/repos/obi/penguins.git [origin]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\t 6.32 MB: 49708dd9-2023-4962-b38d-ed2ba412e760 -- olebi@iBots-7:~/projects/DataLad-EuroScipy25/notebooks/penguins [here]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "backend usage: \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tMD5E: 6\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "bloom filter size: 32 mebibytes (0% full)\n"
+     ]
+    }
+   ],
+   "source": [
+    "git annex info"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b4b309e3",
+   "metadata": {},
+   "source": [
+    "The nummber of annexed files is displayed in this line:\n",
+    "`annexed files in working tree: 21`\n",
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Use `git annex whereis` to list the repositories that have the file content for the image `examples/gentoo.jpg`.\n",
+    ":::\n",
+    "::: {.callout-tip}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "c93a48ac",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "whereis examples/gentoo.jpg (3 copies) \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  \t323c286f-ca09-419c-a5e8-529301abbde9 -- olebi@iBots-7:~/projects/new_penguins\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  \t49708dd9-2023-4962-b38d-ed2ba412e760 -- olebi@iBots-7:~/projects/DataLad-EuroScipy25/notebooks/penguins [here]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  \tafa909d9-b37e-4dcd-a35f-b984fb3a7af5 -- git@f4e88adb09c0:/data/repos/obi/penguins.git [origin]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ok\n"
+     ]
+    }
+   ],
+   "source": [
+    "git annex whereis examples/gentoo.jpg"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8b15085",
+   "metadata": {},
+   "source": [
+    ":::\n",
+    "\n",
+    ":::{#exr-}\n",
+    "Use `git annex whereis` to list the repositories that have the file content for the table `data/table_220.csv`. How does this differ from the list of repositories that contain the content for `gentoo.jpg`?\n",
+    ":::\n",
+    "::: {.callout-tip}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "f2994c61",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "whereis data/table_220.csv (2 copies) \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  \t323c286f-ca09-419c-a5e8-529301abbde9 -- olebi@iBots-7:~/projects/new_penguins\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  \tafa909d9-b37e-4dcd-a35f-b984fb3a7af5 -- git@f4e88adb09c0:/data/repos/obi/penguins.git [origin]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ok\n"
+     ]
+    }
+   ],
+   "source": [
+    "git annex whereis data/table_220.csv"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bec9112d",
+   "metadata": {},
+   "source": [
+    "The table is not stored in the local respository, listed in the line marked `[here]`.\n",
+    ":::\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Bash",
+   "language": "bash",
+   "name": "bash",
+   "path": "/home/olebi/.local/share/jupyter/kernels/bash"
+  },
+  "language_info": {
+   "codemirror_mode": "shell",
+   "file_extension": ".sh",
+   "mimetype": "text/x-sh",
+   "name": "bash"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,262 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "name: \"Distributing and Sharing Datasets\"\n",
+        "format: html\n",
+        "jupyter: bash\n",
+        "---\n",
+        "\n",
+        "## Distributing your DataSet\n",
+        "\n",
+        "Maybe skip the local remote, just do github and mention that datalad supports many remotes via extensions (e.g. OSF)\n",
+        "\n",
+        "| Code | Description |\n",
+        "| --- | --- |\n",
+        "| `datalad siblings` | List all siblings of the current dataset |\n",
+        "| `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |\n",
+        "| `datalad push --to github` | Push the dataset `--to` the sibling `github` |\n",
+        "\n",
+        ":::{#exr-}\n",
+        "List all `siblings` of the penguins dataset\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "ca7dda00"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad siblings"
+      ],
+      "id": "04e94486",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Create a new sibling on GitHub. You'll need an access token --- on GitHub, go to Settings > Developer Settings > Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution\n",
+        "Either run `create-sibling-github` and paste the token when being prompted"
+      ],
+      "id": "9facf7f1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad create-sibling-github penguins"
+      ],
+      "id": "67542662",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Or use the `--credential` flag to pass the token"
+      ],
+      "id": "79687402"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad create-sibling-github penguins --credential <token>"
+      ],
+      "id": "f82f468a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Push the data to the github remote\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "dffe8b92"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad push --to github"
+      ],
+      "id": "9ab7d389",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Clone the dataset from the GitHub sibling to a new location\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "a34319bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad clone https://github.com/OleBialas/penguins.git ~/"
+      ],
+      "id": "7d2aba0d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "## Creating a Special Remote for File Content\n",
+        "\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Get the file content for the whole penguins dataset\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "b0922fdb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad get *"
+      ],
+      "id": "27ac1996",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Create a special remote at a `directory` outside `penguins/`. Then, list all `siblings` to confirm the remove was created.\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "10f2049b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "mkdir ~/usbdrive\n",
+        "git annex initremote usbdrive type=directory directory=~/usbdrive encryption=none autoenable=true\n",
+        "datalad siblings"
+      ],
+      "id": "c9655acc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        ":::{#exr-}\n",
+        "Push the data to the local remote\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "2834e3c3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad push --to usbdrive"
+      ],
+      "id": "8824b9d1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        ":::{#exr-}\n",
+        "`configure` the github sibling so that the publish depends on the local remote\n",
+        ":::\n",
+        "::: {.callout-tip}\n",
+        "# Solution"
+      ],
+      "id": "5e1c3246"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "datalad siblings configure -s github --publish-depends usbdrive"
+      ],
+      "id": "506458b7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::"
+      ],
+      "id": "00725d81"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "bash",
+      "language": "bash",
+      "display_name": "Bash",
+      "path": "/home/olebi/.local/share/jupyter/kernels/bash"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

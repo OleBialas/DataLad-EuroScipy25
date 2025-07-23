@@ -1,0 +1,4 @@
+[submodule "notebooks/penguins"]
+	path = notebooks/penguins
+	url = https://gin.g-node.org/obi/penguins
+	datalad-id = 3a8aacc5-85f0-4114-adee-fcfa7d21a5df

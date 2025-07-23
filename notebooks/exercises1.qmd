@@ -25,12 +25,12 @@ jupyter: bash
 
 :::{#exr-}
 
-Clone the dataset from https://gin.g-node.org/obi/penguins.git
+Clone the dataset from https://gin.g-node.org/obi/penguins
 :::
 ::: {.callout-tip}
 ## Solution
 ```{bash}
-datalad clone https://gin.g-node.org/obi/penguins.git
+datalad clone https://gin.g-node.org/obi/penguins
 ```
 :::
 
@@ -97,7 +97,7 @@ Drop the content of `examples/chinstrap.jpg` and check the disk usage again
 ::: {.callout-tip}
 ## Solution
 ```{bash}
-datalad drop examples/chinstrap
+datalad drop examples/chinstrap.jpg
 ```
 On Linux/macOS:
 ```{bash}
