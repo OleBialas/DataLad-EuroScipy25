@@ -1,0 +1,275 @@
+---
+name: "DataLad EuroScipy 2025"
+format: html
+jupyter: bash
+---
+
+## Installation
+
+### Git
+
+- Install git https://git-scm.com/downloads
+- Configure your git user name: `git config --global user.name "user"`
+- Configure your git user email: `git config --global user.email "user@mail.com"`
+
+### Python
+
+#### uv
+- Install uv: https://docs.astral.sh/uv/getting-started/installation/
+- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
+- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; uv sync`
+- Activate the environment: `.venv\Scripts\activate` (on Windows) or `source .venv/bin/activate` (on Linux/macOS)
+
+#### pixi
+- Install pixi: https://pixi.sh/latest/#installation
+- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
+- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; pixi install`
+- Activate the environment: `pixi shell`
+
+#### conda
+- Install conda: https://conda-forge.org/download/
+- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
+- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml`
+- Activate the environment: `conda activate datalad`
+
+### other
+- Create a new virtual environment 
+- install the dependencies with pip: `pip install git-annex datalad datalad-next pandas`
+
+
+## Consuming Existing Datasets
+
+| Windows | Linux/MacOS | Description |
+| --- | --- | --- |
+| `ls -a` | `dir /a` | List the content of the current directory (including hidden files) |
+| `ls -a data` | `dir /a data` | List the content of the `data` directory |
+| `du -sh` | `dir /a` | Get the disk usage of the current directory |
+| `du -sh data` | `dir /a data` Get the disk usage of the `data` directory |
+| `cd data` | `cd data` | Change the directory to `data`|
+: Terminal commands
+
+| Code | Description |
+| --- | --- | 
+| `datalad clone https://example.com` | Clone the data set from `example.com` |
+| `datalad get folder/` | Get the file content of the `folder/` |
+| `datalad get folder/image.png` | Get the file content of the file `image.png` |
+| `git annex whereis folder/image.png` | List the repositories that have the file content for `image.png` |
+: DataLad and git-annex commands
+
+:::{#exr-}
+Clone the dataset from https://hub.datalad.org/edu/penguins
+:::
+```{bash}
+datalad clone https://hub.datalad.org/edu/penguins
+```
+
+:::{#exr-}
+Change the directory to `penguins` and list the directory's content
+:::
+```{bash}
+cd penguins
+ls -a
+```
+
+:::{#exr-}
+Check the disk usage of the `penguins` directory
+:::
+```{bash}
+du -sh
+```
+
+:::{#exr-}
+Get the content of the examples folder
+:::
+```{bash}
+datalad get examples
+```
+
+:::{#exr-}
+Check the disk usage of the `penguins` directory again
+:::
+```{bash}
+du -sh
+```
+
+:::{#exr-}
+Check the disk usage of the `.git/annex` subdirectory
+:::
+```{bash}
+du -sh .git/annex
+```
+
+:::{#exr-}
+Use `git annex whereis` to list the repositories that have the file content for the image `examples/gentoo.jpg`
+:::
+```{bash}
+git annex whereis examples/gentoo.jpg
+```
+
+:::{#exr-}
+Use `git annex whereis` to list the repositories that have the file content for the table `gentoo/table_220.csv`
+:::
+```{bash}
+git annex whereis gentoo/table_220.csv
+```
+
+## Modifying a Dataset and Tracking Changes
+
+| Code | Description |
+| --- | --- |
+| `datalas status` | Show any untracked changes in the current dataset |
+| `datalad save` | Save any untracked changes in the current dataset |
+| `datalad save -m "hi"` | Save untracked changes and add the message `"hi"` |
+| `datalad unlock file.txt` | Unlock `file.txt` to make it modifiable |
+| `git log` | View the dataset's history, stored in the `git log` |
+| `git log -3` | View the last `3` entries in the `git log` |
+
+:::{#exr-}
+Cretate a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
+:::
+```{bash}
+echo -e "gentoo\adelie" > penguin_species.txt
+datalad status
+```
+
+:::{#exr-}
+Use `datalad save` to save the untracked changes with the message `"list penguin species"`.
+:::
+```{bash}
+datalad save -m "list penguin species"
+```
+
+:::{#exr-}
+View the most recent entry in the `git log`
+:::
+```{bash}
+git log -1
+```
+
+:::{#exr-}
+Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinstrap* to the list. Then, run `datalad save` again with a message to save the changes
+:::
+```{bash}
+datalad unlock penguin_species.txt
+echo -e "chinstrap" >> pegnuin_species.txt
+datalad save -m "add chinstrap"
+```
+
+:::{#exr-}
+View the last two entries in the `git log`
+:::
+```{bash}
+git log -2
+```
+
+## Running Scripts with DataLad
+
+| Code | Description |
+| --- | --- |
+|`datalad run "python script.py"` | Run the `python` script `script.py` |
+|`datalad run -i "data.csv" -o "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
+| `git log` | View the dataset's histroy stored in the `git log` |
+| `datalad rerun a268d8ca22b6` | Rerun the command from the `git log` with the checksum starting with `a268d8ca22b6e87959` |
+| `datalad rerun --since a268d8ca22b6` | Rerun ALL commands `--since` the one with the checksum starting with `a268d8ca22b6e87959` |
+
+
+Move scripts folder to penguin dataset and save (scripts should be included in the folder to begin with)
+```{bash}
+cp -r ../../scripts/* ./code
+datalad save
+```
+
+:::{#exr-}
+Try to run the `python` script in `code/aggregate_culmen_data.py`. What error message do you observe?
+:::
+```{bash}
+#| eval: false
+datalad run "python code/aggregate_culmen_data.py"
+```
+
+
+:::{#exr-run}
+(Put all tables in the same folder to avoid complicated glob pattern)
+Run the same script with `-i "*/*table*.csv"` and  `-o "results/penguin_culmens.csv"`
+:::
+```{bash}
+datalad run --input "*/*table*.csv" --output "results/penguin_culmens.csv" "python code/aggregate_culmen_data.py"
+```
+
+:::{#exr-}
+View the most recent entry in the `git log`
+:::
+```{bash}
+git log -1
+```
+
+:::{#exr-img}
+Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/penguin_culmens.csv` as `--input` and produces `results/culmen_length_vs_depth.png` as an output.
+:::
+```{bash}
+datalad run --input "results/penguin_culmens.csv" --output "results/culmen_length_vs_depth.png" "python code/plot_culmen_length_vs_depth.py"
+```
+
+:::{#exr-}
+Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
+:::
+```{bash}
+datalad rerun $(git rev-parse HEAD)
+```
+
+:::{#exr-}
+Open the git log to find the checksum of the commit for the run command from @exr-img and re-run everything `--since` this commit.
+:::
+```{bash}
+datalad rerun --since $(git rev-parse HEAD~1)
+```
+
+## Distributing your DataSet
+
+Maybe skip the local remote, just do github and mention that datalad supports many remotes via extensions (e.g. OSF)
+
+| Code | Description |
+| --- | --- |
+| `datalad siblings` | List all siblings of the current dataset |
+| `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |
+| `datalad push --to github` | Push the dataset `--to` the sibling `github` |
+
+:::{#exr-}
+List all `siblings` of the penguins dataset
+:::
+```{bash}
+datalad siblings
+```
+
+:::{#exr-}
+Create a special remote (does this create the data ven if we didn't do `datalad get*`)
+:::
+```{bash}
+mkdir usbdrive
+git annex initremote usbdrive type=directory directory=usbdrive encryption=none autoenable=true
+datalad siblings
+```
+
+:::{#exr-}
+Create a github sibling and link it to the local remote
+:::
+```{bash}
+datalad create-sibling-github penguins --publish-depends usbdrive
+datalad siblings
+```
+
+:::{#exr-}
+Push the data to the github remote
+:::
+```{bash}
+datalad push --to github
+```
+
+:::{#exr-}
+Clone the dataset from the new github remote
+:::
+```{bash}
+datalad clone https://github.com/OleBialas/penguins.git
+datalad get *
+```
+

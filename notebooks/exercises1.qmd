@@ -1,0 +1,159 @@
+---
+name: "Using and Modifying DataLad DataSets"
+format: html
+jupyter: bash
+---
+
+## Consuming Existing Datasets
+
+| Linux/macOS | Windows | Description |
+| --- | --- | --- |
+| `ls -a` | `dir /a` | List the content of the current directory (including hidden files) |
+| `ls -a data` | `dir /a data` | List the content of the `data` directory |
+| `du -sh` | `dir /s` | Get the disk usage of the current directory |
+| `du -sh data` | `dir /s data` Get the disk usage of the `data` directory |
+| `cd data` | `cd data` | Change the directory to `data`|
+: Terminal commands
+
+| Command | Description |
+| --- | --- | 
+| `datalad clone https://example.com` | Clone the data set from `example.com` |
+| `datalad get folder/` | Get the file content of the `folder/` |
+| `datalad get folder/image.png` | Get the file content of the file `image.png` |
+| `datalad drop folder/` | Drop the file content of the `folder/` |
+: DataLad and git-annex commands
+
+:::{#exr-}
+
+Clone the dataset from https://gin.g-node.org/obi/penguins.git
+:::
+::: {.callout-tip}
+## Solution
+```{bash}
+datalad clone https://gin.g-node.org/obi/penguins.git
+```
+:::
+
+:::{#exr-}
+Change the directory to `penguins` and list the directory's content
+:::
+::: {.callout-tip}
+## Solution
+On Linux/macOS:
+```{bash}
+cd penguins
+ls -a
+```
+On Windows:
+```powershell
+cd pegnuins
+dir /a
+```
+:::
+
+:::{#exr-}
+Check the disk usage of the `penguins` directory
+:::
+::: {.callout-tip}
+## Solution
+On Linux/macOS:
+```{bash}
+du -sh
+```
+On Windows:
+```powershell
+dir /s
+```
+:::
+
+:::{#exr-}
+Get the content of the `examples` subdirectory
+:::
+::: {.callout-tip}
+## Solution
+```{bash}
+datalad get examples
+```
+:::
+
+:::{#exr-}
+Check the disk usage of the `penguins` directory again
+:::
+::: {.callout-tip}
+## Solution
+On Linux/macOS:
+```{bash}
+du -sh
+```
+On Windows:
+```powershell
+dir /s
+```
+:::
+
+:::{#exr-}
+Drop the content of `examples/chinstrap.jpg` and check the disk usage again
+:::
+::: {.callout-tip}
+## Solution
+```{bash}
+datalad drop examples/chinstrap
+```
+On Linux/macOS:
+```{bash}
+du -sh
+```
+On Windows:
+```powershell
+dir /s
+```
+:::
+
+## Checking File Identity and Location with git-annex
+
+| Command | Description |
+| `git annex info` | Show the git-annex information for the whole dataset |
+| `git annex info folder/image.png` | Show the git-annex information for the file `image.png`|
+| `git annex whereis folder/image.png` | List the repositories that have the file content for `image.png` |
+
+
+:::{#exr-}
+Display the `git annex info` for the file `examples/gentoo.jpg`. What is the *size* of that file? Is it *present* on your machine?
+:::
+::: {.callout-tip}
+```{bash}
+git annex info examples/gentoo.jpg
+```
+The file is 4.81 megabtyes and it should be present since we previouslt loaded the content of the `examples` folder.
+:::
+
+:::{#exr-}
+Display the `git-annex info` of the whole data set. How many annexed files are there in the working tree?
+:::
+::: {.callout-tip}
+```{bash}
+git annex info
+```
+The nummber of annexed files is displayed in this line:
+`annexed files in working tree: 21`
+:::
+
+:::{#exr-}
+Use `git annex whereis` to list the repositories that have the file content for the image `examples/gentoo.jpg`.
+:::
+::: {.callout-tip}
+```{bash}
+git annex whereis examples/gentoo.jpg
+```
+:::
+
+:::{#exr-}
+Use `git annex whereis` to list the repositories that have the file content for the table `data/table_220.csv`. How does this differ from the list of repositories that contain the content for `gentoo.jpg`?
+:::
+::: {.callout-tip}
+```{bash}
+git annex whereis data/table_220.csv
+```
+The table is not stored in the local respository, listed in the line marked `[here]`.
+:::
+

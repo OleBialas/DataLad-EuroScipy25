@@ -1,0 +1,178 @@
+---
+name: "Tracking Data"
+format: html
+jupyter: bash
+---
+
+## Modifying a Dataset
+
+| Code | Description |
+| --- | --- |
+| `datalas status` | Show any untracked changes in the current dataset |
+| `datalad save` | Save any untracked changes in the current dataset |
+| `datalad save -m "hi"` | Save untracked changes and add the message `"hi"` |
+| `datalad unlock file.txt` | Unlock `file.txt` to make it modifiable |
+| `git log` | View the dataset's history, stored in the `git log` |
+| `git log -3` | View the last `3` entries in the `git log` |
+
+:::{#exr-}
+Cretate a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
+:::
+::: {.callout-tip}
+## Solution
+```{bash}
+echo -e "gentoo\adelie" > penguin_species.txt
+datalad status
+```
+:::
+
+:::{#exr-}
+Use `datalad save` to save the untracked changes with the message `"list penguin species"`.
+:::
+::: {.callout-tip}
+## Solution
+```{bash}
+datalad save -m "list penguin species"
+```
+:::
+
+:::{#exr-}
+View the most recent entry in the `git log`
+:::
+::: {.callout-tip}
+# Solution
+```{bash}
+git log -1
+```
+:::
+
+:::{#exr-}
+Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinstrap* to the list. Then, run `datalad save` again with a message to save the changes
+:::
+::: {.callout-tip}
+# Solution
+```{bash}
+datalad unlock penguin_species.txt
+echo -e "chinstrap" >> pegnuin_species.txt
+datalad save -m "add chinstrap"
+```
+:::
+
+:::{#exr-}
+View the last two entries in the `git log`
+:::
+::: {.callout-tip}
+# Solution
+```{bash}
+git log -2
+```
+:::
+
+## Running Scripts with DataLad
+
+| Code | Description |
+| --- | --- |
+|`datalad run "python script.py"` | Run the `python` script `script.py` |
+|`datalad run -i "data.csv" -o "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
+| `git log` | View the dataset's histroy stored in the `git log` |
+| `datalad rerun a268d8ca22b6` | Rerun the command from the `git log` with the checksum starting with `a268d8ca22b6e87959` |
+| `datalad rerun --since a268d8ca22b6` | Rerun ALL commands `--since` the one with the checksum starting with `a268d8ca22b6e87959` |
+
+
+:::{#exr-}
+Try to run the `python` script in `code/aggregate_culmen_data.py`. What error message do you observe?
+:::
+::: {.callout-tip}
+# Solution
+```{bash}
+#| eval: false
+datalad run "python code/aggregate_culmen_data.py"
+```
+You should see `FileNotFoundError: [Errno 2] No such file or directory` because the dataset does not contain the annexed content of the required files.
+:::
+
+:::{#exr-run}
+(Put all tables in the same folder to avoid complicated glob pattern)
+Run the same script with `-i "*/*table*.csv"` and  `-o "results/penguin_culmens.csv"`
+:::
+```{bash}
+datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/aggregate_culmen_data.py"
+```
+
+:::{#exr-}
+View the most recent entry in the `git log`
+:::
+```{bash}
+git log -1
+```
+
+:::{#exr-img}
+Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/penguin_culmens.csv` as `--input` and produces `results/culmen_length_vs_depth.png` as an output.
+:::
+```{bash}
+datalad run --input "results/penguin_culmens.csv" --output "results/culmen_length_vs_depth.png" "python code/plot_culmen_length_vs_depth.py"
+```
+
+:::{#exr-}
+Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
+:::
+```{bash}
+datalad rerun $(git rev-parse HEAD)
+```
+
+:::{#exr-}
+Open the git log to find the checksum of the commit for the run command from @exr-img and re-run everything `--since` this commit.
+:::
+```{bash}
+datalad rerun --since $(git rev-parse HEAD~1)
+```
+
+## Distributing your DataSet
+
+Maybe skip the local remote, just do github and mention that datalad supports many remotes via extensions (e.g. OSF)
+
+| Code | Description |
+| --- | --- |
+| `datalad siblings` | List all siblings of the current dataset |
+| `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |
+| `datalad push --to github` | Push the dataset `--to` the sibling `github` |
+
+:::{#exr-}
+List all `siblings` of the penguins dataset
+:::
+```{bash}
+datalad siblings
+```
+
+:::{#exr-}
+Create a special remote (does this create the data ven if we didn't do `datalad get*`)
+:::
+```{bash}
+mkdir usbdrive
+git annex initremote usbdrive type=directory directory=usbdrive encryption=none autoenable=true
+datalad siblings
+```
+
+:::{#exr-}
+Create a github sibling and link it to the local remote
+:::
+```{bash}
+datalad create-sibling-github penguins --publish-depends usbdrive
+datalad siblings
+```
+
+:::{#exr-}
+Push the data to the github remote
+:::
+```{bash}
+datalad push --to github
+```
+
+:::{#exr-}
+Clone the dataset from the new github remote
+:::
+```{bash}
+datalad clone https://github.com/OleBialas/penguins.git
+datalad get *
+```
+

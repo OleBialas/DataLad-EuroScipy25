@@ -1,10 +1,10 @@
 ---
-title: "DataLad Workshop at EuroScipy 2025"
+title: "DataLad EuroScipy 2025"
 format:
     html
 ---
 
-Welcome to the website for the DataLad Workshop at EuroScipy 2025!
+Welcome to the website for the DataLad tutorial at EuroScipy 2025!
 Here, you can access all exercise materials and slides.
 The rest of this page walks you through the installation and provides you with additional materials to learn more about DataLad.
 
