@@ -1,14 +1,17 @@
 ---
-name: "Distributing and Sharing Datasets"
+title: "Part 3: Distributing and Sharing your DataLad Dataset"
 format: html
 jupyter: bash
 ---
 
-## Distributing your DataSet
+## Distributing your Dataset
 
-Maybe skip the local remote, just do github and mention that datalad supports many remotes via extensions (e.g. OSF)
+DataLad can manage multiple `sibings` of a dataset.
+In this section you are going to create a new `sibling` on GitHub and push the dataset to that repository.
+You'll need an access token --- on GitHub, go to Settings > Developer Settings > Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.
 
-| Code | Description |
+
+| Command | Description |
 | --- | --- |
 | `datalad siblings` | List all siblings of the current dataset |
 | `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |
@@ -26,7 +29,7 @@ datalad siblings
 :::
 
 :::{#exr-}
-Create a new sibling on GitHub. You'll need an access token --- on GitHub, go to Settings > Developer Settings > Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.
+Create a new sibling on GitHub. 
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -43,7 +46,7 @@ datalad create-sibling-github penguins --credential <token>
 :::
 
 :::{#exr-}
-Push the data to the github remote
+Push the data to the GitHub remote
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -65,6 +68,16 @@ datalad clone https://github.com/OleBialas/penguins.git ~/
 :::
 
 ## Creating a Special Remote for File Content
+
+While GitHub is great for sharing, it does not allow you to store the annexed file content.
+In this section, you are going to create another local repository to store the file contents and link it to the GitHub sibling.
+
+| Command | Desription |
+| --- | --- |
+| `datalad get*` | Get the file contents for the whole dataset |
+| `git annex initremote usbdrive type=directory directory=~/dir encryption=none autoenable=true` | Create a sibling called `usbdrive` in the directory `~/dir` |
+| `datalad push --to usbdrive` | Push the dataset to the sibling `usbdrive` |
+| `datalad siblings configure -s github --publish-depends usbdrive` | Configure the `github` sibling so the file contents are pushed to `usbdrive` |
 
 
 :::{#exr-}

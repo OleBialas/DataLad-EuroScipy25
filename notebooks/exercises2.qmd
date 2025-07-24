@@ -1,5 +1,5 @@
 ---
-name: "Tracking Data"
+title: "Part 2: Tracking Changes in DataLad Datasets"
 format: html
 jupyter: bash
 execute:
@@ -14,7 +14,10 @@ cd penguins
 
 ## Modifying a Dataset
 
-| Code | Description |
+DataLad keeps track of all changes made to your dataset.
+In this section, you will add new content to the `penguins` dataset and see how these changes are tracked in the `git log` of your repository.
+
+| Command | Description |
 | --- | --- |
 | `datalas status` | Show any untracked changes in the current dataset |
 | `datalad save` | Save any untracked changes in the current dataset |
@@ -26,7 +29,7 @@ cd penguins
 :::{#exr-}
 Create a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -38,7 +41,7 @@ datalad status
 :::{#exr-}
 Use `datalad save` to save the untracked changes with the message `"list penguin species"`.
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 datalad save -m "list penguin species"
@@ -48,7 +51,7 @@ datalad save -m "list penguin species"
 :::{#exr-}
 View the most recent entry in the `git log`
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 git log -1
@@ -58,7 +61,7 @@ git log -1
 :::{#exr-}
 Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinstrap* to the list. Then, run `datalad save` again with a message to save the changes
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -71,7 +74,7 @@ datalad save -m "add chinstrap"
 :::{#exr-}
 View the last two entries in the `git log`
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -81,7 +84,11 @@ git log -2
 
 ## Running Scripts with DataLad
 
-| Code | Description |
+Often, we won't edit our dataset manually but run scripts that do so.
+In this section you will use DataLad to run Python scripts and track the changes made by them.
+You are also going to use the dataset's history to re-run the commands.
+
+| Command | Description |
 | --- | --- |
 |`datalad run "python script.py"` | Run the `python` script `script.py` |
 |`datalad run --input "data.csv" --output "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
@@ -93,7 +100,7 @@ git log -2
 :::{#exr-}
 Try to run the `python` script in `code/aggregate_culmen_data.py`. What error message do you observe?
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| eval: false
@@ -106,7 +113,7 @@ You should see `FileNotFoundError: [Errno 2] No such file or directory` because 
 (Put all tables in the same folder to avoid complicated glob pattern)
 Run the same script with the `data/` folder as `--input` and the file `"results/penguin_culmens.csv"` as `--output`.
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -117,7 +124,7 @@ datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/
 :::{#exr-}
 View the most recent entry in the `git log`
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -128,7 +135,7 @@ git log -1
 :::{#exr-}
 Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 In the code below, `$(git rev-parse HEAD)` gets the checksum for the latest commit but you can also open `git log` and copy-paste the checksum.
 ```{bash}
@@ -140,7 +147,7 @@ datalad rerun $(git rev-parse HEAD)
 :::{#exr-}
 Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/penguin_culmens.csv` as `--input` and produces `results/culmen_length_vs_depth.png` as an output.
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 ```{bash}
 #| output: false
@@ -151,7 +158,7 @@ datalad run --input "results/penguin_culmens.csv" --output "results/culmen_lengt
 :::{#exr-}
 Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run everything `--since` this commit (i.e. the data aggregation and plotting scripts).
 :::
-::: {.callou-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 In the code below, `$(git rev-parse HEAD)` gets the checksum for the second latest commit but you can also open `git log` and copy-paste the checksum.
 ```{bash}

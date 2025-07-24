@@ -1,5 +1,5 @@
 ---
-name: "Using and Modifying DataLad DataSets"
+title: "Part 1: Working with DataLad Datasets"
 format: html
 jupyter: bash
 execute:
@@ -7,6 +7,9 @@ execute:
 ---
 
 ## Consuming Existing Datasets
+
+In this section, you are going to clone an existing DataLad dataset and download its contents.
+While the `datalad` API is universal, the commands for navigating the data set differ between operating systems (see table below).
 
 | Linux/macOS | Windows | Description |
 | --- | --- | --- |
@@ -23,7 +26,7 @@ execute:
 | `datalad get folder/` | Get the file content of the `folder/` |
 | `datalad get folder/image.png` | Get the file content of the file `image.png` |
 | `datalad drop folder/` | Drop the file content of the `folder/` |
-: DataLad and git-annex commands
+: DataLad commands
 
 :::{#exr-}
 
@@ -120,6 +123,9 @@ dir /s
 
 ## Checking File Identity and Location with git-annex
 
+Since DataLad is built on top of `git-annex`, you can use its commands on any DataLad dataset.
+In this section, you'll use `git-annex` to get information on the dataset and localize its file contents.
+
 | Command | Description |
 | --- | --- | 
 | `git annex info` | Show the git-annex information for the whole dataset |
@@ -172,6 +178,6 @@ Use `git annex whereis` to list the repositories that have the file content for 
 #| output: false
 git annex whereis data/table_220.csv
 ```
-The table is not stored in the local respository, listed in the line marked `[here]`.
+The table is not stored in the local repository, listed in the line marked `[here]`.
 :::
 
