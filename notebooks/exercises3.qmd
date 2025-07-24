@@ -17,8 +17,8 @@ Maybe skip the local remote, just do github and mention that datalad supports ma
 :::{#exr-}
 List all `siblings` of the penguins dataset
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad siblings
@@ -28,8 +28,8 @@ datalad siblings
 :::{#exr-}
 Create a new sibling on GitHub. You'll need an access token --- on GitHub, go to Settings > Developer Settings > Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 Either run `create-sibling-github` and paste the token when being prompted
 ```{bash}
 #| eval: false
@@ -45,8 +45,8 @@ datalad create-sibling-github penguins --credential <token>
 :::{#exr-}
 Push the data to the github remote
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad push --to github
@@ -56,8 +56,8 @@ datalad push --to github
 :::{#exr-}
 Clone the dataset from the GitHub sibling to a new location
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad clone https://github.com/OleBialas/penguins.git ~/
@@ -70,8 +70,8 @@ datalad clone https://github.com/OleBialas/penguins.git ~/
 :::{#exr-}
 Get the file content for the whole penguins dataset
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad get *
@@ -82,8 +82,8 @@ datalad get *
 :::{#exr-}
 Create a special remote at a `directory` outside `penguins/`. Then, list all `siblings` to confirm the remove was created.
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 mkdir ~/usbdrive
@@ -95,8 +95,8 @@ datalad siblings
 :::{#exr-}
 Push the data to the local remote
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad push --to usbdrive
@@ -106,8 +106,8 @@ datalad push --to usbdrive
 :::{#exr-}
 `configure` the github sibling so that the publish depends on the local remote
 :::
-::: {.callout-tip}
-# Solution
+::: {.callout-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad siblings configure -s github --publish-depends usbdrive

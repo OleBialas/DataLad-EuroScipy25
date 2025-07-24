@@ -2,6 +2,8 @@
 name: "Tracking Data"
 format: html
 jupyter: bash
+execute:
+    freeze: auto
 ---
 
 
@@ -24,9 +26,10 @@ cd penguins
 :::{#exr-}
 Create a new file in the `penguins` folder called `penguin_species.txt` and add the species names *gentoo* and *adelie*. Then, save the file and run `datalad status` to see the untracked changes.
 :::
-::: {.callout-tip}
+::: {.callou-tip collapse="true"}
 ## Solution
 ```{bash}
+#| output: false
 echo -e "gentoo\adelie" > penguin_species.txt
 datalad status
 ```
@@ -35,7 +38,7 @@ datalad status
 :::{#exr-}
 Use `datalad save` to save the untracked changes with the message `"list penguin species"`.
 :::
-::: {.callout-tip}
+::: {.callou-tip collapse="true"}
 ## Solution
 ```{bash}
 datalad save -m "list penguin species"
@@ -45,8 +48,8 @@ datalad save -m "list penguin species"
 :::{#exr-}
 View the most recent entry in the `git log`
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
 git log -1
 ```
@@ -55,9 +58,10 @@ git log -1
 :::{#exr-}
 Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinstrap* to the list. Then, run `datalad save` again with a message to save the changes
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
+#| output: false
 datalad unlock penguin_species.txt
 echo -e "chinstrap" >> pegnuin_species.txt
 datalad save -m "add chinstrap"
@@ -67,9 +71,10 @@ datalad save -m "add chinstrap"
 :::{#exr-}
 View the last two entries in the `git log`
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
+#| output: false
 git log -2
 ```
 :::
@@ -88,8 +93,8 @@ git log -2
 :::{#exr-}
 Try to run the `python` script in `code/aggregate_culmen_data.py`. What error message do you observe?
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
 #| eval: false
 datalad run "python code/aggregate_culmen_data.py"
@@ -101,9 +106,10 @@ You should see `FileNotFoundError: [Errno 2] No such file or directory` because 
 (Put all tables in the same folder to avoid complicated glob pattern)
 Run the same script with the `data/` folder as `--input` and the file `"results/penguin_culmens.csv"` as `--output`.
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
+#| output: false
 datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/aggregate_culmen_data.py"
 ```
 :::
@@ -111,9 +117,10 @@ datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/
 :::{#exr-}
 View the most recent entry in the `git log`
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
+#| output: false
 git log -1
 ```
 :::
@@ -121,10 +128,11 @@ git log -1
 :::{#exr-}
 Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 In the code below, `$(git rev-parse HEAD)` gets the checksum for the latest commit but you can also open `git log` and copy-paste the checksum.
 ```{bash}
+#| output: false
 datalad rerun $(git rev-parse HEAD)
 ```
 :::
@@ -132,17 +140,22 @@ datalad rerun $(git rev-parse HEAD)
 :::{#exr-}
 Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/penguin_culmens.csv` as `--input` and produces `results/culmen_length_vs_depth.png` as an output.
 :::
+::: {.callou-tip collapse="true"}
+## Solution
 ```{bash}
+#| output: false
 datalad run --input "results/penguin_culmens.csv" --output "results/culmen_length_vs_depth.png" "python code/plot_culmen_length_vs_depth.py"
 ```
+:::
 
 :::{#exr-}
 Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run everything `--since` this commit (i.e. the data aggregation and plotting scripts).
 :::
-::: {.callout-tip}
-# Solution
+::: {.callou-tip collapse="true"}
+## Solution
 In the code below, `$(git rev-parse HEAD)` gets the checksum for the second latest commit but you can also open `git log` and copy-paste the checksum.
 ```{bash}
+#| output: false
 datalad rerun --since $(git rev-parse HEAD~1)
 ```
 :::
