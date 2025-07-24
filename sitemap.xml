@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/index.html</loc>
-    <lastmod>2025-07-22T14:51:45.951Z</lastmod>
+    <lastmod>2025-07-24T13:24:16.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises2.html</loc>
+    <lastmod>2025-07-24T13:08:48.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises1.html</loc>
+    <lastmod>2025-07-24T13:15:19.328Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises3.html</loc>
+    <lastmod>2025-07-24T13:15:27.728Z</lastmod>
   </url>
 </urlset>

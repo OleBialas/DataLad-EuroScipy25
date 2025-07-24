@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DataLad EuroScipy 2025 – DataLad Tutorial for EuroScipy 25</title>
+<title>Part 3: Distributing and Sharing your DataLad Dataset – DataLad Tutorial for EuroScipy 25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-24821272e8c402235f2fbd925fd7404e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-24821272e8c402235f2fbd925fd7404e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DataLad Tutorial for EuroScipy 25</span>
     </a>
   </div>
@@ -89,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -98,15 +133,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
         <li>
-    <a class="dropdown-item" href="./notebooks/exercises1.html">
+    <a class="dropdown-item" href="../notebooks/exercises1.html">
  <span class="dropdown-text">Part 1: Working with Datasets</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/exercises2.html">
+    <a class="dropdown-item" href="../notebooks/exercises2.html">
  <span class="dropdown-text">Part 2: Tracking Changes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/exercises3.html">
+    <a class="dropdown-item" href="../notebooks/exercises3.html">
  <span class="dropdown-text">Part 3: Distributing your Dataset</span></a>
   </li>  
     </ul>
@@ -117,15 +152,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
         <li>
-    <a class="dropdown-item" href="./slides/intro.qmd">
+    <a class="dropdown-item" href="../slides/intro.qmd">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/review1.qmd">
+    <a class="dropdown-item" href="../notebooks/review1.qmd">
  <span class="dropdown-text">Exercise Review 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/review2.qmd">
+    <a class="dropdown-item" href="../notebooks/review2.qmd">
  <span class="dropdown-text">Exercise Review 2</span></a>
   </li>  
     </ul>
@@ -147,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DataLad EuroScipy 2025</h1>
+<h1 class="title">Part 3: Distributing and Sharing your DataLad Dataset</h1>
 </div>
 
 
@@ -164,53 +199,246 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the website for the DataLad tutorial at EuroScipy 2025! Here, you can access all exercise materials and slides. The rest of this page walks you through the setup process and provides you with additional materials to learn more about DataLad.</p>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>DataLad requires Git and Python 3.8 or later. All other dependencies can be installed via <code>pip</code>.</p>
-<section id="git" class="level3">
-<h3 class="anchored" data-anchor-id="git">Git</h3>
-<p>To install and configure git follow these steps: - Install git https://git-scm.com/downloads - Configure your git user name: <code>git config --global user.name "user"</code> - Configure your git user email: <code>git config --global user.email "user@mail.com"</code></p>
+<section id="distributing-your-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="distributing-your-dataset">Distributing your Dataset</h2>
+<p>DataLad can manage multiple <code>sibings</code> of a dataset. In this section you are going to create a new <code>sibling</code> on GitHub and push the dataset to that repository. You’ll need an access token — on GitHub, go to Settings &gt; Developer Settings &gt; Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>datalad siblings</code></td>
+<td>List all siblings of the current dataset</td>
+</tr>
+<tr class="even">
+<td><code>datalad create-sibling-github myrepo</code></td>
+<td>Create a new GitHub repo called <code>myrepo</code> and register it as a sibling</td>
+</tr>
+<tr class="odd">
+<td><code>datalad push --to github</code></td>
+<td>Push the dataset <code>--to</code> the sibling <code>github</code></td>
+</tr>
+</tbody>
+</table>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> List all <code>siblings</code> of the penguins dataset</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="66cc426c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Create a new sibling on GitHub.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Either run <code>create-sibling-github</code> and paste the token when being prompted</p>
+<div id="144aa9c2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> create-sibling-github penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or use the <code>--credential</code> flag to pass the token</p>
+<div id="67bd127f" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> create-sibling-github penguins <span class="at">--credential</span> <span class="op">&lt;</span>token<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> Push the data to the GitHub remote</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="208c2dc9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> github</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> Clone the dataset from the GitHub sibling to a new location</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="16f39d01" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> clone https://github.com/OleBialas/penguins.git ~/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="python" class="level3">
-<h3 class="anchored" data-anchor-id="python">Python</h3>
-<p>We recommend to create a new virtual environment for this project with Python 3.8 or later. There are different ways to install the required Python packages. If you already have Python and a tool for managing environments you can just use <code>pip install</code>. Otherwise, follow the installation instructions for <code>uv</code>, <code>pixi</code> or <code>conda</code>.</p>
-<section id="pip" class="level4">
-<h4 class="anchored" data-anchor-id="pip">pip</h4>
-<ul>
-<li>Run <code>pip install datalad datalad-next git-annex pandas seaborn</code></li>
-</ul>
-</section>
-<section id="uv" class="level4">
-<h4 class="anchored" data-anchor-id="uv">uv</h4>
-<ul>
-<li>Install uv: https://docs.astral.sh/uv/getting-started/installation/</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; uv sync</code></li>
-<li>Activate the environment: <code>.venv\Scripts\activate</code> (on Windows) or <code>source .venv/bin/activate</code> (on Linux/macOS)</li>
-</ul>
-</section>
-<section id="pixi" class="level4">
-<h4 class="anchored" data-anchor-id="pixi">pixi</h4>
-<ul>
-<li>Install pixi: https://pixi.sh/latest/#installation</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; pixi install</code></li>
-<li>Activate the environment: <code>pixi shell</code></li>
-</ul>
-</section>
-<section id="conda" class="level4">
-<h4 class="anchored" data-anchor-id="conda">conda</h4>
-<ul>
-<li>Install conda: https://conda-forge.org/download/</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml</code></li>
-<li>Activate the environment: <code>conda activate datalad</code></li>
-</ul>
+<section id="creating-a-special-remote-for-file-content" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-special-remote-for-file-content">Creating a Special Remote for File Content</h2>
+<p>While GitHub is great for sharing, it does not allow you to store the annexed file content. In this section, you are going to create another local repository to store the file contents and link it to the GitHub sibling.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Desription</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>datalad get*</code></td>
+<td>Get the file contents for the whole dataset</td>
+</tr>
+<tr class="even">
+<td><code>git annex initremote usbdrive type=directory directory=~/dir encryption=none autoenable=true</code></td>
+<td>Create a sibling called <code>usbdrive</code> in the directory <code>~/dir</code></td>
+</tr>
+<tr class="odd">
+<td><code>datalad push --to usbdrive</code></td>
+<td>Push the dataset to the sibling <code>usbdrive</code></td>
+</tr>
+<tr class="even">
+<td><code>datalad siblings configure -s github --publish-depends usbdrive</code></td>
+<td>Configure the <code>github</code> sibling so the file contents are pushed to <code>usbdrive</code></td>
+</tr>
+</tbody>
+</table>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Get the file content for the whole penguins dataset</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="2c9bd7b1" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> get <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Create a special remote at a <code>directory</code> outside <code>penguins/</code>. Then, list all <code>siblings</code> to confirm the remove was created.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="66aebada" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/usbdrive</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> annex initremote usbdrive type=directory directory=~/usbdrive encryption=none autoenable=true</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> Push the data to the local remote</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="31a29397" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> usbdrive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> <code>configure</code> the github sibling so that the publish depends on the local remote</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="bec851b5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings configure <span class="at">-s</span> github <span class="at">--publish-depends</span> usbdrive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
