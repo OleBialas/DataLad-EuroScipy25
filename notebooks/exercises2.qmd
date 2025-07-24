@@ -4,6 +4,12 @@ format: html
 jupyter: bash
 ---
 
+
+```{bash}
+#| echo: false
+cd penguins
+```
+
 ## Modifying a Dataset
 
 | Code | Description |

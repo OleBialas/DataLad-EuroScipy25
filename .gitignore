@@ -1,5 +1,7 @@
 /.quarto/
 /_site/
+*.html
+*.quarto_ipynb
 
 # pixi environments
 .pixi
