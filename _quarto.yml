@@ -24,6 +24,19 @@ website:
             href: notebooks/review1.qmd
           - text: Exercise Review 2
             href: notebooks/review2.qmd
+    tools:
+      - icon: person-lines-fill
+        menu:
+          - text: Ole Bialas
+            href: about/ole.qmd
+          - text: Michał Szczepanik
+            href: about/michal.qmd
+      - icon: github
+        menu:
+          - text: Source Code
+            href: https://github.com/OleBialas/DataLad-EuroScipy25
+          - text: Report a Bug
+            href: https://github.com/OleBialas/DataLad-EuroScipy25
 
 format:
   html:

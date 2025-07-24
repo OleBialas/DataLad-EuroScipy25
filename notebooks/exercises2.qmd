@@ -2,8 +2,6 @@
 title: "Part 2: Tracking Changes in DataLad Datasets"
 format: html
 jupyter: bash
-execute:
-    freeze: auto
 ---
 
 
@@ -109,7 +107,7 @@ datalad run "python code/aggregate_culmen_data.py"
 You should see `FileNotFoundError: [Errno 2] No such file or directory` because the dataset does not contain the annexed content of the required files.
 :::
 
-:::{#exr-run}
+:::{#exr-csv}
 (Put all tables in the same folder to avoid complicated glob pattern)
 Run the same script with the `data/` folder as `--input` and the file `"results/penguin_culmens.csv"` as `--output`.
 :::

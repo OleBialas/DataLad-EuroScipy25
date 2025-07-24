@@ -3,6 +3,7 @@
 _freeze/
 *.html
 *.quarto_ipynb
+/notebooks/penguins
 
 # pixi environments
 .pixi

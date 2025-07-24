@@ -6,18 +6,29 @@ format:
 
 Welcome to the website for the DataLad tutorial at EuroScipy 2025!
 Here, you can access all exercise materials and slides.
-The rest of this page walks you through the installation and provides you with additional materials to learn more about DataLad.
+The rest of this page walks you through the setup process and provides you with additional materials to learn more about DataLad.
 
 
 ## Installation
 
-### Git
+DataLad requires Git and Python 3.8 or later.
+All other dependencies can be installed via `pip`.
 
+### Git
+To install and configure git follow these steps:
 - Install git https://git-scm.com/downloads
 - Configure your git user name: `git config --global user.name "user"`
 - Configure your git user email: `git config --global user.email "user@mail.com"`
 
 ### Python
+
+We recommend to create a new virtual environment for this project with Python 3.8 or later.
+There are different ways to install the required Python packages.
+If you already have Python and a tool for managing environments you can just use `pip install`.
+Otherwise, follow the installation instructions for `uv`, `pixi` or `conda`.
+
+#### pip
+- Run `pip install datalad datalad-next git-annex pandas seaborn`
 
 #### uv
 - Install uv: https://docs.astral.sh/uv/getting-started/installation/
@@ -37,6 +48,3 @@ The rest of this page walks you through the installation and provides you with a
 - Install the environment: `cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml`
 - Activate the environment: `conda activate datalad`
 
-### other
-- Create a new virtual environment 
-- install the dependencies with pip: `pip install git-annex datalad datalad-next pandas`

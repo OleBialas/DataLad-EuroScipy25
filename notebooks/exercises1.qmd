@@ -2,8 +2,6 @@
 title: "Part 1: Working with DataLad Datasets"
 format: html
 jupyter: bash
-execute:
-    freeze: auto
 ---
 
 ## Consuming Existing Datasets
