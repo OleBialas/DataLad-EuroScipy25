@@ -1,5 +1,6 @@
 project:
   type: website
+  post-render: ./clean-datasets.sh
 
 website:
   title: "DataLad Tutorial for EuroScipy 25"
