@@ -10,10 +10,12 @@ website:
         text: Home
       - text: Exercises
         menu:
-          - text: Part 1
+          - text: "Part 1: Working with Datasets"
             href: notebooks/exercises1.qmd
-          - text: Part 2
+          - text: "Part 2: Tracking Changes"
             href: notebooks/exercises2.qmd
+          - text: "Part 3: Distributing your Dataset"
+            href: notebooks/exercises3.qmd
       - text: Slides
         menu:
           - text: Introduction
