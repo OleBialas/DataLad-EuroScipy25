@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "datalad>=1.2.1",
+    "datalad-next>=1.5.0",
+    "git-annex>=10.20250721",
+    "pandas>=2.3.1",
+    "seaborn>=0.13.2",
+]
