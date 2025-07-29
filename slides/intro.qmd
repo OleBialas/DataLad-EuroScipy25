@@ -1,0 +1,53 @@
+---
+title: Introduction to DataLad
+subtitle: Data Management for Open Science
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Michał Szczepanik
+    email: alias@email.com
+    affiliations: Research Center Juelich
+  - name: Ole Bialas
+    email: bialas@uni-bonn.de
+    affiliations: University of Bonn
+date: last-modified
+---
+
+# About us
+
+:::: {.columns}
+
+::: {.column width="40%"}
+<figure style="display: inline-block; text-align: center; margin: 0px 20px 20px 20px;">
+  <img src="https://ibehave.nrw/wp-content/uploads/2023/04/photo_ole_bialas.jpg" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover;">
+  <figcaption style="margin-top: -15px; font-size: 24px; color: #4a9fb3;">Ole</figcaption>
+</figure>
+:::
+
+::: {.column width="60%"}
+- PhD in neuroscience researching auditory perception
+- Research software consultant at the University of Bonn
+- DataLad user for ~5 years
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+<figure style="display: inline-block; text-align: center; margin: 0px 20px 20px 20px;">
+  <img src="https://www.fz-juelich.de/profile/szczepanik_m/@@images/408bf6a5-b7ea-4a70-8342-48c4dc18d71e.jpeg" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover;">
+  <figcaption style="margin-top: -15px; font-size: 24px; color: #4a9fb3;">Michał</figcaption>
+</figure>
+:::
+
+::: {.column width="60%" style="margin-top: 20px;"}
+- Item 1
+- Item 2
+- Item 3
+:::
+
+::::
