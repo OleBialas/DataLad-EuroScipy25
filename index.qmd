@@ -24,39 +24,23 @@ To install and configure git follow these steps:
 
 ### Python
 
-We recommend to create a new virtual environment for this project with Python 3.8 or later.
-There are different ways to install the required Python packages.
-If you already have Python and a tool for managing environments you can just use `pip install`.
-Otherwise, follow the installation instructions for `uv`, `pixi` or `conda`.
-
-#### pip
-- Run `pip install datalad datalad-next git-annex pandas seaborn`
-
-#### uv
-- Install uv: https://docs.astral.sh/uv/getting-started/installation/
-- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
-- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; uv sync`
-- Activate the environment: `.venv\Scripts\activate` (on Windows) or `source .venv/bin/activate` (on Linux/macOS)
-
-#### pixi
-- Install pixi: https://pixi.sh/latest/#installation
-- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
-- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; pixi install`
-- Activate the environment: `pixi shell`
-
-#### conda
-- Install conda: https://conda-forge.org/download/
-- Clone this repo: `git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025`
-- Install the environment: `cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml`
-- Activate the environment: `conda activate datalad`
+We recommend to create a new virtual environment for this project with Python 3.8 or later using a tool like [uv](https://docs.astral.sh/uv/getting-started/installation/), [pixi](https://pixi.sh/latest/#installation) or [conda](https://conda-forge.org/download/).
+In your dedicated environment, you can install DataLad and its dependencies via pip:
+`pip install datalad datalad-next git-annex`
+Some of the exercises require you to run Python scripts --- you'll have to install their dependencies as well:
+`pip install pandas seaborn`
 
 ## Data
 
-To demonstrate DataLads data management capabilities, we'll use a dataset hosted on GIN.
+To demonstrate DataLad's data management capabilities, we'll use a dataset hosted on GIN.
 You don't have to download it upfront since cloning the dataset is part of the exercises.
 The data contains measurements from different penguin species and was originally published by Kristen B Gorman and colleagues [^2].
 
-## References
+## Further Reading
+
+If you want to learn more about DataLad, you can check out the [handbook](https://handbook.datalad.org/en/latest/index.html) which contains lots of beginner-friendly and advanced tutorials as well as the [technical documentation](https://docs.datalad.org/en/stable/index.html) which contains detailed descriptions of all DataLad features. If you want to learn more about the underlying file system operations, the [git-annex documentation](https://git-annex.branchable.com/) is a useful resource as well.
+
+
 [^1]: Halchenko et al., (2021). DataLad: distributed system for joint management of code, data, and their relationship. Journal of Open Source Software, 6(63), 3262, <https://doi.org/10.21105/joss.03262>.
 [^2]: Gorman, K. B., Williams, T. D., & Fraser, W. R. (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis): <https://doi.org/10.1371/journal.pone>.0090081
 

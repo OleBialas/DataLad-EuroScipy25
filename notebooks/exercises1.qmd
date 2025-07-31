@@ -1,7 +1,6 @@
 ---
 title: "Part 1: Working with DataLad Datasets"
 format: html
-jupyter: bash
 ---
 
 ## Consuming Existing Datasets
@@ -32,8 +31,7 @@ Clone the dataset from https://gin.g-node.org/obi/penguins
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad clone https://gin.g-node.org/obi/penguins
 ```
 :::
@@ -44,8 +42,7 @@ Change the directory to `penguins` and list the directory's content
 ::: {.callout-tip collapse="true"}
 ## Solution
 On Linux/macOS:
-```{bash}
-#| output: false
+```bash
 cd penguins
 ls -a
 ```
@@ -62,8 +59,7 @@ Check the disk usage of the `penguins` directory
 ::: {.callout-tip collapse="true"}
 ## Solution
 On Linux/macOS:
-```{bash}
-#| output: false
+```bash
 du -sh
 ```
 On Windows:
@@ -77,8 +73,7 @@ Get the content of the `examples` subdirectory
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad get examples
 ```
 :::
@@ -89,8 +84,7 @@ Check the disk usage of the `penguins` directory again
 ::: {.callout-tip collapse="true"}
 ## Solution
 On Linux/macOS:
-```{bash}
-#| output: false
+```bash
 du -sh
 ```
 On Windows:
@@ -104,13 +98,11 @@ Drop the content of `examples/chinstrap.jpg` and check the disk usage again
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad drop examples/chinstrap.jpg
 ```
 On Linux/macOS:
-```{bash}
-#| output: false
+```bash
 du -sh
 ```
 On Windows:
@@ -136,8 +128,7 @@ Display the `git annex info` for the file `examples/gentoo.jpg`. What is the *si
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 git annex info examples/gentoo.jpg
 ```
 The file is 4.81 megabtyes and it should be present since we previouslt loaded the content of the `examples` folder.
@@ -148,8 +139,7 @@ Display the `git-annex info` of the whole data set. How many annexed files are t
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 git annex info
 ```
 The nummber of annexed files is displayed in this line:
@@ -161,8 +151,7 @@ Use `git annex whereis` to list the repositories that have the file content for 
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 git annex whereis examples/gentoo.jpg
 ```
 :::
@@ -172,8 +161,7 @@ Use `git annex whereis` to list the repositories that have the file content for 
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 git annex whereis data/table_220.csv
 ```
 The table is not stored in the local repository, listed in the line marked `[here]`.

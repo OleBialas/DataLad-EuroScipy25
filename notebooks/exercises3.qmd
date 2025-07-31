@@ -1,128 +1,141 @@
 ---
-title: "Part 3: Distributing and Sharing your DataLad Dataset"
+title: "Part 3: Creating Backups and Sharing DataLad Datasets"
 format: html
-jupyter: bash
 ---
 
-## Distributing your Dataset
+## Creating a Backup
 
-DataLad can manage multiple `sibings` of a dataset.
-In this section you are going to create a new `sibling` on GitHub and push the dataset to that repository.
-You'll need an access token --- on GitHub, go to Settings > Developer Settings > Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.
+| Command | Description |
+| --- | --- |
+| `git init --bare ~/mydir`| Create a `--bare` repository called `mydir` in the home directory (on Linux/macOS) |
+| `git init --bare "$env:USERPROFILE\mydir"` | Create a `--bare` repository called `mydir` in the home directory (on Windos) |
+| `datalad siblings` | List all siblings of the current dataset |
+| `datalad sibings add --name new --url ~/mydir` | Add the repository at `~/mydir` as a new sibling with the name `new` |
+| `datalad push --to new` | Push the dataset content to the sibling named `new` |
+
+:::{#exr-}
+List all `siblings` of the current dataset.
+:::
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+datalad siblings
+```
+:::
+
+:::{#exr-}
+Initialize a `--bare` git repository at a path outside of this dataset.
+:::
+::: {.callout-tip collapse="true"}
+## Solution
+On Linux/macOs
+```bash
+git init --bare ~/penguins_backup
+```
+On Windows
+```bash
+git init --bare $env:USERPROFILE\penguins_backup
+```
+:::
+
+:::{#exr-}
+`add` a new sibling to the dataset using the path to the newly created git repository as the `--url`.
+Then, list all `siblings` to confirm it was added.
+:::
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+datalad siblings add --name backup --url ~/penguins_backup
+datalad siblings
+```
+:::
+
+:::{#exr-}
+Push the dataset to the new sibling.
+:::
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+datalad push --to backup
+```
+:::
+
+:::{#exr-}
+Move to a directory outside of this dataset and `clone` the new sibling dataset.
+:::
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd ..
+datalad clone ~/penguins_backup
+```
+:::
+
+
+## BONUS: Sharing your Dataset online
 
 
 | Command | Description |
 | --- | --- |
+| `ssh-keygen` | Generate a public and private authentication key pair |
 | `datalad siblings` | List all siblings of the current dataset |
-| `datalad create-sibling-github myrepo` | Create a new GitHub repo called `myrepo` and register it as a sibling |
-| `datalad push --to github` | Push the dataset `--to` the sibling `github` |
+| `datalad sibings add --name gin --url git@gin.g-node.org:/user/repo.git` | Add the gin repository at `/https://gin.g-node.org/user/repo` as a new sibling with the name `gin` |
+| `datalad push --to gin` | Push the dataset content to the sibling named `gin` |
 
 :::{#exr-}
-List all `siblings` of the penguins dataset
+Use `ssh-keygen` to generate a public and private key pair (you don't have to use a passphrase).
+Note the location where the public key is stored, e.g. `.ssh/id_ed25519.pub`.
+Open the `.pub` file and copy the whole content --- it should look something like this: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOYcoRKZZLWA4FWECpW2K/fTOvuRYXBnBA6gcea2bFq <user>@<computer>`
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| eval: false
-datalad siblings
-```
-:::
-
-:::{#exr-}
-Create a new sibling on GitHub. 
-:::
-::: {.callout-tip collapse="true"}
-## Solution
-Either run `create-sibling-github` and paste the token when being prompted
-```{bash}
-#| eval: false
-datalad create-sibling-github penguins
-```
-Or use the `--credential` flag to pass the token
-```{bash}
-#| eval: false
-datalad create-sibling-github penguins --credential <token>
+```bash
+ssh-keygen
 ```
 :::
 
 :::{#exr-}
-Push the data to the GitHub remote
+Login in to your [GIN account](https://gin.g-node.org/), go to your user settings and add the copied ssh key.
+Now datalad should be able to connect to your GIN account!
+![](https://handbook.datalad.org/en/latest/_images/GIN_SSH_1.png)
+:::
+
+:::{#exr-}
+Create a new repository on GIN, make sure to NOT initialize it with a README.
+![](https://handbook.datalad.org/en/latest/_images/GIN_newrepo.png)
+:::
+
+:::{#exr-}
+`add` a new sibling to the dataset using the `--url` of the newly created gin repository and confirm the connection.
+Then, list all `siblings` to confirm it was added.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| eval: false
-datalad push --to github
+For the repository in the image above, the command would look like this:
+```bash
+datalad siblings add --name gin --url git@gin.g-node.org:/adswa/DataLad-101.git
 ```
 :::
 
 :::{#exr-}
-Clone the dataset from the GitHub sibling to a new location
+Push the dataset to the new GIN sibling. Then, open the repository in your browser to confirm the content was pushed.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| eval: false
-datalad clone https://github.com/OleBialas/penguins.git ~/
-```
-:::
-
-## Creating a Special Remote for File Content
-
-While GitHub is great for sharing, it does not allow you to store the annexed file content.
-In this section, you are going to create another local repository to store the file contents and link it to the GitHub sibling.
-
-| Command | Desription |
-| --- | --- |
-| `datalad get*` | Get the file contents for the whole dataset |
-| `git annex initremote usbdrive type=directory directory=~/dir encryption=none autoenable=true` | Create a sibling called `usbdrive` in the directory `~/dir` |
-| `datalad push --to usbdrive` | Push the dataset to the sibling `usbdrive` |
-| `datalad siblings configure -s github --publish-depends usbdrive` | Configure the `github` sibling so the file contents are pushed to `usbdrive` |
-
-
-:::{#exr-}
-Get the file content for the whole penguins dataset
-:::
-::: {.callout-tip collapse="true"}
-## Solution
-```{bash}
-#| eval: false
-datalad get *
-```
-:::
-
-
-:::{#exr-}
-Create a special remote at a `directory` outside `penguins/`. Then, list all `siblings` to confirm the remove was created.
-:::
-::: {.callout-tip collapse="true"}
-## Solution
-```{bash}
-#| eval: false
-mkdir ~/usbdrive
-git annex initremote usbdrive type=directory directory=~/usbdrive encryption=none autoenable=true
-datalad siblings
+```bash
+datalad push --to gin
 ```
 :::
 
 :::{#exr-}
-Push the data to the local remote
+Move to a directory outside of this dataset and `clone` the new GIN sibling.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| eval: false
-datalad push --to usbdrive
+For the repository in the image above, the command would look like this:
+```bash
+cd ..
+datalad clone datalad clone https://gin.g-node.org/adswa/DataLad-101
 ```
 :::
 
-:::{#exr-}
-`configure` the github sibling so that the publish depends on the local remote
-:::
-::: {.callout-tip collapse="true"}
-## Solution
-```{bash}
-#| eval: false
-datalad siblings configure -s github --publish-depends usbdrive
-```
-:::

@@ -1,14 +1,7 @@
 ---
 title: "Part 2: Tracking Changes in DataLad Datasets"
 format: html
-jupyter: bash
 ---
-
-
-```{bash}
-#| echo: false
-cd penguins
-```
 
 ## Modifying a Dataset
 
@@ -29,8 +22,7 @@ Create a new file in the `penguins` folder called `penguin_species.txt` and add 
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 echo -e "gentoo\adelie" > penguin_species.txt
 datalad status
 ```
@@ -41,18 +33,19 @@ Use `datalad save` to save the untracked changes with the message `"list penguin
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
+```bash
 datalad save -m "list penguin species"
 ```
 :::
 
 :::{#exr-}
-View the most recent entry in the `git log`
+Open the `git log` and find the entry created by the previous `datalad save` command
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-git log -1
+On Linux/macOS this should be the last (i.e. top) entry, on Windows it will be the second-to-last.
+```bash
+git log
 ```
 :::
 
@@ -61,8 +54,7 @@ Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinst
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad unlock penguin_species.txt
 echo -e "chinstrap" >> pegnuin_species.txt
 datalad save -m "add chinstrap"
@@ -70,13 +62,12 @@ datalad save -m "add chinstrap"
 :::
 
 :::{#exr-}
-View the last two entries in the `git log`
+Open the `git log` again and find the entry from the `datalad save` command above.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
-git log -2
+```bash
+git log
 ```
 :::
 
@@ -100,8 +91,7 @@ Try to run the `python` script in `code/aggregate_culmen_data.py`. What error me
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| eval: false
+```bash
 datalad run "python code/aggregate_culmen_data.py"
 ```
 You should see `FileNotFoundError: [Errno 2] No such file or directory` because the dataset does not contain the annexed content of the required files.
@@ -113,32 +103,56 @@ Run the same script with the `data/` folder as `--input` and the file `"results/
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad run --input "data/" --output "results/penguin_culmens.csv" "python code/aggregate_culmen_data.py"
 ```
 :::
 
 :::{#exr-}
-View the most recent entry in the `git log`
+Open the `git log` to view the entry created by the `datalad run` command.
+Then, copy the checksum of that commit
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
-git log -1
+```bash
+git log
 ```
+The git log entry should look like this:
+```
+commit af78031c9ca45d3c349a692b0afd332178639e64 (master)
+Author: Ole Bialas <ole.bialas@posteo.de>
+Date:   Thu Jul 31 11:14:00 2025 +0200
+
+    [DATALAD RUNCMD] python code/aggregate_culmen_data.py
+
+    === Do not change lines below ===
+    {
+     "chain": [],
+     "cmd": "python code/aggregate_culmen_data.py",
+     "dsid": "3a8aacc5-85f0-4114-adee-fcfa7d21a5df",
+     "exit": 0,
+     "extra_inputs": [],
+     "inputs": [
+      "data"
+     ],
+     "outputs": [
+      "results/penguin_culmens.csv"
+     ],
+     "pwd": "."
+    }
+    ^^^ Do not change lines above ^^^
+```
+The checksum is displayed on the first line, after "commit": `af78031c9ca45d3c349a692b0afd332178639e64`
 :::
 
 :::{#exr-}
-Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run it.
+Use the copied checksum to `rerun` the previous `datalad run` command
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-In the code below, `$(git rev-parse HEAD)` gets the checksum for the latest commit but you can also open `git log` and copy-paste the checksum.
-```{bash}
-#| output: false
-datalad rerun $(git rev-parse HEAD)
+The command looks like this but the checksum will be different for everyone:
+```bash
+datalad rerun af78031c9ca45d3c349a692b0afd332178639e64
 ```
 :::
 
@@ -147,21 +161,19 @@ Run the script `code/plot_culmen_length_vs_depth.py` --- it takes `results/pengu
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-```{bash}
-#| output: false
+```bash
 datalad run --input "results/penguin_culmens.csv" --output "results/culmen_length_vs_depth.png" "python code/plot_culmen_length_vs_depth.py"
 ```
 :::
 
 :::{#exr-}
-Open the git log to find the checksum of the commit for the run command from @exr-csv and re-run everything `--since` this commit (i.e. the data aggregation and plotting scripts).
+Use the checksum of the commit for the run command from @exr-csv and re-run everything `--since` this commit (i.e. the data aggregation and plotting scripts).
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-In the code below, `$(git rev-parse HEAD)` gets the checksum for the second latest commit but you can also open `git log` and copy-paste the checksum.
-```{bash}
-#| output: false
-datalad rerun --since $(git rev-parse HEAD~1)
+The command looks like this but the checksum will be different for everyone:
+```bash
+datalad rerun --since af78031c9ca45d3c349a692b0afd332178639e64
 ```
 :::
 
