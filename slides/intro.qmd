@@ -7,7 +7,7 @@ html-math-method:
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 author:
   - name: Michał Szczepanik
-    email: alias@email.com
+    email: m.szczepanik@fz-juelich.de
     affiliations: Research Center Juelich
   - name: Ole Bialas
     email: bialas@uni-bonn.de
@@ -45,9 +45,9 @@ date: 08-19-2025
 :::
 
 ::: {.column width="60%" style="margin-top: 20px;"}
-- Item 1
-- Item 2
-- Item 3
+- PhD in (cognitive) neuroscience -- emotional contagion
+- RDM / RSE at the Forschungszentrum Jülich
+- DataLad contributor since ~4 years
 :::
 
 ::::
