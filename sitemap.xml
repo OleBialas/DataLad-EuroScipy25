@@ -2,27 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/index.html</loc>
-    <lastmod>2025-07-24T14:11:16.726Z</lastmod>
+    <lastmod>2025-07-31T08:36:14.085Z</lastmod>
   </url>
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/about/michal.html</loc>
     <lastmod>2025-07-24T13:42:45.271Z</lastmod>
   </url>
   <url>
-    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises3.html</loc>
-    <lastmod>2025-07-24T13:15:27.728Z</lastmod>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/slides/review1.html</loc>
+    <lastmod>2025-07-31T09:58:58.847Z</lastmod>
   </url>
   <url>
-    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises1.html</loc>
-    <lastmod>2025-07-24T13:44:40.979Z</lastmod>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/slides/review3.html</loc>
+    <lastmod>2025-07-31T11:22:26.854Z</lastmod>
   </url>
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises2.html</loc>
-    <lastmod>2025-07-24T13:44:58.271Z</lastmod>
+    <lastmod>2025-07-31T09:44:31.906Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises1.html</loc>
+    <lastmod>2025-07-31T09:34:52.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/notebooks/exercises3.html</loc>
+    <lastmod>2025-07-31T11:22:00.697Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OleBialas.github.io/DataLad-EuroScipy25/slides/review2.html</loc>
+    <lastmod>2025-07-31T11:01:40.056Z</lastmod>
   </url>
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/slides/intro.html</loc>
-    <lastmod>2025-07-29T15:08:16.634Z</lastmod>
+    <lastmod>2025-07-31T11:22:37.367Z</lastmod>
   </url>
   <url>
     <loc>https://OleBialas.github.io/DataLad-EuroScipy25/about/ole.html</loc>

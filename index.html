@@ -121,15 +121,15 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./slides/review1.qmd">
+    <a class="dropdown-item" href="./slides/review1.html">
  <span class="dropdown-text">Review 1: Working with Datasets</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sildes/review2.qmd">
+    <a class="dropdown-item" href="./slides/review2.html">
  <span class="dropdown-text">Review 2: Tracking Changes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sildes/review3.qmd">
+    <a class="dropdown-item" href="./slides/review3.html">
  <span class="dropdown-text">Review 3: Distributing your Dataset</span></a>
   </li>  
     </ul>
@@ -208,48 +208,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
-<p>We recommend to create a new virtual environment for this project with Python 3.8 or later. There are different ways to install the required Python packages. If you already have Python and a tool for managing environments you can just use <code>pip install</code>. Otherwise, follow the installation instructions for <code>uv</code>, <code>pixi</code> or <code>conda</code>.</p>
-<section id="pip" class="level4">
-<h4 class="anchored" data-anchor-id="pip">pip</h4>
-<ul>
-<li>Run <code>pip install datalad datalad-next git-annex pandas seaborn</code></li>
-</ul>
-</section>
-<section id="uv" class="level4">
-<h4 class="anchored" data-anchor-id="uv">uv</h4>
-<ul>
-<li>Install uv: https://docs.astral.sh/uv/getting-started/installation/</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; uv sync</code></li>
-<li>Activate the environment: <code>.venv\Scripts\activate</code> (on Windows) or <code>source .venv/bin/activate</code> (on Linux/macOS)</li>
-</ul>
-</section>
-<section id="pixi" class="level4">
-<h4 class="anchored" data-anchor-id="pixi">pixi</h4>
-<ul>
-<li>Install pixi: https://pixi.sh/latest/#installation</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; pixi install</code></li>
-<li>Activate the environment: <code>pixi shell</code></li>
-</ul>
-</section>
-<section id="conda" class="level4">
-<h4 class="anchored" data-anchor-id="conda">conda</h4>
-<ul>
-<li>Install conda: https://conda-forge.org/download/</li>
-<li>Clone this repo: <code>git clone https://github.com/OleBialas/DataLad-Tutorial-EuroScipy2025</code></li>
-<li>Install the environment: <code>cd DataLad-Tutorial-EuroScipy2025; conda env create -f environment.yml</code></li>
-<li>Activate the environment: <code>conda activate datalad</code></li>
-</ul>
-</section>
+<p>We recommend to create a new virtual environment for this project with Python 3.8 or later using a tool like <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, <a href="https://pixi.sh/latest/#installation">pixi</a> or <a href="https://conda-forge.org/download/">conda</a>. In your dedicated environment, you can install DataLad and its dependencies via pip: <code>pip install datalad datalad-next git-annex</code> Some of the exercises require you to run Python scripts — you’ll have to install their dependencies as well: <code>pip install pandas seaborn</code></p>
 </section>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>To demonstrate DataLads data management capabilities, we’ll use a dataset hosted on GIN. You don’t have to download it upfront since cloning the dataset is part of the exercises. The data contains measurements from different penguin species and was originally published by Kristen B Gorman and colleagues <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>To demonstrate DataLad’s data management capabilities, we’ll use a dataset hosted on GIN. You don’t have to download it upfront since cloning the dataset is part of the exercises. The data contains measurements from different penguin species and was originally published by Kristen B Gorman and colleagues <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>If you want to learn more about DataLad, you can check out the <a href="https://handbook.datalad.org/en/latest/index.html">handbook</a> which contains lots of beginner-friendly and advanced tutorials as well as the <a href="https://docs.datalad.org/en/stable/index.html">technical documentation</a> which contains detailed descriptions of all DataLad features. If you want to learn more about the underlying file system operations, the <a href="https://git-annex.branchable.com/">git-annex documentation</a> is a useful resource as well.</p>
 
 
 </section>

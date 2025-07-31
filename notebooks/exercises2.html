@@ -156,15 +156,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../slides/review1.qmd">
+    <a class="dropdown-item" href="../slides/review1.html">
  <span class="dropdown-text">Review 1: Working with Datasets</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sildes/review2.qmd">
+    <a class="dropdown-item" href="../slides/review2.html">
  <span class="dropdown-text">Review 2: Tracking Changes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sildes/review3.qmd">
+    <a class="dropdown-item" href="../slides/review3.html">
  <span class="dropdown-text">Review 3: Distributing your Dataset</span></a>
   </li>  
     </ul>
@@ -289,10 +289,8 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="f46a992e" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"gentoo\adelie"</span> <span class="op">&gt;</span> penguin_species.txt</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"gentoo\adelie"</span> <span class="op">&gt;</span> penguin_species.txt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -311,44 +309,12 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="940dc189" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> save <span class="at">-m</span> <span class="st">"list penguin species"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre>Total: 0.00 datasets [00:00, ? datasets/s]
-
-
-Total:   0%|                                    | 0.00/13.0 [00:00&lt;?, ? Bytes/s]
-
-
-                                                                                
-Total:   0%|                                 | 0.00/1.00 [00:00&lt;?, ? datasets/s]
-Total:   0%|                                 | 0.00/1.00 [00:00&lt;?, ? datasets/s]
-                                                                                
-<span class="ansi-bold">add</span>(<span class="ansi-green-fg ansi-bold">ok</span>): penguin_species.txt (<span class="ansi-magenta-fg ansi-bold">file</span>)
-
-
-Total:   0%|                                 | 0.00/1.00 [00:00&lt;?, ? datasets/s]
-                                                                                
-<span class="ansi-bold">save</span>(<span class="ansi-green-fg ansi-bold">ok</span>): . (<span class="ansi-magenta-fg ansi-bold">dataset</span>)
-
-
-Total: 100%|██████████████████████████| 1.00/1.00 [00:00&lt;00:00, 29.1 datasets/s]
-                                                                                
-action summary:
-
-  add (ok: 1)
-
-  save (ok: 1)
-</pre>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> save <span class="at">-m</span> <span class="st">"list penguin species"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> View the most recent entry in the <code>git log</code></p>
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> Open the <code>git log</code> and find the entry created by the previous <code>datalad save</code> command</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -362,23 +328,8 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="e1ffb4c2" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-yellow-fg">commit 2bff56764bd28871b4f7dd59ed3c1246bf9579c3</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-fg ansi-bold">HEAD</span><span class="ansi-yellow-fg"> -&gt; </span><span class="ansi-green-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span>
-
-Author: obi &lt;ole.bialas@posteo.de&gt;
-
-Date:   Tue Jul 29 17:12:26 2025 +0200
-
-
-
-    list penguin species
-</pre>
-</div>
-</div>
-</div>
+<p>On Linux/macOS this should be the last (i.e.&nbsp;top) entry, on Windows it will be the second-to-last.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -397,16 +348,14 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="cd5fde6d" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> unlock penguin_species.txt</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> unlock penguin_species.txt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"chinstrap"</span> <span class="op">&gt;&gt;</span> pegnuin_species.txt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> save <span class="at">-m</span> <span class="st">"add chinstrap"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> View the last two entries in the <code>git log</code></p>
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Open the <code>git log</code> again and find the entry from the <code>datalad save</code> command above.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -420,9 +369,7 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="bea99cb5" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -479,9 +426,7 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="426af262" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="st">"python code/aggregate_culmen_data.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="st">"python code/aggregate_culmen_data.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should see <code>FileNotFoundError: [Errno 2] No such file or directory</code> because the dataset does not contain the annexed content of the required files.</p>
 </div>
 </div>
@@ -501,14 +446,12 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="783d61b6" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="at">--input</span> <span class="st">"data/"</span> <span class="at">--output</span> <span class="st">"results/penguin_culmens.csv"</span> <span class="st">"python code/aggregate_culmen_data.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="at">--input</span> <span class="st">"data/"</span> <span class="at">--output</span> <span class="st">"results/penguin_culmens.csv"</span> <span class="st">"python code/aggregate_culmen_data.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> View the most recent entry in the <code>git log</code></p>
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> Open the <code>git log</code> to view the entry created by the <code>datalad run</code> command. Then, copy the checksum of that commit</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -522,14 +465,36 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="b3d140a8" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The git log entry should look like this:</p>
+<pre><code>commit af78031c9ca45d3c349a692b0afd332178639e64 (master)
+Author: Ole Bialas &lt;ole.bialas@posteo.de&gt;
+Date:   Thu Jul 31 11:14:00 2025 +0200
+
+    [DATALAD RUNCMD] python code/aggregate_culmen_data.py
+
+    === Do not change lines below ===
+    {
+     "chain": [],
+     "cmd": "python code/aggregate_culmen_data.py",
+     "dsid": "3a8aacc5-85f0-4114-adee-fcfa7d21a5df",
+     "exit": 0,
+     "extra_inputs": [],
+     "inputs": [
+      "data"
+     ],
+     "outputs": [
+      "results/penguin_culmens.csv"
+     ],
+     "pwd": "."
+    }
+    ^^^ Do not change lines above ^^^</code></pre>
+<p>The checksum is displayed on the first line, after “commit”: <code>af78031c9ca45d3c349a692b0afd332178639e64</code></p>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9</strong></span> Open the git log to find the checksum of the commit for the run command from <a href="#exr-csv" class="quarto-xref">Exercise&nbsp;7</a> and re-run it.</p>
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> Use the copied checksum to <code>rerun</code> the previous <code>datalad run</code> command</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -543,10 +508,8 @@ Solution
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the code below, <code>$(git rev-parse HEAD)</code> gets the checksum for the latest commit but you can also open <code>git log</code> and copy-paste the checksum.</p>
-<div id="ce7c0bc0" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> rerun <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>The command looks like this but the checksum will be different for everyone:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> rerun af78031c9ca45d3c349a692b0afd332178639e64</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -565,14 +528,12 @@ Solution
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="f96d11cd" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="at">--input</span> <span class="st">"results/penguin_culmens.csv"</span> <span class="at">--output</span> <span class="st">"results/culmen_length_vs_depth.png"</span> <span class="st">"python code/plot_culmen_length_vs_depth.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> run <span class="at">--input</span> <span class="st">"results/penguin_culmens.csv"</span> <span class="at">--output</span> <span class="st">"results/culmen_length_vs_depth.png"</span> <span class="st">"python code/plot_culmen_length_vs_depth.py"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11</strong></span> Open the git log to find the checksum of the commit for the run command from <a href="#exr-csv" class="quarto-xref">Exercise&nbsp;7</a> and re-run everything <code>--since</code> this commit (i.e.&nbsp;the data aggregation and plotting scripts).</p>
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> Use the checksum of the commit for the run command from <a href="#exr-csv" class="quarto-xref">Exercise&nbsp;7</a> and re-run everything <code>--since</code> this commit (i.e.&nbsp;the data aggregation and plotting scripts).</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -586,10 +547,8 @@ Solution
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the code below, <code>$(git rev-parse HEAD)</code> gets the checksum for the second latest commit but you can also open <code>git log</code> and copy-paste the checksum.</p>
-<div id="f2ed02a9" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> rerun <span class="at">--since</span> <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD~1<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>The command looks like this but the checksum will be different for everyone:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> rerun <span class="at">--since</span> af78031c9ca45d3c349a692b0afd332178639e64</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

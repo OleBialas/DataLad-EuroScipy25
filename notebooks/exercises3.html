@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Part 3: Distributing and Sharing your DataLad Dataset – DataLad Tutorial for EuroScipy 25</title>
+<title>Part 3: Creating Backups and Sharing DataLad Datasets – DataLad Tutorial for EuroScipy 25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,15 +156,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../slides/review1.qmd">
+    <a class="dropdown-item" href="../slides/review1.html">
  <span class="dropdown-text">Review 1: Working with Datasets</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sildes/review2.qmd">
+    <a class="dropdown-item" href="../slides/review2.html">
  <span class="dropdown-text">Review 2: Tracking Changes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sildes/review3.qmd">
+    <a class="dropdown-item" href="../slides/review3.html">
  <span class="dropdown-text">Review 3: Distributing your Dataset</span></a>
   </li>  
     </ul>
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Part 3: Distributing and Sharing your DataLad Dataset</h1>
+<h1 class="title">Part 3: Creating Backups and Sharing DataLad Datasets</h1>
 </div>
 
 
@@ -233,9 +233,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="distributing-your-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="distributing-your-dataset">Distributing your Dataset</h2>
-<p>DataLad can manage multiple <code>sibings</code> of a dataset. In this section you are going to create a new <code>sibling</code> on GitHub and push the dataset to that repository. You’ll need an access token — on GitHub, go to Settings &gt; Developer Settings &gt; Personal access tokens and select Generate new token (classic) to create a token with access to your repositories.</p>
+<section id="creating-a-backup" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-backup">Creating a Backup</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -249,21 +248,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td><code>git init --bare ~/mydir</code></td>
+<td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Linux/macOS)</td>
+</tr>
+<tr class="even">
+<td><code>git init --bare "$env:USERPROFILE\mydir"</code></td>
+<td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Windos)</td>
+</tr>
+<tr class="odd">
 <td><code>datalad siblings</code></td>
 <td>List all siblings of the current dataset</td>
 </tr>
 <tr class="even">
-<td><code>datalad create-sibling-github myrepo</code></td>
-<td>Create a new GitHub repo called <code>myrepo</code> and register it as a sibling</td>
+<td><code>datalad sibings add --name new --url ~/mydir</code></td>
+<td>Add the repository at <code>~/mydir</code> as a new sibling with the name <code>new</code></td>
 </tr>
 <tr class="odd">
-<td><code>datalad push --to github</code></td>
-<td>Push the dataset <code>--to</code> the sibling <code>github</code></td>
+<td><code>datalad push --to new</code></td>
+<td>Push the dataset content to the sibling named <code>new</code></td>
 </tr>
 </tbody>
 </table>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> List all <code>siblings</code> of the penguins dataset</p>
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> List all <code>siblings</code> of the current dataset.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -277,14 +284,12 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="d3a95015" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2</strong></span> Create a new sibling on GitHub.</p>
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Initialize a <code>--bare</code> git repository at a path outside of this dataset.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -298,19 +303,15 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Either run <code>create-sibling-github</code> and paste the token when being prompted</p>
-<div id="aef37c41" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> create-sibling-github penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Or use the <code>--credential</code> flag to pass the token</p>
-<div id="01ebc8e3" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> create-sibling-github penguins <span class="at">--credential</span> <span class="op">&lt;</span>token<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>On Linux/macOs</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> ~/penguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>On Windows</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> <span class="va">$env</span>:USERPROFILE<span class="dt">\p</span>enguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> Push the data to the GitHub remote</p>
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> <code>add</code> a new sibling to the dataset using the path to the newly created git repository as the <code>--url</code>. Then, list all <code>siblings</code> to confirm it was added.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -324,14 +325,13 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="48d8153c" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> github</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings add <span class="at">--name</span> backup <span class="at">--url</span> ~/penguins_backup</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4</strong></span> Clone the dataset from the GitHub sibling to a new location</p>
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> Push the dataset to the new sibling.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -345,48 +345,12 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="d48dd121" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> clone https://github.com/OleBialas/penguins.git ~/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="creating-a-special-remote-for-file-content" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-special-remote-for-file-content">Creating a Special Remote for File Content</h2>
-<p>While GitHub is great for sharing, it does not allow you to store the annexed file content. In this section, you are going to create another local repository to store the file contents and link it to the GitHub sibling.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Desription</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>datalad get*</code></td>
-<td>Get the file contents for the whole dataset</td>
-</tr>
-<tr class="even">
-<td><code>git annex initremote usbdrive type=directory directory=~/dir encryption=none autoenable=true</code></td>
-<td>Create a sibling called <code>usbdrive</code> in the directory <code>~/dir</code></td>
-</tr>
-<tr class="odd">
-<td><code>datalad push --to usbdrive</code></td>
-<td>Push the dataset to the sibling <code>usbdrive</code></td>
-</tr>
-<tr class="even">
-<td><code>datalad siblings configure -s github --publish-depends usbdrive</code></td>
-<td>Configure the <code>github</code> sibling so the file contents are pushed to <code>usbdrive</code></td>
-</tr>
-</tbody>
-</table>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> Get the file content for the whole penguins dataset</p>
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Move to a directory outside of this dataset and <code>clone</code> the new sibling dataset.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -400,14 +364,46 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="0b6a7a12" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> get <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> clone ~/penguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</div>
+</section>
+<section id="bonus-sharing-your-dataset-online" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-sharing-your-dataset-online">BONUS: Sharing your Dataset online</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ssh-keygen</code></td>
+<td>Generate a public and private authentication key pair</td>
+</tr>
+<tr class="even">
+<td><code>datalad siblings</code></td>
+<td>List all siblings of the current dataset</td>
+</tr>
+<tr class="odd">
+<td><code>datalad sibings add --name gin --url git@gin.g-node.org:/user/repo.git</code></td>
+<td>Add the gin repository at <code>/https://gin.g-node.org/user/repo</code> as a new sibling with the name <code>gin</code></td>
+</tr>
+<tr class="even">
+<td><code>datalad push --to gin</code></td>
+<td>Push the dataset content to the sibling named <code>gin</code></td>
+</tr>
+</tbody>
+</table>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6</strong></span> Create a special remote at a <code>directory</code> outside <code>penguins/</code>. Then, list all <code>siblings</code> to confirm the remove was created.</p>
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Use <code>ssh-keygen</code> to generate a public and private key pair (you don’t have to use a passphrase). Note the location where the public key is stored, e.g.&nbsp;<code>.ssh/id_ed25519.pub</code>. Open the <code>.pub</code> file and copy the whole content — it should look something like this: <code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOYcoRKZZLWA4FWECpW2K/fTOvuRYXBnBA6gcea2bFq &lt;user&gt;@&lt;computer&gt;</code></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -421,16 +417,18 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="c81667ef" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/usbdrive</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> annex initremote usbdrive type=directory directory=~/usbdrive encryption=none autoenable=true</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7</strong></span> Push the data to the local remote</p>
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> Login in to your <a href="https://gin.g-node.org/">GIN account</a>, go to your user settings and add the copied ssh key. Now datalad should be able to connect to your GIN account! <img src="https://handbook.datalad.org/en/latest/_images/GIN_SSH_1.png" class="img-fluid"></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> Create a new repository on GIN, make sure to NOT initialize it with a README. <img src="https://handbook.datalad.org/en/latest/_images/GIN_newrepo.png" class="img-fluid"></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> <code>add</code> a new sibling to the dataset using the <code>--url</code> of the newly created gin repository and confirm the connection. Then, list all <code>siblings</code> to confirm it was added.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -444,14 +442,13 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="d33fb655" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> usbdrive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>For the repository in the image above, the command would look like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings add <span class="at">--name</span> gin <span class="at">--url</span> git@gin.g-node.org:/adswa/DataLad-101.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> <code>configure</code> the github sibling so that the publish depends on the local remote</p>
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> Push the dataset to the new GIN sibling. Then, open the repository in your browser to confirm the content was pushed.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -465,9 +462,28 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="ce4a9b63" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> siblings configure <span class="at">-s</span> github <span class="at">--publish-depends</span> usbdrive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> push <span class="at">--to</span> gin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> Move to a directory outside of this dataset and <code>clone</code> the new GIN sibling.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the repository in the image above, the command would look like this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datalad</span> clone datalad clone https://gin.g-node.org/adswa/DataLad-101</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
