@@ -7,7 +7,7 @@ html-math-method:
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 author:
   - name: Michał Szczepanik
-    email: alias@email.com
+    email: m.szczepanik@fz-juelich.de
     affiliations: Research Center Juelich
   - name: Ole Bialas
     email: bialas@uni-bonn.de
@@ -45,9 +45,178 @@ date: 08-19-2025
 :::
 
 ::: {.column width="60%" style="margin-top: 20px;"}
-- Item 1
-- Item 2
-- Item 3
+- PhD in (cognitive) neuroscience -- emotional contagion
+- RDM / RSE at the Forschungszentrum Jülich
+- DataLad contributor since ~4 years
 :::
 
 ::::
+
+# What is DataLad
+
+## A community project
+
+- 10+ years of ongoing development & maintenance [^1]
+- 100+ contributors across core, extensions, and Handbook
+- started by:
+  - Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)
+  - Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)
+- owes a lot to git-annex by Joey Hess & contributors
+
+[^1]: https://doi.org/10.34734/FZJ-2025-01847
+
+## A piece of software
+
+- A piece of software for data management
+- Written in Python
+- Based on git and git-annex
+- FOSS (MIT license)
+
+
+## Exhaustive tracking of research components
+
+![](img/vamp_0_start.png)
+Well-structured datasets (using community standards), and portable computational environments --- and their evolution --- are the precondition for reproducibility
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```
+# turn any directory into a dataset
+# with version control
+
+% datalad create <directory>
+```
+
+:::
+
+::: {.column width="50%"}
+
+```
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+```
+
+:::
+
+::::
+
+## Capture computational provenance
+
+![](img/vamp_1_provcapture.png)
+Which data were needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+:::: {.columns}
+::: {.column width="50"}
+
+```
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... <command>
+
+```
+
+:::
+::::
+
+## Exhaustive capture enables portability
+
+![](img/vamp_2_pushtocloud.png)
+Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to <site-or-service>
+```
+
+:::
+::::
+
+## Reproducibility strengthens trust
+![](img/vamp_3_reproduce.png)
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone <url>
+```
+
+:::
+
+::: {.column width="50%"}
+
+```
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun <commit|tag|range>
+```
+
+:::
+
+::::
+
+
+## Ultimate goal: (re)usability
+
+![](img/vamp_4_reuse.png)
+
+Verifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re)used as modular components in larger contexts --- propagating their traits
+
+```
+# declare a dependency on another dataset and
+# reuse it at particular state in a new context
+
+% datalad clone -d <superdataset> <path-in-dataset>
+```
+
+
+## A meta view
+
+![](img/always-has-been-identifiers.jpeg){fig-alt="astronaut meme: wait it's all identifiers? always has been"}
+
+
+## Provider of identifiers
+
+- DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)
+
+- Concept identifiers
+  - for datasets: DataLad dataset ID
+  - for files in a dataset: DataLad dataset ID + path within a dataset
+- Content/version identifiers
+  - for datasets: Git commit SHA ID
+  - for files: Git blob SHA / Git-annex key
+
+## What is a DataLad dataset?
+
+- **metadata** on the evolution of a collection of files
+  - content identity <br>
+    <small>think: checksums</small>
+  - content availability <br>
+    <small>think: URLs</small>
+  - provenance of change <br>
+    <small>think: who did what when?</small>
+- a regular, but *managed* directory on computer file system
+  <small>think: provides the familiar look and feel of files and folders</small>
+- a **Git** repository <br>
+  <small>think: compatible with anything that can handle Git repositories</small>
+- employs **git-annex** for file content tracking and transport
+  <small>think: supports any storage service and transport protocol supported by git-annex</small>
+- extends both Git and git-annex with additional features and infrastructure support <br>
+  <small>think: deposit and retrieve from non-Git-aware sites</small>

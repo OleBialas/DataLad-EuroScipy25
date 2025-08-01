@@ -3,4 +3,17 @@ title: "Michał Szczepanik"
 format: html
 ---
 
-Michał...
+Michał graduated with BSc and MSc in Neuroinformatics, an interdisciplinary program at the Faculty of Physics, University of Warsaw.
+This is where he started using Python, as a first-year-student, back in 2011.
+
+He completed his PhD at the Laboratory of Brain Imaging (LOBI), Nencki Institute.
+The PhD was part of the translational project Neural correlates of emotional contagion in humans, which applied fMRI and other methods to study observational fear conditioning.
+During the time, Michał became particularly interested in the data management side of neuroscience, as LOBI served as a core MRI facility.
+
+His current work at the [Psychoinformatics Group](https://psychoinformatics.de/), INM-7, Forschungszentrum Jülich is in the area of research data management and research software development.
+It revolves around the data management software [DataLad](https://www.datalad.org/).
+His responsibilities include bug fixing, user support, technical writing, teaching -- and sometmes just trying out new things.
+
+- [mszczepanik.eu/](https://mszczepanik.eu/)
+- [@doktorpanik@masto.ai](https://masto.ai/@doktorpanik)
+- [orcid.org/0000-0002-4028-2087](https://orcid.org/0000-0002-4028-2087)
