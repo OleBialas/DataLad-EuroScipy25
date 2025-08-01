@@ -18,7 +18,7 @@ website:
       - text: Slides
         menu:
           - text: Introduction
-            href: slides/intro.qmd
+            href: slides/intro-index.qmd
           - text: "Review 1: Working with Datasets"
             href: slides/review1-index.qmd
           - text: "Review 2: Tracking Changes"
