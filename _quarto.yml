@@ -24,7 +24,7 @@ website:
           - text: "Review 2: Tracking Changes"
             href: slides/review2.qmd
           - text: "Review 3: Distributing your Dataset"
-            href: sildes/review3.qmd
+            href: slides/review3.qmd
     tools:
       - icon: person-lines-fill
         menu:

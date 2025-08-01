@@ -1,0 +1,24 @@
+---
+title: Exercise Review 3
+subtitle: Creating Backups and Sharing DataLad Datasets
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Michał Szczepanik
+    email: alias@email.com
+    affiliations: Research Center Juelich
+  - name: Ole Bialas
+    email: bialas@uni-bonn.de
+    affiliations: University of Bonn
+date: 08-19-2025
+---
+
+# Points to Cover
+
+- what is a bare git repository and why is it recommended
+- what contents are actually bein pushed
+- file content can be distributed across multiple sources
+- Which 3rd party services are supported by DataLad?
+

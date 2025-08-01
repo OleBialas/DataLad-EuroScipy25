@@ -1,0 +1,22 @@
+---
+title: Exercise Review 1
+subtitle: Working with DataLad Datasets 
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Michał Szczepanik
+    email: alias@email.com
+    affiliations: Research Center Juelich
+  - name: Ole Bialas
+    email: bialas@uni-bonn.de
+    affiliations: University of Bonn
+date: 08-19-2025
+---
+
+# Points to Cover
+
+- File links and annexed content
+- File identifiers
+- Multiple content locations

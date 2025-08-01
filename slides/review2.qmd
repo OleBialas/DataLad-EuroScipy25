@@ -1,0 +1,23 @@
+---
+title: Exercise Review 2
+subtitle: Tracking Changes in DataLad Datasets
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Michał Szczepanik
+    email: alias@email.com
+    affiliations: Research Center Juelich
+  - name: Ole Bialas
+    email: bialas@uni-bonn.de
+    affiliations: University of Bonn
+date: 08-19-2025
+---
+
+# Points to Cover
+
+- Locking and unlocking file content
+- How to configure DataLad to not annex text files
+- Annex differences between Windows and Unix
+- Datalad rerun only makes commits when the output changes
