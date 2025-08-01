@@ -20,11 +20,11 @@ website:
           - text: Introduction
             href: slides/intro.qmd
           - text: "Review 1: Working with Datasets"
-            href: slides/review1.qmd
+            href: slides/review1-index.qmd
           - text: "Review 2: Tracking Changes"
-            href: slides/review2.qmd
+            href: slides/review2-index.qmd
           - text: "Review 3: Distributing your Dataset"
-            href: slides/review3.qmd
+            href: slides/review3-index.qmd
     tools:
       - icon: person-lines-fill
         menu:
