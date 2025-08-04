@@ -177,3 +177,13 @@ datalad rerun --since af78031c9ca45d3c349a692b0afd332178639e64
 ```
 :::
 
+
+## Further reading
+
+- For more on DataLad run and the comparison of how Git and git-annex handle files, see these chapters of the DataLad Handbook:
+  - [DataLad, run!](https://handbook.datalad.org/en/latest/basics/basics-run.html)
+  - [Under the hood: git-annex](https://handbook.datalad.org/en/latest/basics/basics-annex.html)
+- For even more on git-annex under the hood, see git-annex documentation:
+  - [Unlocked files](https://git-annex.branchable.com/tips/unlocked_files/)
+  - [Pointer files](https://git-annex.branchable.com/internals/pointer_file/)
+  - [Adjusted branches](https://git-annex.branchable.com/design/adjusted_branches/)

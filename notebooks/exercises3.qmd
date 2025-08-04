@@ -140,3 +140,15 @@ datalad clone datalad clone https://gin.g-node.org/adswa/DataLad-101
 ```
 :::
 
+## Further reading
+
+In the examples above, the annex was published together with the Git repository.
+However, this is a bit of a special case, and in many scenarios they can be moved separately.
+For an overview and examples of several different publishing scenarios, see the [Beyond shared infrastructure](https://handbook.datalad.org/en/latest/basics/basics-thirdparty.html) chapter of the DataLad handbook.
+
+Git-annex supports multiple options for publishing file contents; see the list of built-in [special remotes](https://git-annex.branchable.com/special_remotes/). And for a very special case, in which the Git repository is placed by git-annex in a non-git-aware hosting, see [git-remote annex](https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/).
+
+Finally, [Forgejo](https://forgejo.org/) is gaining popularity as a self-hosted software forge.
+[Forgejo-aneksajo](https://codeberg.org/forgejo-aneksajo/forgejo-aneksajo) is a soft fork of Forgejo which adds git-annex capability.
+See also [Collaborative infrastructure for a lab: Forgejo](https://blog.datalad.org/posts/lab-infra-forgejo/) on the DataLad blog
+.s
