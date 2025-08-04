@@ -7,7 +7,7 @@ html-math-method:
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 author:
   - name: Michał Szczepanik
-    email: alias@email.com
+    email: m.szczepanik@fz-juelich.de
     affiliations: Research Center Juelich
   - name: Ole Bialas
     email: bialas@uni-bonn.de
