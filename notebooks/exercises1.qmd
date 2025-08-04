@@ -25,6 +25,9 @@ While the `datalad` API is universal, the commands for navigating the data set d
 | `datalad drop folder/` | Drop the file content of the `folder/` |
 : DataLad commands
 
+Open a terminal to do the following exercises.
+For Windows users, we recommend CMD (the solutions will assume you are using CMD).
+
 :::{#exr-}
 
 Clone the dataset from https://gin.g-node.org/obi/penguins
