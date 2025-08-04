@@ -21,3 +21,35 @@ date: 08-19-2025
 - How to configure DataLad to not annex text files
 - Annex differences between Windows and Unix
 - Datalad rerun only makes commits when the output changes
+
+
+## Git versus Git-annex
+
+- Data in datasets is either stored in Git or git-annex
+- Matter of configuration; by default, everything is annexed
+
+![](img/publishing_gitvsannex.svg){.center}
+
+## Git versus Git-annex
+
+Git and git-annex handle files differently:
+
+- Files in Git are downloaded during `clone`, annexed contents are retrieved on demand (`get`).
+- Content identity and availability information of annexed files are available after cloning.
+- On `datalad save`, annexed contents are hashed, moved to `.git/annex/objects` and symlinked.
+- Git versions the symlink (content-identity), not the content.
+- Content is "locked" (write-protected) against accidental modifications.
+- Files stored in Git are modifiable, annexed files are write-protected.
+
+## Annexed files on Windows
+
+Windows' file system does not support symlinks[^1]. Under these conditions, git-annex automatically operates
+in "adjusted unlocked mode":
+
+- File contents are *duplicated*: One copy to edit, one to keep safe.
+- No (un)locking -- trade-off: disk space use vs easy modification.
+- Annexed files are *pointer files* instead of symlinks: A text file with the contents "/annex/objects/" followed by the key.
+- Git annex uses *adjusted branches*, which unlock on top the locked counterpart branch.
+  Compatibility with other systems but confusing Git log and issues in some nesting usecases.
+
+[^1]: Oversimplification. It kind-of does, but not by default.
