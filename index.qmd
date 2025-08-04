@@ -32,6 +32,13 @@ In your dedicated environment, you can install DataLad and its dependencies via 
 Some of the exercises require you to run Python scripts --- you'll have to install their dependencies as well:
 `pip install pandas seaborn`.
 
+### Other
+
+We also recommend to set the following git config, which enables the full functionality of the DataLad-next extension
+(installed above) by allowing it to override the behavior of the core DataLad package.
+
+- `git config --global --add datalad.extensions.load next`
+
 ## Data
 
 To demonstrate DataLad's data management capabilities, we'll use a dataset hosted on GIN.
