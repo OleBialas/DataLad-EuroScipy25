@@ -117,7 +117,7 @@ dir /s
 ## Checking File Identity and Location with git-annex
 
 Since DataLad is built on top of `git-annex`, you can use its commands on any DataLad dataset.
-In this section, you'll use `git-annex` to get information on the dataset and localize its file contents.
+In this section, you'll use `git-annex` to get information on the dataset and locate its file contents.
 
 | Command | Description |
 | --- | --- | 
@@ -146,7 +146,7 @@ Display the `git-annex info` of the whole data set. How many annexed files are t
 git annex info
 ```
 The number of annexed files is displayed in this line:
-`annexed files in working tree: 21`
+`annexed files in working tree: 6`
 :::
 
 :::{#exr-}
