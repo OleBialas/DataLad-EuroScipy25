@@ -13,7 +13,7 @@ While the `datalad` API is universal, the commands for navigating the data set d
 | `ls -a` | `dir /a` | List the content of the current directory (including hidden files) |
 | `ls -a data` | `dir /a data` | List the content of the `data` directory |
 | `du -sh` | `dir /s` | Get the disk usage of the current directory |
-| `du -sh data` | `dir /s data` Get the disk usage of the `data` directory |
+| `du -sh data` | `dir /s data` | Get the disk usage of the `data` directory |
 | `cd data` | `cd data` | Change the directory to `data`|
 : Terminal commands
 
@@ -48,7 +48,7 @@ ls -a
 ```
 On Windows:
 ```powershell
-cd pegnuins
+cd penguins
 dir /a
 ```
 :::
@@ -131,7 +131,7 @@ Display the `git annex info` for the file `examples/gentoo.jpg`. What is the *si
 ```bash
 git annex info examples/gentoo.jpg
 ```
-The file is 4.81 megabtyes and it should be present since we previouslt loaded the content of the `examples` folder.
+The file is 4.81 megabtyes and it should be present since we previously loaded the content of the `examples` folder.
 :::
 
 :::{#exr-}
@@ -142,7 +142,7 @@ Display the `git-annex info` of the whole data set. How many annexed files are t
 ```bash
 git annex info
 ```
-The nummber of annexed files is displayed in this line:
+The number of annexed files is displayed in this line:
 `annexed files in working tree: 21`
 :::
 

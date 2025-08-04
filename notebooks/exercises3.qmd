@@ -8,7 +8,7 @@ format: html
 | Command | Description |
 | --- | --- |
 | `git init --bare ~/mydir`| Create a `--bare` repository called `mydir` in the home directory (on Linux/macOS) |
-| `git init --bare "$env:USERPROFILE\mydir"` | Create a `--bare` repository called `mydir` in the home directory (on Windos) |
+| `git init --bare "$env:USERPROFILE\mydir"` | Create a `--bare` repository called `mydir` in the home directory (on Windows) |
 | `datalad siblings` | List all siblings of the current dataset |
 | `datalad sibings add --name new --url ~/mydir` | Add the repository at `~/mydir` as a new sibling with the name `new` |
 | `datalad push --to new` | Push the dataset content to the sibling named `new` |
@@ -28,7 +28,7 @@ Initialize a `--bare` git repository at a path outside of this dataset.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
-On Linux/macOs
+On Linux/macOS
 ```bash
 git init --bare ~/penguins_backup
 ```

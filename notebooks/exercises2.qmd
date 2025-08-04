@@ -10,7 +10,7 @@ In this section, you will add new content to the `penguins` dataset and see how 
 
 | Command | Description |
 | --- | --- |
-| `datalas status` | Show any untracked changes in the current dataset |
+| `datalad status` | Show any untracked changes in the current dataset |
 | `datalad save` | Save any untracked changes in the current dataset |
 | `datalad save -m "hi"` | Save untracked changes and add the message `"hi"` |
 | `datalad unlock file.txt` | Unlock `file.txt` to make it modifiable |
@@ -81,7 +81,7 @@ You are also going to use the dataset's history to re-run the commands.
 | --- | --- |
 |`datalad run "python script.py"` | Run the `python` script `script.py` |
 |`datalad run --input "data.csv" --output "figure.png" "python script.py"` | Run `script.py` with input `"data.csv"` and output `"figure.png"`|
-| `git log` | View the dataset's histroy stored in the `git log` |
+| `git log` | View the dataset's history stored in the `git log` |
 | `datalad rerun a268d8ca22b6` | Rerun the command from the `git log` with the checksum starting with `a268d8ca22b6e87959` |
 | `datalad rerun --since a268d8ca22b6` | Rerun ALL commands `--since` the one with the checksum starting with `a268d8ca22b6e87959` |
 
