@@ -18,7 +18,47 @@ date: 08-19-2025
 # Points to Cover
 
 - what is a bare git repository and why is it recommended
-- what contents are actually bein pushed
+- git remotes vs git-annex *special remotes*
+- what contents are actually being pushed
 - file content can be distributed across multiple sources
-- Which 3rd party services are supported by DataLad?
+- which 3rd party services are supported by DataLad
 
+## Bare Git repo as push target
+
+- bare: no worktree; contents of `.git` directly in the directory
+- can be pushed to and cloned from
+- when shared, pushes won't break worktree (b/c there is none)
+- can be put on a server [^1]
+- with git-annex on the machine, can store git+annex
+- good model for Git & git-annex aware services
+
+[^1]: <https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server>
+
+## Git remotes vs git-annex *special remotes*
+
+- store and retrieve file content (not Git repo)[^2]
+- `git annex initremote ...`
+- built-in and external implementations
+  - <https://git-annex.branchable.com/special_remotes/>
+
+[^2]: but actually also Git repo bundles, with [git-remote-annex](https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/)
+
+## What contents are actually being pushed
+
+- `datalad push` acts on the contents you already got
+  - ie. keys you have locally
+- `git annex copy [--from=remote|--to=remote]`
+  - download and upload (no magic)
+
+## File content can be distributed across multiple sources
+
+- recall `git annex whereis` (n copies)
+- keyword: *distributed data management*
+  - can have multiple special remotes
+- git annex configuration:
+  - [preferred content](https://git-annex.branchable.com/preferred_content/)
+  - [numcopies](https://git-annex.branchable.com/git-annex-numcopies/)
+
+## 3rd party services
+
+![](img/services.svg){.center}
