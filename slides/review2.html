@@ -138,7 +138,7 @@
 Michał Szczepanik 
 </div>
 <div class="quarto-title-author-email">
-<a href="mailto:alias@email.com">alias@email.com</a>
+<a href="mailto:m.szczepanik@fz-juelich.de">m.szczepanik@fz-juelich.de</a>
 </div>
         <p class="quarto-title-affiliation">
             Research Center Juelich
@@ -159,6 +159,7 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
+<section>
 <section id="points-to-cover" class="title-slide slide level1 center">
 <h1>Points to Cover</h1>
 <ul>
@@ -167,9 +168,40 @@ Ole Bialas
 <li>Annex differences between Windows and Unix</li>
 <li>Datalad rerun only makes commits when the output changes</li>
 </ul>
-
-
 </section>
+<section id="git-versus-git-annex" class="slide level2">
+<h2>Git versus Git-annex</h2>
+<ul>
+<li>Data in datasets is either stored in Git or git-annex</li>
+<li>Matter of configuration; by default, everything is annexed</li>
+</ul>
+
+<img data-src="img/publishing_gitvsannex.svg" class="center r-stretch"></section>
+<section id="git-versus-git-annex-1" class="slide level2">
+<h2>Git versus Git-annex</h2>
+<p>Git and git-annex handle files differently:</p>
+<ul>
+<li>Files in Git are downloaded during <code>clone</code>, annexed contents are retrieved on demand (<code>get</code>).</li>
+<li>Content identity and availability information of annexed files are available after cloning.</li>
+<li>On <code>datalad save</code>, annexed contents are hashed, moved to <code>.git/annex/objects</code> and symlinked.</li>
+<li>Git versions the symlink (content-identity), not the content.</li>
+<li>Content is “locked” (write-protected) against accidental modifications.</li>
+<li>Files stored in Git are modifiable, annexed files are write-protected.</li>
+</ul>
+</section>
+<section id="annexed-files-on-windows" class="slide level2">
+<h2>Annexed files on Windows</h2>
+<p>Windows’ file system does not support symlinks<sup>1</sup>. Under these conditions, git-annex automatically operates in “adjusted unlocked mode”:</p>
+<ul>
+<li>File contents are <em>duplicated</em>: One copy to edit, one to keep safe.</li>
+<li>No (un)locking – trade-off: disk space use vs easy modification.</li>
+<li>Annexed files are <em>pointer files</em> instead of symlinks: A text file with the contents “/annex/objects/” followed by the key.</li>
+<li>Git annex uses <em>adjusted branches</em>, which unlock on top the locked counterpart branch. Compatibility with other systems but confusing Git log and issues in some nesting usecases.</li>
+</ul>
+
+
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Oversimplification. It kind-of does, but not by default.</p></li></ol></aside></section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -201,19 +201,31 @@ ul.task-list li input[type="checkbox"] {
 <p>Welcome to the website for the DataLad<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> tutorial at EuroScipy 2025! Here, you can access all exercise materials and slides. The rest of this page walks you through the setup process and resources for the tutorial.</p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>DataLad requires Git and Python 3.8 or later. All other dependencies can be installed via <code>pip</code>. if you want to learn more about DataLad and its dependencies, check out the <a href="https://handbook.datalad.org/en/latest/">handbook</a></p>
+<p>DataLad requires Git and Python 3.8 or later. All other dependencies can be installed via <code>pip</code>. If you want to learn more about DataLad and its dependencies, check out the <a href="https://handbook.datalad.org/en/latest/">handbook</a>.</p>
 <section id="git" class="level3">
 <h3 class="anchored" data-anchor-id="git">Git</h3>
-<p>To install and configure git follow these steps: - Install git https://git-scm.com/downloads - Configure your git user name: <code>git config --global user.name "user"</code> - Configure your git user email: <code>git config --global user.email "user@mail.com"</code></p>
+<p>To install and configure git follow these steps:</p>
+<ul>
+<li>Install Git: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a></li>
+<li>Configure your git user name: <code>git config --global user.name "user"</code></li>
+<li>Configure your git user email: <code>git config --global user.email "user@mail.com"</code></li>
+</ul>
 </section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
-<p>We recommend to create a new virtual environment for this project with Python 3.8 or later using a tool like <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, <a href="https://pixi.sh/latest/#installation">pixi</a> or <a href="https://conda-forge.org/download/">conda</a>. In your dedicated environment, you can install DataLad and its dependencies via pip: <code>pip install datalad datalad-next git-annex</code> Some of the exercises require you to run Python scripts — you’ll have to install their dependencies as well: <code>pip install pandas seaborn</code></p>
+<p>We recommend to create a new virtual environment for this project with Python 3.8 or later using a tool like <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, <a href="https://pixi.sh/latest/#installation">pixi</a> or <a href="https://conda-forge.org/download/">conda</a>. In your dedicated environment, you can install DataLad and its dependencies via pip: <code>pip install datalad datalad-next git-annex</code> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Some of the exercises require you to run Python scripts — you’ll have to install their dependencies as well: <code>pip install pandas seaborn</code>.</p>
+</section>
+<section id="other" class="level3">
+<h3 class="anchored" data-anchor-id="other">Other</h3>
+<p>We also recommend to set the following git config, which enables the full functionality of the DataLad-next extension (installed above) by allowing it to override the behavior of the core DataLad package.</p>
+<ul>
+<li><code>git config --global --add datalad.extensions.load next</code></li>
+</ul>
 </section>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>To demonstrate DataLad’s data management capabilities, we’ll use a dataset hosted on GIN. You don’t have to download it upfront since cloning the dataset is part of the exercises. The data contains measurements from different penguin species and was originally published by Kristen B Gorman and colleagues <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>To demonstrate DataLad’s data management capabilities, we’ll use a dataset hosted on GIN. You don’t have to download it upfront since cloning the dataset is part of the exercises. The data contains measurements from different penguin species and was originally published by Kristen B Gorman and colleagues <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -227,7 +239,8 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>Halchenko et al., (2021). DataLad: distributed system for joint management of code, data, and their relationship. Journal of Open Source Software, 6(63), 3262, <a href="https://doi.org/10.21105/joss.03262" class="uri">https://doi.org/10.21105/joss.03262</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Gorman, K. B., Williams, T. D., &amp; Fraser, W. R. (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis): <a href="https://doi.org/10.1371/journal.pone" class="uri">https://doi.org/10.1371/journal.pone</a>.0090081<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Git-annex is not a Python package – it’s written in Haskell, and plenty of installation methods are available – but it is also distributed as a Python wheels package, making for a very convenient way to install as a dependency of DataLad in a virtual environment.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Gorman, K. B., Williams, T. D., &amp; Fraser, W. R. (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis): <a href="https://doi.org/10.1371/journal.pone.0090081" class="uri">https://doi.org/10.1371/journal.pone.0090081</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

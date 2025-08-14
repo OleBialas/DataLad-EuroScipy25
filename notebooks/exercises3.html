@@ -252,18 +252,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Linux/macOS)</td>
 </tr>
 <tr class="even">
-<td><code>git init --bare "$env:USERPROFILE\mydir"</code></td>
-<td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Windos)</td>
+<td><code>git init --bare %USERPROFILE%\mydir</code></td>
+<td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Windows / CMD)</td>
 </tr>
 <tr class="odd">
+<td><code>git init --bare "$env:USERPROFILE\mydir"</code></td>
+<td>Create a <code>--bare</code> repository called <code>mydir</code> in the home directory (on Windows / PowerShell)</td>
+</tr>
+<tr class="even">
 <td><code>datalad siblings</code></td>
 <td>List all siblings of the current dataset</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>datalad sibings add --name new --url ~/mydir</code></td>
 <td>Add the repository at <code>~/mydir</code> as a new sibling with the name <code>new</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>datalad push --to new</code></td>
 <td>Push the dataset content to the sibling named <code>new</code></td>
 </tr>
@@ -303,10 +307,10 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>On Linux/macOs</p>
+<p>On Linux/macOS</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> ~/penguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>On Windows</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> <span class="va">$env</span>:USERPROFILE<span class="dt">\p</span>enguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git init -<span class="at">-bare</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\penguins_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -487,6 +491,12 @@ Solution
 </div>
 </div>
 </div>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<p>In the examples above, the annex was published together with the Git repository. However, this is a bit of a special case, and in many scenarios they can be moved separately. For an overview and examples of several different publishing scenarios, see the <a href="https://handbook.datalad.org/en/latest/basics/basics-thirdparty.html">Beyond shared infrastructure</a> chapter of the DataLad handbook.</p>
+<p>Git-annex supports multiple options for publishing file contents; see the list of built-in <a href="https://git-annex.branchable.com/special_remotes/">special remotes</a>. And for a very special case, in which the Git repository is placed by git-annex in a non-git-aware hosting, see <a href="https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/">git-remote annex</a>.</p>
+<p>Finally, <a href="https://forgejo.org/">Forgejo</a> is gaining popularity as a self-hosted software forge. <a href="https://codeberg.org/forgejo-aneksajo/forgejo-aneksajo">Forgejo-aneksajo</a> is a soft fork of Forgejo which adds git-annex capability. See also <a href="https://blog.datalad.org/posts/lab-infra-forgejo/">Collaborative infrastructure for a lab: Forgejo</a> on the DataLad blog .s</p>
 
 
 </section>

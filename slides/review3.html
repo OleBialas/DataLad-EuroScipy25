@@ -138,7 +138,7 @@
 Michał Szczepanik 
 </div>
 <div class="quarto-title-author-email">
-<a href="mailto:alias@email.com">alias@email.com</a>
+<a href="mailto:m.szczepanik@fz-juelich.de">m.szczepanik@fz-juelich.de</a>
 </div>
         <p class="quarto-title-affiliation">
             Research Center Juelich
@@ -159,17 +159,74 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
+<section>
 <section id="points-to-cover" class="title-slide slide level1 center">
 <h1>Points to Cover</h1>
 <ul>
 <li>what is a bare git repository and why is it recommended</li>
-<li>what contents are actually bein pushed</li>
+<li>git remotes vs git-annex <em>special remotes</em></li>
+<li>what contents are actually being pushed</li>
 <li>file content can be distributed across multiple sources</li>
-<li>Which 3rd party services are supported by DataLad?</li>
+<li>which 3rd party services are supported by DataLad</li>
 </ul>
-
-
 </section>
+<section id="bare-git-repo-as-push-target" class="slide level2">
+<h2>Bare Git repo as push target</h2>
+<ul>
+<li>bare: no worktree; contents of <code>.git</code> directly in the directory</li>
+<li>can be pushed to and cloned from</li>
+<li>when shared, pushes won’t break worktree (b/c there is none)</li>
+<li>can be put on a server <sup>1</sup></li>
+<li>with git-annex on the machine, can store git+annex</li>
+<li>good model for Git &amp; git-annex aware services</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server" class="uri">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></p></li></ol></aside></section>
+<section id="git-remotes-vs-git-annex-special-remotes" class="slide level2">
+<h2>Git remotes vs git-annex <em>special remotes</em></h2>
+<ul>
+<li>store and retrieve file content (not Git repo)<sup>1</sup></li>
+<li><code>git annex initremote ...</code></li>
+<li>built-in and external implementations
+<ul>
+<li><a href="https://git-annex.branchable.com/special_remotes/" class="uri">https://git-annex.branchable.com/special_remotes/</a></li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>but actually also Git repo bundles, with <a href="https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/">git-remote-annex</a></p></li></ol></aside></section>
+<section id="what-contents-are-actually-being-pushed" class="slide level2">
+<h2>What contents are actually being pushed</h2>
+<ul>
+<li><code>datalad push</code> acts on the contents you already got
+<ul>
+<li>ie. keys you have locally</li>
+</ul></li>
+<li><code>git annex copy [--from=remote|--to=remote]</code>
+<ul>
+<li>download and upload (no magic)</li>
+</ul></li>
+</ul>
+</section>
+<section id="file-content-can-be-distributed-across-multiple-sources" class="slide level2">
+<h2>File content can be distributed across multiple sources</h2>
+<ul>
+<li>recall <code>git annex whereis</code> (n copies)</li>
+<li>keyword: <em>distributed data management</em>
+<ul>
+<li>can have multiple special remotes</li>
+</ul></li>
+<li>git annex configuration:
+<ul>
+<li><a href="https://git-annex.branchable.com/preferred_content/">preferred content</a></li>
+<li><a href="https://git-annex.branchable.com/git-annex-numcopies/">numcopies</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="rd-party-services" class="slide level2">
+<h2>3rd party services</h2>
+
+
+
+<img data-src="img/services.svg" class="center r-stretch"></section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
