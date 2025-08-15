@@ -23,7 +23,7 @@ Create a new file in the `penguins` folder called `penguin_species.txt` and add 
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
-echo -e "gentoo\adelie" > penguin_species.txt
+echo -e "gentoo\nadelie" > penguin_species.txt
 datalad status
 ```
 :::
