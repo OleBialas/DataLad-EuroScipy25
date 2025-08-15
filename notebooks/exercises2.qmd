@@ -56,7 +56,7 @@ Use `datalad unlock` to unlock the `penguin_species.txt` file and append *chinst
 ## Solution
 ```bash
 datalad unlock penguin_species.txt
-echo -e "chinstrap" >> pegnuin_species.txt
+echo -e "chinstrap" >> penguin_species.txt
 datalad save -m "add chinstrap"
 ```
 :::
@@ -98,7 +98,6 @@ You should see `FileNotFoundError: [Errno 2] No such file or directory` because 
 :::
 
 :::{#exr-csv}
-(Put all tables in the same folder to avoid complicated glob pattern)
 Run the same script with the `data/` folder as `--input` and the file `"results/penguin_culmens.csv"` as `--output`.
 :::
 ::: {.callout-tip collapse="true"}
