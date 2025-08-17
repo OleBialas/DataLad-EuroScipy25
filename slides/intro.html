@@ -161,6 +161,7 @@ Ole Bialas
 </section>
 <section id="about-us" class="title-slide slide level1 center">
 <h1>About us</h1>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:40%;">
 <figure style="display: inline-block; text-align: center; margin: 0px 20px 20px 20px;">
@@ -176,6 +177,8 @@ Ole
 <li>DataLad user for ~5 years</li>
 </ul>
 </div></div>
+</div>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:40%;">
 <figure style="display: inline-block; text-align: center; margin: 0px 20px 20px 20px;">
@@ -191,33 +194,78 @@ Michał
 <li>DataLad contributor since ~4 years</li>
 </ul>
 </div></div>
+</div>
+<aside class="notes">
+<ul>
+<li>My name is Ole, I’m a neuroscientist by training, working as a research software consultant at the University of Bonn and I have been using DataLad for several years in my own research projects</li>
+<li>With me is Michal who is also a neuroscientist and part of the DataLad development team at the research center in Juelich</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="resources" class="title-slide slide level1 center">
+<h1>Resources</h1>
+<ul>
+<li>Website: <a href="https://olebialas.github.io/DataLad-EuroScipy25/">olebialas.github.io/DataLad-EuroScipy25</a></li>
+<li>Contains installation instructions, slides and exercises</li>
+</ul>
+<p><img data-src="./img/qr.png" class="absolute" style="top: 0px; right: 0px; width: 250px; height: 250px; "></p>
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1">
+</iframe>
 </section>
 
 <section>
 <section id="what-is-datalad" class="title-slide slide level1 center">
-<h1>What is DataLad</h1>
+<h1>What is DataLad?</h1>
 
 </section>
-<section id="a-community-project" class="slide level2">
+<section id="a-community-project" class="slide level2 incremental">
 <h2>A community project</h2>
 <ul>
-<li>10+ years of ongoing development &amp; maintenance <sup>1</sup></li>
-<li>100+ contributors across core, extensions, and Handbook</li>
-<li>started by:
+<li class="fragment">10+ years of ongoing development &amp; maintenance <sup>1</sup></li>
+<li class="fragment">100+ contributors across core, extensions, and Handbook</li>
+<li class="fragment">started by:
 <ul>
-<li>Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)</li>
-<li>Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)</li>
+<li class="fragment">Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)</li>
+<li class="fragment">Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)</li>
 </ul></li>
-<li>owes a lot to git-annex by Joey Hess &amp; contributors</li>
+<li class="fragment">owes a lot to git-annex by Joey Hess &amp; contributors</li>
 </ul>
+<aside class="notes">
+<ul>
+<li>There is a website for this tutorial which you can find via this URL or the QR code you can see on this slide</li>
+<li>On the landing page, you’ll find the installation instuctions so if you haven’t already please follow them to set up your environment</li>
+<li>You’ll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides &gt; introduction</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>https://doi.org/10.34734/FZJ-2025-01847</p></li></ol></aside></section>
 <section id="a-piece-of-software" class="slide level2">
 <h2>A piece of software</h2>
 <ul>
-<li>A piece of software for data management</li>
-<li>Written in Python</li>
-<li>Based on git and git-annex</li>
-<li>FOSS (MIT license)</li>
+<li class="fragment">Software for data management</li>
+<li class="fragment">Written in Python</li>
+<li class="fragment">Based on git and git-annex</li>
+<li class="fragment">FOSS (MIT license)</li>
 </ul>
 </section>
 <section id="exhaustive-tracking-of-research-components" class="slide level2">
@@ -310,8 +358,8 @@ Michał
 <li><strong>metadata</strong> on the evolution of a collection of files
 <ul>
 <li>content identity <br> <small>think: checksums</small></li>
-<li>content availability <br> <small>think: URLs</small></li>
-<li>provenance of change <br> <small>think: who did what when?</small></li>
+<li>content availability <br> (<small>think: URLs</small>)</li>
+<li>provenance of change <br> (<small>think: who did what when?</small>)</li>
 </ul></li>
 <li>a regular, but <em>managed</em> directory on computer file system <small>think: provides the familiar look and feel of files and folders</small></li>
 <li>a <strong>Git</strong> repository <br> <small>think: compatible with anything that can handle Git repositories</small></li>
