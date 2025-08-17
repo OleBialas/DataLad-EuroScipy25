@@ -45,8 +45,14 @@ Then, list all `siblings` to confirm it was added.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
+On Linux/macOS
 ```bash
 datalad siblings add --name backup --url ~/penguins_backup
+datalad siblings
+```
+On Windows
+```
+datalad siblings add --name backup --url %USERPROFILE%\penguins_backup
 datalad siblings
 ```
 :::
@@ -69,9 +75,14 @@ Move to a directory outside of this dataset and `clone` the new sibling dataset.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
+On Linux/macOS
 ```bash
 cd ..
 datalad clone ~/penguins_backup
+```
+On Windows
+```
+datalad clone %USERPROFILE%\penguins_backup
 ```
 :::
 
