@@ -17,6 +17,7 @@ date: 08-19-2025
 
 # About us
 
+::: {.fragment}
 :::: {.columns}
 
 ::: {.column width="40%"}
@@ -33,8 +34,9 @@ date: 08-19-2025
 :::
 
 ::::
+:::
 
-
+::: {.fragment}
 :::: {.columns}
 
 ::: {.column width="40%"}
@@ -51,26 +53,51 @@ date: 08-19-2025
 :::
 
 ::::
+:::
 
-# What is DataLad
+::: {.notes}
+- My name is Ole, I'm a neuroscientist by training, working as a research software consultant at the University of Bonn and I have been using DataLad for several years in my own research projects
+- With me is Michal who is also a neuroscientist and part of the DataLad development team at the research center in Juelich
+:::
 
-## A community project
+# Resources
 
+- Website: [olebialas.github.io/DataLad-EuroScipy25](https://olebialas.github.io/DataLad-EuroScipy25/)
+- Contains installation instructions, slides and exercises
+
+![](./img/qr.png){.absolute top=0 right=0 width="250" height="250"}
+
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1" ></iframe>
+
+# What is DataLad?
+
+## A community project {.incremental}
+
+::: {.incremental}
 - 10+ years of ongoing development & maintenance [^1]
 - 100+ contributors across core, extensions, and Handbook
 - started by:
   - Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)
   - Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)
 - owes a lot to git-annex by Joey Hess & contributors
+:::
 
 [^1]: https://doi.org/10.34734/FZJ-2025-01847
 
+::: {.notes}
+- There is a website for this tutorial which you can find via this URL or the QR code you can see on this slide
+- On the landing page, you'll find the installation instuctions so if you haven't already please follow them to set up your environment
+- You'll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides > introduction
+:::
+
 ## A piece of software
 
-- A piece of software for data management
+::: {.incremental}
+- Software for data management
 - Written in Python
 - Based on git and git-annex
 - FOSS (MIT license)
+:::
 
 
 ## Exhaustive tracking of research components
@@ -208,10 +235,8 @@ Verifiable, portable, self-contained data structures that track all aspects of a
 - **metadata** on the evolution of a collection of files
   - content identity <br>
     <small>think: checksums</small>
-  - content availability <br>
-    <small>think: URLs</small>
-  - provenance of change <br>
-    <small>think: who did what when?</small>
+  - content availability <br> (<small>think: URLs</small>)
+  - provenance of change <br> (<small>think: who did what when?</small>)
 - a regular, but *managed* directory on computer file system
   <small>think: provides the familiar look and feel of files and folders</small>
 - a **Git** repository <br>

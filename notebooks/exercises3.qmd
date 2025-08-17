@@ -52,11 +52,14 @@ datalad siblings
 :::
 
 :::{#exr-}
-Push the dataset to the new sibling.
+Push the dataset to the new sibling **twice**.
 :::
 ::: {.callout-tip collapse="true"}
 ## Solution
+We need to push tiwce because the first push initializes the repository's annex ID and the second (and each subsequent) push actually tranfer the
+annexed files.
 ```bash
+datalad push --to backup
 datalad push --to backup
 ```
 :::
