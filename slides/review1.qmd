@@ -15,41 +15,73 @@ author:
 date: 08-19-2025
 ---
 
-# Points to Cover
+# Consuming an Existing DataLad Dataset
 
-- File links and annexed content
-- File identifiers
-- Multiple content locations
+::: {.notes}
+- `datalad clone` is really fast because it only downloads symbolic links
+- `datalad get` will actually download the content
+- So you can work on very large projects without having to download everythin!
+- This works because DataLad manages the file identifiers that uniquely associate every links with it's corresponding file content
+:::
 
 
-## A meta view
+## A Meta View
 
 ![](img/always-has-been-identifiers.jpeg){fig-alt="astronaut meme: wait it's all identifiers? always has been"}
 
+::: {.notes}
+- This means file identifiers are central to how datalad works so lets take a moment to dive into some of the details here
+:::
 
-## Provider of identifiers
+## Provider and Manager of Identifiers
 
+::: {.incremental}
 - DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)
 
-- Concept identifiers
+- Concept identifiers (*think: where can I find things?*)
   - for datasets: DataLad dataset ID
   - for files in a dataset: DataLad dataset ID + path within a dataset
-- Content/version identifiers
+- Content/version identifiers (*think: where can the computer find things?*)
   - for datasets: Git commit SHA ID
   - for files: Git blob SHA / Git-annex key
 
-## What is a DataLad dataset?
+- By tracking unique identifiers, DataLad can manage files across multiple sources
+:::
 
-- **metadata** on the evolution of a collection of files
-  - content identity <br>
-    <small>think: checksums</small>
-  - content availability <br> (<small>think: URLs</small>)
-  - provenance of change <br> (<small>think: who did what when?</small>)
-- a regular, but *managed* directory on computer file system
-  <small>think: provides the familiar look and feel of files and folders</small>
-- a **Git** repository <br>
-  <small>think: compatible with anything that can handle Git repositories</small>
-- employs **git-annex** for file content tracking and transport
-  <small>think: supports any storage service and transport protocol supported by git-annex</small>
-- extends both Git and git-annex with additional features and infrastructure support <br>
-  <small>think: deposit and retrieve from non-Git-aware sites</small>
+::: {.notes}
+- DataLad dataset ID - show `cat .datalad/config` (there are more configuration options)
+- File identifiers - show `git annex info examples/gentoo.jpg`
+- Mutliple sources - show `git annex whereis examples/gentoo.jpg`
+:::
+
+## What is a DataLad Dataset?
+
+::: {.incremental}
+- a container for **metadata** on the evolution of a collection of files
+  - content identity (*think: checksums*)
+  - content availability (*think: URLs*)
+  - provenance of change (*think: who did what when?*)
+- a regular, but **managed** directory on computer file system
+  - provides a familiar look and feel of files and folders
+- a **Git** repository
+  - compatible with anything that can handle Git repositories
+- a **git-annex** repository for storing, tracking and transporting file content
+    - supports any storage service and transport protocol supported by git-annex
+:::
+
+::: {.notes}
+So now we can answer the question: What actually is a DataLad dataset? -> go through the items
+So in a nutshell, DataLad integrates and extends Git and git-annex with additional features and infrastructure support. For example, it allows you to deposite datasets to and retrieve them from non-Git-aware sites.
+:::
+
+## Hands-on: Tracking Changes
+
+- Open the **Exercises Part 2** on the tutorial website 📖
+
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="500px" frameborder="1" ></iframe>
+
+::: {.notes}
+- Let's move to out second set of exercises!
+- In these exercises, you'll be able to see for your selfes how DataLad tracks the evolution of a dataset
+- You'll also explore a very useful feature of DataLad which is it's ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis
+:::
