@@ -90,3 +90,14 @@ So in a nutshell, DataLad integrates and extends Git and git-annex with addition
 - In these exercises, you'll be able to see for your selfes how DataLad tracks the evolution of a dataset
 - You'll also explore a very useful feature of DataLad which is it's ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis
 :::
+
+## Hands-on: Tracking Changes
+
+:::{.timer #UNIQUE-ID seconds=1200 starton=interaction}
+:::
+![](./img/qr.png){.absolute top=50 right=200 width="300" height="300"}
+
+- Website: [olebialas.github.io/DataLad-EuroScipy25](https://olebialas.github.io/DataLad-EuroScipy25/)
+- Go to: *Exercises* > *Part2: Tracking Changes*
+
+
