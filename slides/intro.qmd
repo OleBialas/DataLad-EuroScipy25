@@ -69,13 +69,19 @@ date: 08-19-2025
 
 <iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1" ></iframe>
 
+::: {.notes}
+- There is a website for this tutorial which you can find via this URL or the QR code you can see on this slide
+- On the landing page, you'll find the installation instuctions so if you haven't already please follow them to set up your environment
+- You'll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides > introduction
+:::
+
 # What is DataLad?
 
-## A community project {.incremental}
+## A community project
 
 ::: {.incremental}
-- 10+ years of ongoing development & maintenance [^1]
-- 100+ contributors across core, extensions, and Handbook
+- 10+ years of ongoing development & maintenance [^1] 
+- 100+ contributors across core, extensions, and Handbook :
 - started by:
   - Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)
   - Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)
@@ -84,11 +90,6 @@ date: 08-19-2025
 
 [^1]: https://doi.org/10.34734/FZJ-2025-01847
 
-::: {.notes}
-- There is a website for this tutorial which you can find via this URL or the QR code you can see on this slide
-- On the landing page, you'll find the installation instuctions so if you haven't already please follow them to set up your environment
-- You'll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides > introduction
-:::
 
 ## A piece of software
 
