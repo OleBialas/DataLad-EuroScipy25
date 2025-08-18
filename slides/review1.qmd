@@ -20,3 +20,36 @@ date: 08-19-2025
 - File links and annexed content
 - File identifiers
 - Multiple content locations
+
+
+## A meta view
+
+![](img/always-has-been-identifiers.jpeg){fig-alt="astronaut meme: wait it's all identifiers? always has been"}
+
+
+## Provider of identifiers
+
+- DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)
+
+- Concept identifiers
+  - for datasets: DataLad dataset ID
+  - for files in a dataset: DataLad dataset ID + path within a dataset
+- Content/version identifiers
+  - for datasets: Git commit SHA ID
+  - for files: Git blob SHA / Git-annex key
+
+## What is a DataLad dataset?
+
+- **metadata** on the evolution of a collection of files
+  - content identity <br>
+    <small>think: checksums</small>
+  - content availability <br> (<small>think: URLs</small>)
+  - provenance of change <br> (<small>think: who did what when?</small>)
+- a regular, but *managed* directory on computer file system
+  <small>think: provides the familiar look and feel of files and folders</small>
+- a **Git** repository <br>
+  <small>think: compatible with anything that can handle Git repositories</small>
+- employs **git-annex** for file content tracking and transport
+  <small>think: supports any storage service and transport protocol supported by git-annex</small>
+- extends both Git and git-annex with additional features and infrastructure support <br>
+  <small>think: deposit and retrieve from non-Git-aware sites</small>

@@ -213,35 +213,19 @@ Verifiable, portable, self-contained data structures that track all aspects of a
 % datalad clone -d <superdataset> <path-in-dataset>
 ```
 
+## Hands-on
 
-## A meta view
+- Open the **Exercises Part 1** on the tutorial website 📖
+- Each section starts with a table that contains all required commands 💻
+- Feel free to chat with your neighbor and check the solutions 💡
 
-![](img/always-has-been-identifiers.jpeg){fig-alt="astronaut meme: wait it's all identifiers? always has been"}
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1" ></iframe>
 
-
-## Provider of identifiers
-
-- DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)
-
-- Concept identifiers
-  - for datasets: DataLad dataset ID
-  - for files in a dataset: DataLad dataset ID + path within a dataset
-- Content/version identifiers
-  - for datasets: Git commit SHA ID
-  - for files: Git blob SHA / Git-annex key
-
-## What is a DataLad dataset?
-
-- **metadata** on the evolution of a collection of files
-  - content identity <br>
-    <small>think: checksums</small>
-  - content availability <br> (<small>think: URLs</small>)
-  - provenance of change <br> (<small>think: who did what when?</small>)
-- a regular, but *managed* directory on computer file system
-  <small>think: provides the familiar look and feel of files and folders</small>
-- a **Git** repository <br>
-  <small>think: compatible with anything that can handle Git repositories</small>
-- employs **git-annex** for file content tracking and transport
-  <small>think: supports any storage service and transport protocol supported by git-annex</small>
-- extends both Git and git-annex with additional features and infrastructure support <br>
-  <small>think: deposit and retrieve from non-Git-aware sites</small>
+::: {.notes}
+- Let's move to out first set of exercises!
+- You can find them at Exercises > Part 1
+- Each section starts with a table that lists all required commands
+- Below every exercise there is an expandable box with the solution you can check
+- Don't worry if you don't complete all exercises, this is not required for the rest of the tutorial and you can always come back to the website
+- If you have andy questions or problems during the exercises just raise your hand and we'll be with you
+:::
