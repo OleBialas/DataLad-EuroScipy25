@@ -159,18 +159,11 @@ computional environment, to generate an outcome?
 ![](img/vamp_2_pushtocloud.png)
 Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
 
-:::: {.columns}
-::: {.column width="50%"}
-
 ```
-# transfer data and metadata to other sites and services
-# with fine-grained access control for dataset components
+# transfer data and metadata to other sites and services with fine-grained access control for dataset components
 
 % datalad push --to <site-or-service>
 ```
-
-:::
-::::
 
 ## Reproducibility strengthens trust
 ![](img/vamp_3_reproduce.png)
