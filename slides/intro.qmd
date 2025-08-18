@@ -15,7 +15,7 @@ author:
 date: 08-19-2025
 ---
 
-# About us
+## About us
 
 ::: {.fragment}
 :::: {.columns}
@@ -60,12 +60,12 @@ date: 08-19-2025
 - With me is Michal who is also a neuroscientist and part of the DataLad development team at the research center in Juelich
 :::
 
-# Resources
+## Resources
 
 - Website: [olebialas.github.io/DataLad-EuroScipy25](https://olebialas.github.io/DataLad-EuroScipy25/)
 - Contains installation instructions, slides and exercises
 
-![](./img/qr.png){.absolute top=0 right=0 width="250" height="250"}
+![](./img/qr.png){.absolute top=-50 right=0 width="250" height="250"}
 
 <iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1" ></iframe>
 
@@ -214,7 +214,7 @@ Verifiable, portable, self-contained data structures that track all aspects of a
 % datalad clone -d <superdataset> <path-in-dataset>
 ```
 
-## Hands-on
+## Hands-on: Working with a DataLad Dataset
 
 - Open the **Exercises Part 1** on the tutorial website 📖
 - Each section starts with a table that contains all required commands 💻
