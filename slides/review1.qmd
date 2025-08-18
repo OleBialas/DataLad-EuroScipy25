@@ -15,15 +15,18 @@ author:
 date: 08-19-2025
 ---
 
-# Consuming an Existing DataLad Dataset
+## Consuming an Existing DataLad Dataset
 
-::: {.notes}
-- `datalad clone` is really fast because it only downloads symbolic links
-- `datalad get` will actually download the content
-- So you can work on very large projects without having to download everythin!
-- This works because DataLad manages the file identifiers that uniquely associate every links with it's corresponding file content
+::: {.incremental}
+- `datalad clone` is fast because it only downloads symbolic **file links**
+- `datalad get` downloads the actual **file content**
+- Useful for working on very large datasets:
+  - `datalad clone <dataset>`
+  - `datalad get <file>`
+  - `python <script>`
+  - `datalad drop <file>`
+- This works because DataLad manages the **file identifiers**  that uniquely associate every links with it's corresponding file content
 :::
-
 
 ## A Meta View
 

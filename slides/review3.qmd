@@ -46,7 +46,7 @@ Demo: `git init --bare ~/penguins_backup`
 - Sibling demo: `datalad siblings add --name backup --url ~/penguins_backup`
 - push demo: `datalad push --to backup` (twice)
 - Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use `datalad get` first
-- Alternatively, you can use `git annex copy which does the download and upload in one step
+- Alternatively, you can use `git annex copy` which does the download and upload in one step
 :::
 
 ## git-annex *Special Remotes*
