@@ -159,30 +159,64 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
-<section>
-<section id="points-to-cover" class="title-slide slide level1 center">
-<h1>Points to Cover</h1>
+<section id="using-a-bare-git-repository-as-push-target" class="slide level2">
+<h2>Using a Bare Git Repository as Push Target</h2>
 <ul>
-<li>what is a bare git repository and why is it recommended</li>
-<li>git remotes vs git-annex <em>special remotes</em></li>
-<li>what contents are actually being pushed</li>
-<li>file content can be distributed across multiple sources</li>
-<li>which 3rd party services are supported by DataLad</li>
-</ul>
-</section>
-<section id="bare-git-repo-as-push-target" class="slide level2">
-<h2>Bare Git repo as push target</h2>
+<li class="fragment">bare == no worktree
 <ul>
-<li>bare: no worktree; contents of <code>.git</code> directly in the directory</li>
-<li>can be pushed to and cloned from</li>
-<li>when shared, pushes won’t break worktree (b/c there is none)</li>
-<li>can be put on a server <sup>1</sup></li>
-<li>with git-annex on the machine, can store git+annex</li>
-<li>good model for Git &amp; git-annex aware services</li>
+<li class="fragment">contents of <code>.git</code> directly in the directory</li>
+<li class="fragment">when shared pushes can’t break the worktree</li>
+<li class="fragment">can be put on a server <sup>1</sup></li>
+</ul></li>
+<li class="fragment">with git-annex on the machine, can store git+annex</li>
+<li class="fragment">good default for Git &amp; git-annex aware services</li>
 </ul>
+<aside class="notes">
+<p>Demo: <code>git init --bare ~/penguins_backup</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server" class="uri">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></p></li></ol></aside></section>
-<section id="git-remotes-vs-git-annex-special-remotes" class="slide level2">
-<h2>Git remotes vs git-annex <em>special remotes</em></h2>
+<section id="what-contents-are-actually-being-pushed" class="slide level2">
+<h2>What Contents Are Actually being pushed?</h2>
+<ul>
+<li class="fragment">Any git repository (local or online) can be added as a dataset sibling</li>
+<li class="fragment">The first push initializes the repository’s annex ID, the second push actually tranfers the files</li>
+<li class="fragment"><code>datalad push</code> acts on the contents you already got
+<ul>
+<li class="fragment">to transfer specific files, use <code>datalad get</code> first</li>
+</ul></li>
+<li class="fragment"><code>git annex copy [--from=remote|--to=remote]</code> to download and upload (no magic)</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Sibling demo: <code>datalad siblings add --name backup --url ~/penguins_backup</code></li>
+<li>push demo: <code>datalad push --to backup</code> (twice)</li>
+<li>Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use <code>datalad get</code> first</li>
+<li>Alternatively, you can use `git annex copy which does the download and upload in one step</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="git-annex-special-remotes" class="slide level2">
+<h2>git-annex <em>Special Remotes</em></h2>
 <ul>
 <li>store and retrieve file content (not Git repo)<sup>1</sup></li>
 <li><code>git annex initremote ...</code></li>
@@ -192,21 +226,25 @@ Ole Bialas
 </ul></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>but actually also Git repo bundles, with <a href="https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/">git-remote-annex</a></p></li></ol></aside></section>
-<section id="what-contents-are-actually-being-pushed" class="slide level2">
-<h2>What contents are actually being pushed</h2>
-<ul>
-<li><code>datalad push</code> acts on the contents you already got
-<ul>
-<li>ie. keys you have locally</li>
-</ul></li>
-<li><code>git annex copy [--from=remote|--to=remote]</code>
-<ul>
-<li>download and upload (no magic)</li>
-</ul></li>
-</ul>
+<section id="rd-party-services" class="slide level2">
+<h2>3rd Party Services</h2>
+
+<img data-src="img/services.svg" class="center r-stretch"><aside class="notes">
+<p>DataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you’ll find tutorials for many different storage services. In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="file-content-can-be-distributed-across-multiple-sources" class="slide level2">
-<h2>File content can be distributed across multiple sources</h2>
+<section id="distributed-data-management" class="slide level2">
+<h2>Distributed Data Management</h2>
 <ul>
 <li>recall <code>git annex whereis</code> (n copies)</li>
 <li>keyword: <em>distributed data management</em>
@@ -219,13 +257,9 @@ Ole Bialas
 <li><a href="https://git-annex.branchable.com/git-annex-numcopies/">numcopies</a></li>
 </ul></li>
 </ul>
+
+
 </section>
-<section id="rd-party-services" class="slide level2">
-<h2>3rd party services</h2>
-
-
-
-<img data-src="img/services.svg" class="center r-stretch"></section></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

@@ -42,39 +42,67 @@
     "text": "Michał graduated with BSc and MSc in Neuroinformatics, an interdisciplinary program at the Faculty of Physics, University of Warsaw. This is where he started using Python, as a first-year-student, back in 2011.\nHe completed his PhD at the Laboratory of Brain Imaging (LOBI), Nencki Institute. The PhD was part of the translational project Neural correlates of emotional contagion in humans, which applied fMRI and other methods to study observational fear conditioning. During the time, Michał became particularly interested in the data management side of neuroscience, as LOBI served as a core MRI facility.\nHis current work at the Psychoinformatics Group, INM-7, Forschungszentrum Jülich is in the area of research data management and research software development. It revolves around the data management software DataLad. His responsibilities include bug fixing, user support, technical writing, teaching – and sometmes just trying out new things.\n\nmszczepanik.eu/\n@doktorpanik@masto.ai\norcid.org/0000-0002-4028-2087"
   },
   {
-    "objectID": "slides/review3.html#bare-git-repo-as-push-target",
-    "href": "slides/review3.html#bare-git-repo-as-push-target",
-    "title": "Exercise Review 3",
-    "section": "Bare Git repo as push target",
-    "text": "Bare Git repo as push target\n\nbare: no worktree; contents of .git directly in the directory\ncan be pushed to and cloned from\nwhen shared, pushes won’t break worktree (b/c there is none)\ncan be put on a server 1\nwith git-annex on the machine, can store git+annex\ngood model for Git & git-annex aware services\n\nhttps://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server"
+    "objectID": "slides/review1.html#a-meta-view",
+    "href": "slides/review1.html#a-meta-view",
+    "title": "Exercise Review 1",
+    "section": "A Meta View",
+    "text": "A Meta View\n\n\n\nThis means file identifiers are central to how datalad works so lets take a moment to dive into some of the details here"
   },
   {
-    "objectID": "slides/review3.html#git-remotes-vs-git-annex-special-remotes",
-    "href": "slides/review3.html#git-remotes-vs-git-annex-special-remotes",
+    "objectID": "slides/review1.html#provider-and-manager-of-identifiers",
+    "href": "slides/review1.html#provider-and-manager-of-identifiers",
+    "title": "Exercise Review 1",
+    "section": "Provider and Manager of Identifiers",
+    "text": "Provider and Manager of Identifiers\n\nDataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)\nConcept identifiers (think: where can I find things?)\n\nfor datasets: DataLad dataset ID\nfor files in a dataset: DataLad dataset ID + path within a dataset\n\nContent/version identifiers (think: where can the computer find things?)\n\nfor datasets: Git commit SHA ID\nfor files: Git blob SHA / Git-annex key\n\nBy tracking unique identifiers, DataLad can manage files across multiple sources\n\n\n\nDataLad dataset ID - show cat .datalad/config (there are more configuration options)\nFile identifiers - show git annex info examples/gentoo.jpg\nMutliple sources - show git annex whereis examples/gentoo.jpg"
+  },
+  {
+    "objectID": "slides/review1.html#what-is-a-datalad-dataset",
+    "href": "slides/review1.html#what-is-a-datalad-dataset",
+    "title": "Exercise Review 1",
+    "section": "What is a DataLad Dataset?",
+    "text": "What is a DataLad Dataset?\n\na container for metadata on the evolution of a collection of files\n\ncontent identity (think: checksums)\ncontent availability (think: URLs)\nprovenance of change (think: who did what when?)\n\na regular, but managed directory on computer file system\n\nprovides a familiar look and feel of files and folders\n\na Git repository\n\ncompatible with anything that can handle Git repositories\n\na git-annex repository for storing, tracking and transporting file content\n\nsupports any storage service and transport protocol supported by git-annex\n\n\n\nSo now we can answer the question: What actually is a DataLad dataset? -&gt; go through the items So in a nutshell, DataLad integrates and extends Git and git-annex with additional features and infrastructure support. For example, it allows you to deposite datasets to and retrieve them from non-Git-aware sites."
+  },
+  {
+    "objectID": "slides/review1.html#hands-on-tracking-changes",
+    "href": "slides/review1.html#hands-on-tracking-changes",
+    "title": "Exercise Review 1",
+    "section": "Hands-on: Tracking Changes",
+    "text": "Hands-on: Tracking Changes\n\nOpen the Exercises Part 2 on the tutorial website 📖\n\n\n\n\n\nLet’s move to out second set of exercises!\nIn these exercises, you’ll be able to see for your selfes how DataLad tracks the evolution of a dataset\nYou’ll also explore a very useful feature of DataLad which is it’s ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis"
+  },
+  {
+    "objectID": "slides/review3.html#using-a-bare-git-repository-as-push-target",
+    "href": "slides/review3.html#using-a-bare-git-repository-as-push-target",
     "title": "Exercise Review 3",
-    "section": "Git remotes vs git-annex special remotes",
-    "text": "Git remotes vs git-annex special remotes\n\nstore and retrieve file content (not Git repo)1\ngit annex initremote ...\nbuilt-in and external implementations\n\nhttps://git-annex.branchable.com/special_remotes/\n\n\nbut actually also Git repo bundles, with git-remote-annex"
+    "section": "Using a Bare Git Repository as Push Target",
+    "text": "Using a Bare Git Repository as Push Target\n\nbare == no worktree\n\ncontents of .git directly in the directory\nwhen shared pushes can’t break the worktree\ncan be put on a server 1\n\nwith git-annex on the machine, can store git+annex\ngood default for Git & git-annex aware services\n\n\nDemo: git init --bare ~/penguins_backup\n\nhttps://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server"
   },
   {
     "objectID": "slides/review3.html#what-contents-are-actually-being-pushed",
     "href": "slides/review3.html#what-contents-are-actually-being-pushed",
     "title": "Exercise Review 3",
-    "section": "What contents are actually being pushed",
-    "text": "What contents are actually being pushed\n\ndatalad push acts on the contents you already got\n\nie. keys you have locally\n\ngit annex copy [--from=remote|--to=remote]\n\ndownload and upload (no magic)"
+    "section": "What Contents Are Actually being pushed?",
+    "text": "What Contents Are Actually being pushed?\n\nAny git repository (local or online) can be added as a dataset sibling\nThe first push initializes the repository’s annex ID, the second push actually tranfers the files\ndatalad push acts on the contents you already got\n\nto transfer specific files, use datalad get first\n\ngit annex copy [--from=remote|--to=remote] to download and upload (no magic)\n\n\n\nSibling demo: datalad siblings add --name backup --url ~/penguins_backup\npush demo: datalad push --to backup (twice)\nNote that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use datalad get first\nAlternatively, you can use `git annex copy which does the download and upload in one step"
   },
   {
-    "objectID": "slides/review3.html#file-content-can-be-distributed-across-multiple-sources",
-    "href": "slides/review3.html#file-content-can-be-distributed-across-multiple-sources",
+    "objectID": "slides/review3.html#git-annex-special-remotes",
+    "href": "slides/review3.html#git-annex-special-remotes",
     "title": "Exercise Review 3",
-    "section": "File content can be distributed across multiple sources",
-    "text": "File content can be distributed across multiple sources\n\nrecall git annex whereis (n copies)\nkeyword: distributed data management\n\ncan have multiple special remotes\n\ngit annex configuration:\n\npreferred content\nnumcopies"
+    "section": "git-annex Special Remotes",
+    "text": "git-annex Special Remotes\n\nstore and retrieve file content (not Git repo)1\ngit annex initremote ...\nbuilt-in and external implementations\n\nhttps://git-annex.branchable.com/special_remotes/\n\n\nbut actually also Git repo bundles, with git-remote-annex"
   },
   {
     "objectID": "slides/review3.html#rd-party-services",
     "href": "slides/review3.html#rd-party-services",
     "title": "Exercise Review 3",
-    "section": "3rd party services",
-    "text": "3rd party services"
+    "section": "3rd Party Services",
+    "text": "3rd Party Services\n\n\nDataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you’ll find tutorials for many different storage services. In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset"
+  },
+  {
+    "objectID": "slides/review3.html#distributed-data-management",
+    "href": "slides/review3.html#distributed-data-management",
+    "title": "Exercise Review 3",
+    "section": "Distributed Data Management",
+    "text": "Distributed Data Management\n\nrecall git annex whereis (n copies)\nkeyword: distributed data management\n\ncan have multiple special remotes\n\ngit annex configuration:\n\npreferred content\nnumcopies"
   },
   {
     "objectID": "notebooks/exercises2.html",
@@ -175,11 +203,25 @@
     "text": "Annexed files on Windows\nWindows’ file system does not support symlinks1. Under these conditions, git-annex automatically operates in “adjusted unlocked mode”:\n\nFile contents are duplicated: One copy to edit, one to keep safe.\nNo (un)locking – trade-off: disk space use vs easy modification.\nAnnexed files are pointer files instead of symlinks: A text file with the contents “/annex/objects/” followed by the key.\nGit annex uses adjusted branches, which unlock on top the locked counterpart branch. Compatibility with other systems but confusing Git log and issues in some nesting usecases.\n\n\n\nOversimplification. It kind-of does, but not by default."
   },
   {
+    "objectID": "slides/intro.html#about-us",
+    "href": "slides/intro.html#about-us",
+    "title": "Introduction to DataLad",
+    "section": "About us",
+    "text": "About us\n\n\n\n\n\n\nOle\n\n\n\n\nPhD in neuroscience researching auditory perception\nResearch software consultant at the University of Bonn\nDataLad user for ~5 years\n\n\n\n\n\n\n\n\n\nMichał\n\n\n\n\nPhD in (cognitive) neuroscience – emotional contagion\nRDM / RSE at the Forschungszentrum Jülich\nDataLad contributor since ~4 years\n\n\n\n\n\nMy name is Ole, I’m a neuroscientist by training, working as a research software consultant at the University of Bonn and I have been using DataLad for several years in my own research projects\nWith me is Michal who is also a neuroscientist and part of the DataLad development team at the research center in Juelich"
+  },
+  {
+    "objectID": "slides/intro.html#resources",
+    "href": "slides/intro.html#resources",
+    "title": "Introduction to DataLad",
+    "section": "Resources",
+    "text": "Resources\n\nWebsite: olebialas.github.io/DataLad-EuroScipy25\nContains installation instructions, slides and exercises\n\n\n\n\n\n\nThere is a website for this tutorial which you can find via this URL or the QR code you can see on this slide\nOn the landing page, you’ll find the installation instuctions so if you haven’t already please follow them to set up your environment\nYou’ll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides &gt; introduction"
+  },
+  {
     "objectID": "slides/intro.html#a-community-project",
     "href": "slides/intro.html#a-community-project",
     "title": "Introduction to DataLad",
     "section": "A community project",
-    "text": "A community project\n\n10+ years of ongoing development & maintenance 1\n100+ contributors across core, extensions, and Handbook\nstarted by:\n\nMichael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)\nYaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)\n\nowes a lot to git-annex by Joey Hess & contributors\n\n\n\nThere is a website for this tutorial which you can find via this URL or the QR code you can see on this slide\nOn the landing page, you’ll find the installation instuctions so if you haven’t already please follow them to set up your environment\nYou’ll also find all exercises and slides for the tutorial. For example, to access this presentation go to slides &gt; introduction\n\n\nhttps://doi.org/10.34734/FZJ-2025-01847"
+    "text": "A community project\n\n10+ years of ongoing development & maintenance 1\n100+ contributors across core, extensions, and Handbook :\nstarted by:\n\nMichael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)\nYaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)\n\nowes a lot to git-annex by Joey Hess & contributors\n\nhttps://doi.org/10.34734/FZJ-2025-01847"
   },
   {
     "objectID": "slides/intro.html#a-piece-of-software",
@@ -224,31 +266,17 @@
     "text": "Ultimate goal: (re)usability\n\nVerifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re)used as modular components in larger contexts — propagating their traits\n# declare a dependency on another dataset and\n# reuse it at particular state in a new context\n\n% datalad clone -d &lt;superdataset&gt; &lt;path-in-dataset&gt;"
   },
   {
-    "objectID": "slides/intro.html#a-meta-view",
-    "href": "slides/intro.html#a-meta-view",
+    "objectID": "slides/intro.html#hands-on-working-with-a-datalad-dataset",
+    "href": "slides/intro.html#hands-on-working-with-a-datalad-dataset",
     "title": "Introduction to DataLad",
-    "section": "A meta view",
-    "text": "A meta view"
-  },
-  {
-    "objectID": "slides/intro.html#provider-of-identifiers",
-    "href": "slides/intro.html#provider-of-identifiers",
-    "title": "Introduction to DataLad",
-    "section": "Provider of identifiers",
-    "text": "Provider of identifiers\n\nDataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)\nConcept identifiers\n\nfor datasets: DataLad dataset ID\nfor files in a dataset: DataLad dataset ID + path within a dataset\n\nContent/version identifiers\n\nfor datasets: Git commit SHA ID\nfor files: Git blob SHA / Git-annex key"
-  },
-  {
-    "objectID": "slides/intro.html#what-is-a-datalad-dataset",
-    "href": "slides/intro.html#what-is-a-datalad-dataset",
-    "title": "Introduction to DataLad",
-    "section": "What is a DataLad dataset?",
-    "text": "What is a DataLad dataset?\n\nmetadata on the evolution of a collection of files\n\ncontent identity  think: checksums\ncontent availability  (think: URLs)\nprovenance of change  (think: who did what when?)\n\na regular, but managed directory on computer file system think: provides the familiar look and feel of files and folders\na Git repository  think: compatible with anything that can handle Git repositories\nemploys git-annex for file content tracking and transport think: supports any storage service and transport protocol supported by git-annex\nextends both Git and git-annex with additional features and infrastructure support  think: deposit and retrieve from non-Git-aware sites"
+    "section": "Hands-on: Working with a DataLad Dataset",
+    "text": "Hands-on: Working with a DataLad Dataset\n\nOpen the Exercises Part 1 on the tutorial website 📖\nEach section starts with a table that contains all required commands 💻\nFeel free to chat with your neighbor and check the solutions 💡\n\n\n\n\n\nLet’s move to out first set of exercises!\nYou can find them at Exercises &gt; Part 1\nEach section starts with a table that lists all required commands\nBelow every exercise there is an expandable box with the solution you can check\nDon’t worry if you don’t complete all exercises, this is not required for the rest of the tutorial and you can always come back to the website\nIf you have andy questions or problems during the exercises just raise your hand and we’ll be with you"
   },
   {
     "objectID": "about/ole.html",
     "href": "about/ole.html",
     "title": "Ole Bialas",
     "section": "",
-    "text": "Ole …"
+    "text": "I studied Biology at the University of Tübingen, where I first learned how to code using Matlab. Then, I moved to Leipzig, where I did a master’s degree and later a PhD in neurobiology. In my research, I studied how the brain processes sound location using electroencephalography (EEG) and custom experimental setups for spatial audio. During that time, I started using Python and eventually co-authored slab, a Python toolbox for psychoacoustic experiments. After my PhD, I moved to the University of Rochester in New York, where I studied how the brain processes naturalistic speech by modeling EEG that was recorded while the participants listened to audiobooks. For this research I published another toolbox, originally written in Matlab, called mTRFpy. As my postdoc was coming to an end, I was looking for a position where I could combine my interest in neuroscience with my passion for programming. I found such a position at the iBehave Open Technology Support iBOTS where I currently work as a research software consultant. In this position, I develop and teach workshops where neuroscience researchers can improve their software skills and I do one-on-one consulting to help neuroscientists deal with the computational challenges they are faced in their research."
   }
 ]

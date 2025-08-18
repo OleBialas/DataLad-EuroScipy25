@@ -159,16 +159,144 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
-<section id="points-to-cover" class="title-slide slide level1 center">
-<h1>Points to Cover</h1>
+<section>
+<section id="consuming-an-existing-datalad-dataset" class="title-slide slide level1 center">
+<h1>Consuming an Existing DataLad Dataset</h1>
+<aside class="notes">
 <ul>
-<li>File links and annexed content</li>
-<li>File identifiers</li>
-<li>Multiple content locations</li>
+<li><code>datalad clone</code> is really fast because it only downloads symbolic links</li>
+<li><code>datalad get</code> will actually download the content</li>
+<li>So you can work on very large projects without having to download everythin!</li>
+<li>This works because DataLad manages the file identifiers that uniquely associate every links with it’s corresponding file content</li>
 </ul>
-
-
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
+<section id="a-meta-view" class="slide level2">
+<h2>A Meta View</h2>
+
+<img data-src="img/always-has-been-identifiers.jpeg" alt="astronaut meme: wait it's all identifiers? always has been" class="r-stretch"><aside class="notes">
+<ul>
+<li>This means file identifiers are central to how datalad works so lets take a moment to dive into some of the details here</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="provider-and-manager-of-identifiers" class="slide level2">
+<h2>Provider and Manager of Identifiers</h2>
+<ul>
+<li class="fragment"><p>DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)</p></li>
+<li class="fragment"><p>Concept identifiers (<em>think: where can I find things?</em>)</p>
+<ul>
+<li class="fragment">for datasets: DataLad dataset ID</li>
+<li class="fragment">for files in a dataset: DataLad dataset ID + path within a dataset</li>
+</ul></li>
+<li class="fragment"><p>Content/version identifiers (<em>think: where can the computer find things?</em>)</p>
+<ul>
+<li class="fragment">for datasets: Git commit SHA ID</li>
+<li class="fragment">for files: Git blob SHA / Git-annex key</li>
+</ul></li>
+<li class="fragment"><p>By tracking unique identifiers, DataLad can manage files across multiple sources</p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>DataLad dataset ID - show <code>cat .datalad/config</code> (there are more configuration options)</li>
+<li>File identifiers - show <code>git annex info examples/gentoo.jpg</code></li>
+<li>Mutliple sources - show <code>git annex whereis examples/gentoo.jpg</code></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-a-datalad-dataset" class="slide level2">
+<h2>What is a DataLad Dataset?</h2>
+<ul>
+<li class="fragment">a container for <strong>metadata</strong> on the evolution of a collection of files
+<ul>
+<li class="fragment">content identity (<em>think: checksums</em>)</li>
+<li class="fragment">content availability (<em>think: URLs</em>)</li>
+<li class="fragment">provenance of change (<em>think: who did what when?</em>)</li>
+</ul></li>
+<li class="fragment">a regular, but <strong>managed</strong> directory on computer file system
+<ul>
+<li class="fragment">provides a familiar look and feel of files and folders</li>
+</ul></li>
+<li class="fragment">a <strong>Git</strong> repository
+<ul>
+<li class="fragment">compatible with anything that can handle Git repositories</li>
+</ul></li>
+<li class="fragment">a <strong>git-annex</strong> repository for storing, tracking and transporting file content
+<ul>
+<li class="fragment">supports any storage service and transport protocol supported by git-annex</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>So now we can answer the question: What actually is a DataLad dataset? -&gt; go through the items So in a nutshell, DataLad integrates and extends Git and git-annex with additional features and infrastructure support. For example, it allows you to deposite datasets to and retrieve them from non-Git-aware sites.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="hands-on-tracking-changes" class="slide level2">
+<h2>Hands-on: Tracking Changes</h2>
+<ul>
+<li>Open the <strong>Exercises Part 2</strong> on the tutorial website 📖</li>
+</ul>
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="500px" frameborder="1">
+</iframe>
+<aside class="notes">
+<ul>
+<li>Let’s move to out second set of exercises!</li>
+<li>In these exercises, you’ll be able to see for your selfes how DataLad tracks the evolution of a dataset</li>
+<li>You’ll also explore a very useful feature of DataLad which is it’s ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -159,8 +159,8 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
-<section id="about-us" class="title-slide slide level1 center">
-<h1>About us</h1>
+<section id="about-us" class="slide level2">
+<h2>About us</h2>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -212,35 +212,15 @@ Michał
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="resources" class="title-slide slide level1 center">
-<h1>Resources</h1>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
 <ul>
 <li>Website: <a href="https://olebialas.github.io/DataLad-EuroScipy25/">olebialas.github.io/DataLad-EuroScipy25</a></li>
 <li>Contains installation instructions, slides and exercises</li>
 </ul>
-<p><img data-src="./img/qr.png" class="absolute" style="top: 0px; right: 0px; width: 250px; height: 250px; "></p>
+<p><img data-src="./img/qr.png" class="absolute" style="top: -50px; right: 0px; width: 250px; height: 250px; "></p>
 <iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1">
 </iframe>
-</section>
-
-<section>
-<section id="what-is-datalad" class="title-slide slide level1 center">
-<h1>What is DataLad?</h1>
-
-</section>
-<section id="a-community-project" class="slide level2 incremental">
-<h2>A community project</h2>
-<ul>
-<li class="fragment">10+ years of ongoing development &amp; maintenance <sup>1</sup></li>
-<li class="fragment">100+ contributors across core, extensions, and Handbook</li>
-<li class="fragment">started by:
-<ul>
-<li class="fragment">Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)</li>
-<li class="fragment">Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)</li>
-</ul></li>
-<li class="fragment">owes a lot to git-annex by Joey Hess &amp; contributors</li>
-</ul>
 <aside class="notes">
 <ul>
 <li>There is a website for this tutorial which you can find via this URL or the QR code you can see on this slide</li>
@@ -258,6 +238,24 @@ Michał
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section>
+<section id="what-is-datalad" class="title-slide slide level1 center">
+<h1>What is DataLad?</h1>
+
+</section>
+<section id="a-community-project" class="slide level2">
+<h2>A community project</h2>
+<ul>
+<li class="fragment">10+ years of ongoing development &amp; maintenance <sup>1</sup></li>
+<li class="fragment">100+ contributors across core, extensions, and Handbook :</li>
+<li class="fragment">started by:
+<ul>
+<li class="fragment">Michael Hanke (now: Psychoinformatics Lab, Forschungszentrum Jülich)</li>
+<li class="fragment">Yaroslav Halchenko (now: Center for Open Neuroscience, Dartmouth College)</li>
+</ul></li>
+<li class="fragment">owes a lot to git-annex by Joey Hess &amp; contributors</li>
+</ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>https://doi.org/10.34734/FZJ-2025-01847</p></li></ol></aside></section>
 <section id="a-piece-of-software" class="slide level2">
 <h2>A piece of software</h2>
@@ -332,40 +330,35 @@ Michał
 
 % datalad clone -d &lt;superdataset&gt; &lt;path-in-dataset&gt;</code></pre>
 </section>
-<section id="a-meta-view" class="slide level2">
-<h2>A meta view</h2>
-
-<img data-src="img/always-has-been-identifiers.jpeg" alt="astronaut meme: wait it's all identifiers? always has been" class="r-stretch"></section>
-<section id="provider-of-identifiers" class="slide level2">
-<h2>Provider of identifiers</h2>
+<section id="hands-on-working-with-a-datalad-dataset" class="slide level2">
+<h2>Hands-on: Working with a DataLad Dataset</h2>
 <ul>
-<li><p>DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)</p></li>
-<li><p>Concept identifiers</p>
-<ul>
-<li>for datasets: DataLad dataset ID</li>
-<li>for files in a dataset: DataLad dataset ID + path within a dataset</li>
-</ul></li>
-<li><p>Content/version identifiers</p>
-<ul>
-<li>for datasets: Git commit SHA ID</li>
-<li>for files: Git blob SHA / Git-annex key</li>
-</ul></li>
+<li>Open the <strong>Exercises Part 1</strong> on the tutorial website 📖</li>
+<li>Each section starts with a table that contains all required commands 💻</li>
+<li>Feel free to chat with your neighbor and check the solutions 💡</li>
 </ul>
-</section>
-<section id="what-is-a-datalad-dataset" class="slide level2">
-<h2>What is a DataLad dataset?</h2>
+<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="400px" frameborder="1">
+</iframe>
+<aside class="notes">
 <ul>
-<li><strong>metadata</strong> on the evolution of a collection of files
-<ul>
-<li>content identity <br> <small>think: checksums</small></li>
-<li>content availability <br> (<small>think: URLs</small>)</li>
-<li>provenance of change <br> (<small>think: who did what when?</small>)</li>
-</ul></li>
-<li>a regular, but <em>managed</em> directory on computer file system <small>think: provides the familiar look and feel of files and folders</small></li>
-<li>a <strong>Git</strong> repository <br> <small>think: compatible with anything that can handle Git repositories</small></li>
-<li>employs <strong>git-annex</strong> for file content tracking and transport <small>think: supports any storage service and transport protocol supported by git-annex</small></li>
-<li>extends both Git and git-annex with additional features and infrastructure support <br> <small>think: deposit and retrieve from non-Git-aware sites</small></li>
+<li>Let’s move to out first set of exercises!</li>
+<li>You can find them at Exercises &gt; Part 1</li>
+<li>Each section starts with a table that lists all required commands</li>
+<li>Below every exercise there is an expandable box with the solution you can check</li>
+<li>Don’t worry if you don’t complete all exercises, this is not required for the rest of the tutorial and you can always come back to the website</li>
+<li>If you have andy questions or problems during the exercises just raise your hand and we’ll be with you</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 </section></section>
