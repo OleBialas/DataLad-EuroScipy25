@@ -2,6 +2,8 @@
 title: Introduction to DataLad
 subtitle: Data Management for Open Science
 format: clean-revealjs
+filters:
+ - timer
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -230,3 +232,14 @@ Verifiable, portable, self-contained data structures that track all aspects of a
 - Don't worry if you don't complete all exercises, this is not required for the rest of the tutorial and you can always come back to the website
 - If you have andy questions or problems during the exercises just raise your hand and we'll be with you
 :::
+
+## Hands-on: Working with a DataLad Dataset
+
+:::{.timer #UNIQUE-ID seconds=1200 starton=interaction}
+:::
+![](./img/qr.png){.absolute top=50 right=200 width="300" height="300"}
+
+- Website: [olebialas.github.io/DataLad-EuroScipy25](https://olebialas.github.io/DataLad-EuroScipy25/)
+- Go to: *Exercises* > *Part1: Working with DataLad Datasets*
+
+
