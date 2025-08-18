@@ -43,10 +43,10 @@ date: 08-19-2025
 ::: {.incremental}
 - DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)
 
-- Concept identifiers (*think: where can I find things?*)
+- Concept identifiers
   - for datasets: DataLad dataset ID
   - for files in a dataset: DataLad dataset ID + path within a dataset
-- Content/version identifiers (*think: where can the computer find things?*)
+- Content/version identifiers
   - for datasets: Git commit SHA ID
   - for files: Git blob SHA / Git-annex key
 
@@ -93,7 +93,7 @@ So in a nutshell, DataLad integrates and extends Git and git-annex with addition
 
 ## Hands-on: Tracking Changes
 
-:::{.timer #UNIQUE-ID seconds=1200 starton=interaction}
+:::{.timer #UNIQUE-ID seconds=900 starton=interaction}
 :::
 ![](./img/qr.png){.absolute top=50 right=200 width="300" height="300"}
 
