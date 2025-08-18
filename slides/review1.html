@@ -159,27 +159,20 @@ Ole Bialas
 
   <p class="date">August 19, 2025</p>
 </section>
-<section>
-<section id="consuming-an-existing-datalad-dataset" class="title-slide slide level1 center">
-<h1>Consuming an Existing DataLad Dataset</h1>
-<aside class="notes">
+<section id="consuming-an-existing-datalad-dataset" class="slide level2">
+<h2>Consuming an Existing DataLad Dataset</h2>
 <ul>
-<li><code>datalad clone</code> is really fast because it only downloads symbolic links</li>
-<li><code>datalad get</code> will actually download the content</li>
-<li>So you can work on very large projects without having to download everythin!</li>
-<li>This works because DataLad manages the file identifiers that uniquely associate every links with it’s corresponding file content</li>
+<li class="fragment"><code>datalad clone</code> is fast because it only downloads symbolic <strong>file links</strong></li>
+<li class="fragment"><code>datalad get</code> downloads the actual <strong>file content</strong></li>
+<li class="fragment">Useful for working on very large datasets:
+<ul>
+<li class="fragment"><code>datalad clone &lt;dataset&gt;</code></li>
+<li class="fragment"><code>datalad get &lt;file&gt;</code></li>
+<li class="fragment"><code>python &lt;script&gt;</code></li>
+<li class="fragment"><code>datalad drop &lt;file&gt;</code></li>
+</ul></li>
+<li class="fragment">This works because DataLad manages the <strong>file identifiers</strong> that uniquely associate every links with it’s corresponding file content</li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="a-meta-view" class="slide level2">
 <h2>A Meta View</h2>
@@ -296,7 +289,7 @@ Ole Bialas
       }</style></aside>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

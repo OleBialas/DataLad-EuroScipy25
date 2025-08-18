@@ -42,6 +42,13 @@
     "text": "Michał graduated with BSc and MSc in Neuroinformatics, an interdisciplinary program at the Faculty of Physics, University of Warsaw. This is where he started using Python, as a first-year-student, back in 2011.\nHe completed his PhD at the Laboratory of Brain Imaging (LOBI), Nencki Institute. The PhD was part of the translational project Neural correlates of emotional contagion in humans, which applied fMRI and other methods to study observational fear conditioning. During the time, Michał became particularly interested in the data management side of neuroscience, as LOBI served as a core MRI facility.\nHis current work at the Psychoinformatics Group, INM-7, Forschungszentrum Jülich is in the area of research data management and research software development. It revolves around the data management software DataLad. His responsibilities include bug fixing, user support, technical writing, teaching – and sometmes just trying out new things.\n\nmszczepanik.eu/\n@doktorpanik@masto.ai\norcid.org/0000-0002-4028-2087"
   },
   {
+    "objectID": "slides/review1.html#consuming-an-existing-datalad-dataset",
+    "href": "slides/review1.html#consuming-an-existing-datalad-dataset",
+    "title": "Exercise Review 1",
+    "section": "Consuming an Existing DataLad Dataset",
+    "text": "Consuming an Existing DataLad Dataset\n\ndatalad clone is fast because it only downloads symbolic file links\ndatalad get downloads the actual file content\nUseful for working on very large datasets:\n\ndatalad clone &lt;dataset&gt;\ndatalad get &lt;file&gt;\npython &lt;script&gt;\ndatalad drop &lt;file&gt;\n\nThis works because DataLad manages the file identifiers that uniquely associate every links with it’s corresponding file content"
+  },
+  {
     "objectID": "slides/review1.html#a-meta-view",
     "href": "slides/review1.html#a-meta-view",
     "title": "Exercise Review 1",
@@ -81,7 +88,7 @@
     "href": "slides/review3.html#what-contents-are-actually-being-pushed",
     "title": "Exercise Review 3",
     "section": "What Contents Are Actually being pushed?",
-    "text": "What Contents Are Actually being pushed?\n\nAny git repository (local or online) can be added as a dataset sibling\nThe first push initializes the repository’s annex ID, the second push actually tranfers the files\ndatalad push acts on the contents you already got\n\nto transfer specific files, use datalad get first\n\ngit annex copy [--from=remote|--to=remote] to download and upload (no magic)\n\n\n\nSibling demo: datalad siblings add --name backup --url ~/penguins_backup\npush demo: datalad push --to backup (twice)\nNote that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use datalad get first\nAlternatively, you can use `git annex copy which does the download and upload in one step"
+    "text": "What Contents Are Actually being pushed?\n\nAny git repository (local or online) can be added as a dataset sibling\nThe first push initializes the repository’s annex ID, the second push actually tranfers the files\ndatalad push acts on the contents you already got\n\nto transfer specific files, use datalad get first\n\ngit annex copy [--from=remote|--to=remote] to download and upload (no magic)\n\n\n\nSibling demo: datalad siblings add --name backup --url ~/penguins_backup\npush demo: datalad push --to backup (twice)\nNote that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use datalad get first\nAlternatively, you can use git annex copy which does the download and upload in one step"
   },
   {
     "objectID": "slides/review3.html#git-annex-special-remotes",
