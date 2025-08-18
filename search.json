@@ -280,6 +280,13 @@
     "text": "Hands-on: Working with a DataLad Dataset\n\nOpen the Exercises Part 1 on the tutorial website 📖\nEach section starts with a table that contains all required commands 💻\nFeel free to chat with your neighbor and check the solutions 💡\n\n\n\n\n\nLet’s move to out first set of exercises!\nYou can find them at Exercises &gt; Part 1\nEach section starts with a table that lists all required commands\nBelow every exercise there is an expandable box with the solution you can check\nDon’t worry if you don’t complete all exercises, this is not required for the rest of the tutorial and you can always come back to the website\nIf you have andy questions or problems during the exercises just raise your hand and we’ll be with you"
   },
   {
+    "objectID": "slides/intro.html#hands-on-working-with-a-datalad-dataset-1",
+    "href": "slides/intro.html#hands-on-working-with-a-datalad-dataset-1",
+    "title": "Introduction to DataLad",
+    "section": "Hands-on: Working with a DataLad Dataset",
+    "text": "Hands-on: Working with a DataLad Dataset\n                    \n                    \n                \n\n\nWebsite: olebialas.github.io/DataLad-EuroScipy25\nGo to: Exercises &gt; Part1: Working with DataLad Datasets"
+  },
+  {
     "objectID": "about/ole.html",
     "href": "about/ole.html",
     "title": "Ole Bialas",
