@@ -15,26 +15,41 @@ author:
 date: 08-19-2025
 ---
 
-# Points to Cover
+## Using a Bare Git Repository as Push Target
 
-- what is a bare git repository and why is it recommended
-- git remotes vs git-annex *special remotes*
-- what contents are actually being pushed
-- file content can be distributed across multiple sources
-- which 3rd party services are supported by DataLad
-
-## Bare Git repo as push target
-
-- bare: no worktree; contents of `.git` directly in the directory
-- can be pushed to and cloned from
-- when shared, pushes won't break worktree (b/c there is none)
-- can be put on a server [^1]
+::: {.incremental}
+- bare == no worktree
+  - contents of `.git` directly in the directory
+  - when shared pushes can't break the worktree
+  - can be put on a server [^1]
 - with git-annex on the machine, can store git+annex
-- good model for Git & git-annex aware services
+- good default for Git & git-annex aware services
+:::
+
+::: {.notes}
+Demo: `git init --bare ~/penguins_backup`
+:::
 
 [^1]: <https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server>
 
-## Git remotes vs git-annex *special remotes*
+## What Contents Are Actually being pushed?
+
+::: {.incremental}
+- Any git repository (local or online) can be added as a dataset sibling
+- The first push initializes the repository’s annex ID, the second push actually tranfers the files
+- `datalad push` acts on the contents you already got
+  - to transfer specific files, use `datalad get` first
+- `git annex copy [--from=remote|--to=remote]` to download and upload (no magic)
+:::
+
+::: {.notes}
+- Sibling demo: `datalad siblings add --name backup --url ~/penguins_backup`
+- push demo: `datalad push --to backup` (twice)
+- Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use `datalad get` first
+- Alternatively, you can use `git annex copy which does the download and upload in one step
+:::
+
+## git-annex *Special Remotes*
 
 - store and retrieve file content (not Git repo)[^2]
 - `git annex initremote ...`
@@ -43,14 +58,16 @@ date: 08-19-2025
 
 [^2]: but actually also Git repo bundles, with [git-remote-annex](https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/)
 
-## What contents are actually being pushed
+## 3rd Party Services
 
-- `datalad push` acts on the contents you already got
-  - ie. keys you have locally
-- `git annex copy [--from=remote|--to=remote]`
-  - download and upload (no magic)
+![](img/services.svg){.center}
 
-## File content can be distributed across multiple sources
+::: {.notes}
+DataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you'll find tutorials for many different storage services.
+In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset
+:::
+
+## Distributed Data Management
 
 - recall `git annex whereis` (n copies)
 - keyword: *distributed data management*
@@ -58,7 +75,3 @@ date: 08-19-2025
 - git annex configuration:
   - [preferred content](https://git-annex.branchable.com/preferred_content/)
   - [numcopies](https://git-annex.branchable.com/git-annex-numcopies/)
-
-## 3rd party services
-
-![](img/services.svg){.center}
