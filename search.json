@@ -60,7 +60,7 @@
     "href": "slides/review1.html#provider-and-manager-of-identifiers",
     "title": "Exercise Review 1",
     "section": "Provider and Manager of Identifiers",
-    "text": "Provider and Manager of Identifiers\n\nDataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)\nConcept identifiers (think: where can I find things?)\n\nfor datasets: DataLad dataset ID\nfor files in a dataset: DataLad dataset ID + path within a dataset\n\nContent/version identifiers (think: where can the computer find things?)\n\nfor datasets: Git commit SHA ID\nfor files: Git blob SHA / Git-annex key\n\nBy tracking unique identifiers, DataLad can manage files across multiple sources\n\n\n\nDataLad dataset ID - show cat .datalad/config (there are more configuration options)\nFile identifiers - show git annex info examples/gentoo.jpg\nMutliple sources - show git annex whereis examples/gentoo.jpg"
+    "text": "Provider and Manager of Identifiers\n\nDataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)\nConcept identifiers\n\nfor datasets: DataLad dataset ID\nfor files in a dataset: DataLad dataset ID + path within a dataset\n\nContent/version identifiers\n\nfor datasets: Git commit SHA ID\nfor files: Git blob SHA / Git-annex key\n\nBy tracking unique identifiers, DataLad can manage files across multiple sources\n\n\n\nDataLad dataset ID - show cat .datalad/config (there are more configuration options)\nFile identifiers - show git annex info examples/gentoo.jpg\nMutliple sources - show git annex whereis examples/gentoo.jpg"
   },
   {
     "objectID": "slides/review1.html#what-is-a-datalad-dataset",
@@ -74,42 +74,35 @@
     "href": "slides/review1.html#hands-on-tracking-changes",
     "title": "Exercise Review 1",
     "section": "Hands-on: Tracking Changes",
-    "text": "Hands-on: Tracking Changes\n\nOpen the Exercises Part 2 on the tutorial website 📖\n\n\n\n\n\nLet’s move to out second set of exercises!\nIn these exercises, you’ll be able to see for your selfes how DataLad tracks the evolution of a dataset\nYou’ll also explore a very useful feature of DataLad which is it’s ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis"
+    "text": "Hands-on: Tracking Changes\n                    \n                    \n                \n\n\nWebsite: olebialas.github.io/DataLad-EuroScipy25\nGo to: Exercises &gt; Part2: Tracking Changes"
   },
   {
     "objectID": "slides/review3.html#using-a-bare-git-repository-as-push-target",
     "href": "slides/review3.html#using-a-bare-git-repository-as-push-target",
     "title": "Exercise Review 3",
     "section": "Using a Bare Git Repository as Push Target",
-    "text": "Using a Bare Git Repository as Push Target\n\nbare == no worktree\n\ncontents of .git directly in the directory\nwhen shared pushes can’t break the worktree\ncan be put on a server 1\n\nwith git-annex on the machine, can store git+annex\ngood default for Git & git-annex aware services\n\n\nDemo: git init --bare ~/penguins_backup\n\nhttps://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server"
+    "text": "Using a Bare Git Repository as Push Target\n\nbare == no worktree\n\ncontents of .git directly in the directory\nwhen shared pushes can’t break the worktree\nsuited for storing on a server 1\n\nwith git-annex on the machine, can store git+annex\ngood default for Git & git-annex aware services\n\n\nDemo: git init --bare ~/penguins_backup\n\nhttps://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server"
   },
   {
     "objectID": "slides/review3.html#what-contents-are-actually-being-pushed",
     "href": "slides/review3.html#what-contents-are-actually-being-pushed",
     "title": "Exercise Review 3",
     "section": "What Contents Are Actually being pushed?",
-    "text": "What Contents Are Actually being pushed?\n\nAny git repository (local or online) can be added as a dataset sibling\nThe first push initializes the repository’s annex ID, the second push actually tranfers the files\ndatalad push acts on the contents you already got\n\nto transfer specific files, use datalad get first\n\ngit annex copy [--from=remote|--to=remote] to download and upload (no magic)\n\n\n\nSibling demo: datalad siblings add --name backup --url ~/penguins_backup\npush demo: datalad push --to backup (twice)\nNote that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use datalad get first\nAlternatively, you can use git annex copy which does the download and upload in one step"
+    "text": "What Contents Are Actually being pushed?\n\nAny git repository (local or online) can be added as a dataset sibling\nThe first push initializes the repository’s annex ID, the second push actually tranfers the files\ndatalad push acts on the contents you already got\n\nto transfer specific files, use datalad get first\n\n\n\n\nSibling demo: datalad siblings add --name backup --url ~/penguins_backup\npush demo: tree -d ~/penguins_backup datalad push --to backup datalad push --to backup tree -d ~/penguins_backup\nNote that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use datalad get first"
   },
   {
-    "objectID": "slides/review3.html#git-annex-special-remotes",
-    "href": "slides/review3.html#git-annex-special-remotes",
+    "objectID": "slides/review3.html#using-non-git-aware-storage-services",
+    "href": "slides/review3.html#using-non-git-aware-storage-services",
     "title": "Exercise Review 3",
-    "section": "git-annex Special Remotes",
-    "text": "git-annex Special Remotes\n\nstore and retrieve file content (not Git repo)1\ngit annex initremote ...\nbuilt-in and external implementations\n\nhttps://git-annex.branchable.com/special_remotes/\n\n\nbut actually also Git repo bundles, with git-remote-annex"
+    "section": "Using non-Git-aware Storage Services",
+    "text": "Using non-Git-aware Storage Services\n\n\ngit-annex has special remotes that implement various strorage services (git annex initremote)\n\n\n\n\n\n\n\n\nyou can have multiple special remotes with fine-grained configuration:\n\npreferred content (think:which files should be stored?)\nnumcopies (think: how many copies should be kept?)"
   },
   {
-    "objectID": "slides/review3.html#rd-party-services",
-    "href": "slides/review3.html#rd-party-services",
+    "objectID": "slides/review3.html#datalad-supported-services",
+    "href": "slides/review3.html#datalad-supported-services",
     "title": "Exercise Review 3",
-    "section": "3rd Party Services",
-    "text": "3rd Party Services\n\n\nDataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you’ll find tutorials for many different storage services. In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset"
-  },
-  {
-    "objectID": "slides/review3.html#distributed-data-management",
-    "href": "slides/review3.html#distributed-data-management",
-    "title": "Exercise Review 3",
-    "section": "Distributed Data Management",
-    "text": "Distributed Data Management\n\nrecall git annex whereis (n copies)\nkeyword: distributed data management\n\ncan have multiple special remotes\n\ngit annex configuration:\n\npreferred content\nnumcopies"
+    "section": "DataLad Supported Services",
+    "text": "DataLad Supported Services\n\n\nDataLad supports all services that are supported by git-annex\n\n\n\n\nDataLad supports additional services via dedicated extensions (check the handbook)"
   },
   {
     "objectID": "notebooks/exercises2.html",
@@ -192,22 +185,29 @@
     "objectID": "slides/review2.html#git-versus-git-annex",
     "href": "slides/review2.html#git-versus-git-annex",
     "title": "Exercise Review 2",
-    "section": "Git versus Git-annex",
-    "text": "Git versus Git-annex\n\nData in datasets is either stored in Git or git-annex\nMatter of configuration; by default, everything is annexed"
+    "section": "Git Versus git-annex",
+    "text": "Git Versus git-annex\n\nData in datasets is either stored in Git or git-annex\nMatter of configuration; by default, everything is annexed"
   },
   {
     "objectID": "slides/review2.html#git-versus-git-annex-1",
     "href": "slides/review2.html#git-versus-git-annex-1",
     "title": "Exercise Review 2",
-    "section": "Git versus Git-annex",
-    "text": "Git versus Git-annex\nGit and git-annex handle files differently:\n\nFiles in Git are downloaded during clone, annexed contents are retrieved on demand (get).\nContent identity and availability information of annexed files are available after cloning.\nOn datalad save, annexed contents are hashed, moved to .git/annex/objects and symlinked.\nGit versions the symlink (content-identity), not the content.\nContent is “locked” (write-protected) against accidental modifications.\nFiles stored in Git are modifiable, annexed files are write-protected."
+    "section": "Git Versus git-annex",
+    "text": "Git Versus git-annex\nGit and git-annex handle files differently:\n\nFiles in Git are downloaded during clone, annexed contents are retrieved on demand (get).\nOn datalad save, annexed contents are hashed, moved to .git/annex/objects and symlinked.\nGit versions the symlink (content-identity), not the content.\nContent is “locked” (write-protected) against accidental modifications.\nFiles stored in Git are modifiable, annexed files are write-protected."
   },
   {
     "objectID": "slides/review2.html#annexed-files-on-windows",
     "href": "slides/review2.html#annexed-files-on-windows",
     "title": "Exercise Review 2",
-    "section": "Annexed files on Windows",
-    "text": "Annexed files on Windows\nWindows’ file system does not support symlinks1. Under these conditions, git-annex automatically operates in “adjusted unlocked mode”:\n\nFile contents are duplicated: One copy to edit, one to keep safe.\nNo (un)locking – trade-off: disk space use vs easy modification.\nAnnexed files are pointer files instead of symlinks: A text file with the contents “/annex/objects/” followed by the key.\nGit annex uses adjusted branches, which unlock on top the locked counterpart branch. Compatibility with other systems but confusing Git log and issues in some nesting usecases.\n\n\n\nOversimplification. It kind-of does, but not by default."
+    "section": "Annexed Files on Windows",
+    "text": "Annexed Files on Windows\nWindows’ file system does not support symlinks1. Under these conditions, git-annex automatically operates in “adjusted unlocked mode”:\n\nFile contents are duplicated: One copy to edit, one to keep safe.\nNo (un)locking – trade-off: disk space use vs easy modification.\nAnnexed files are pointer files instead of symlinks: A text file with the contents “/annex/objects/” followed by the key.\nGit annex uses adjusted branches, which unlock on top the locked counterpart branch. Compatibility with other systems but confusing Git log and issues in some nesting usecases.\n\nOversimplification. It kind-of does, but not by default."
+  },
+  {
+    "objectID": "slides/review2.html#hands-on-creating-backups-and-sharing-datalad-datasets",
+    "href": "slides/review2.html#hands-on-creating-backups-and-sharing-datalad-datasets",
+    "title": "Exercise Review 2",
+    "section": "Hands-on: Creating Backups and Sharing DataLad Datasets",
+    "text": "Hands-on: Creating Backups and Sharing DataLad Datasets\n\n\n\n\n\nWebsite: olebialas.github.io/DataLad-EuroScipy25\nGo to: Exercises &gt; Part3: Creating Backups and Sharing DataLad Datasets"
   },
   {
     "objectID": "slides/intro.html#about-us",
@@ -256,7 +256,7 @@
     "href": "slides/intro.html#exhaustive-capture-enables-portability",
     "title": "Introduction to DataLad",
     "section": "Exhaustive capture enables portability",
-    "text": "Exhaustive capture enables portability\n Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.\n\n\n# transfer data and metadata to other sites and services\n# with fine-grained access control for dataset components\n\n% datalad push --to &lt;site-or-service&gt;"
+    "text": "Exhaustive capture enables portability\n Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.\n# transfer data and metadata to other sites and services with fine-grained access control for dataset components\n\n% datalad push --to &lt;site-or-service&gt;"
   },
   {
     "objectID": "slides/intro.html#reproducibility-strengthens-trust",

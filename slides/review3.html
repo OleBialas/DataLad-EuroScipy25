@@ -166,7 +166,7 @@ Ole Bialas
 <ul>
 <li class="fragment">contents of <code>.git</code> directly in the directory</li>
 <li class="fragment">when shared pushes can’t break the worktree</li>
-<li class="fragment">can be put on a server <sup>1</sup></li>
+<li class="fragment">suited for storing on a server <sup>1</sup></li>
 </ul></li>
 <li class="fragment">with git-annex on the machine, can store git+annex</li>
 <li class="fragment">good default for Git &amp; git-annex aware services</li>
@@ -194,14 +194,12 @@ Ole Bialas
 <ul>
 <li class="fragment">to transfer specific files, use <code>datalad get</code> first</li>
 </ul></li>
-<li class="fragment"><code>git annex copy [--from=remote|--to=remote]</code> to download and upload (no magic)</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>Sibling demo: <code>datalad siblings add --name backup --url ~/penguins_backup</code></li>
-<li>push demo: <code>datalad push --to backup</code> (twice)</li>
-<li>Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use <code>datalad get</code> first</li>
-<li>Alternatively, you can use <code>git annex copy</code> which does the download and upload in one step</li>
+<li><p>Sibling demo: <code>datalad siblings add --name backup --url ~/penguins_backup</code></p></li>
+<li><p>push demo: <code>tree -d ~/penguins_backup</code> <code>datalad push --to backup</code> <code>datalad push --to backup</code> <code>tree -d ~/penguins_backup</code></p></li>
+<li><p>Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use <code>datalad get</code> first</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -215,48 +213,40 @@ Ole Bialas
           display:block!important;
       }</style></aside>
 </section>
-<section id="git-annex-special-remotes" class="slide level2">
-<h2>git-annex <em>Special Remotes</em></h2>
+<section id="using-non-git-aware-storage-services" class="slide level2">
+<h2>Using non-Git-aware Storage Services</h2>
+<div class="fragment">
 <ul>
-<li>store and retrieve file content (not Git repo)<sup>1</sup></li>
-<li><code>git annex initremote ...</code></li>
-<li>built-in and external implementations
+<li>git-annex has <strong>special remotes</strong> that implement various strorage services (<code>git annex initremote</code>)</li>
+</ul>
+</div>
+<div class="fragment">
+<iframe src="https://git-annex.branchable.com/special_remotes/" width="100%" height="300px" frameborder="1">
+</iframe>
+</div>
+<div class="fragment">
 <ul>
-<li><a href="https://git-annex.branchable.com/special_remotes/" class="uri">https://git-annex.branchable.com/special_remotes/</a></li>
+<li>you can have multiple special remotes with fine-grained configuration:
+<ul>
+<li><a href="https://git-annex.branchable.com/preferred_content/">preferred content</a> (<em>think:which files should be stored?</em>)</li>
+<li><a href="https://git-annex.branchable.com/git-annex-numcopies/">numcopies</a> (<em>think: how many copies should be kept?</em>)</li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>but actually also Git repo bundles, with <a href="https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/">git-remote-annex</a></p></li></ol></aside></section>
-<section id="rd-party-services" class="slide level2">
-<h2>3rd Party Services</h2>
-
-<img data-src="img/services.svg" class="center r-stretch"><aside class="notes">
-<p>DataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you’ll find tutorials for many different storage services. In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
 </section>
-<section id="distributed-data-management" class="slide level2">
-<h2>Distributed Data Management</h2>
+<section id="datalad-supported-services" class="slide level2">
+<h2>DataLad Supported Services</h2>
+<div class="fragment">
 <ul>
-<li>recall <code>git annex whereis</code> (n copies)</li>
-<li>keyword: <em>distributed data management</em>
-<ul>
-<li>can have multiple special remotes</li>
-</ul></li>
-<li>git annex configuration:
-<ul>
-<li><a href="https://git-annex.branchable.com/preferred_content/">preferred content</a></li>
-<li><a href="https://git-annex.branchable.com/git-annex-numcopies/">numcopies</a></li>
-</ul></li>
+<li>DataLad supports all services that are supported by git-annex</li>
 </ul>
+</div>
+<div class="fragment">
+<ul>
+<li>DataLad supports additional services via dedicated extensions (check the handbook)</li>
+</ul>
+<p><img data-src="img/services.svg" class="absolute" style="top: 230px; right: 350px; width: 450px; "></p>
+</div>
 
 
 </section>

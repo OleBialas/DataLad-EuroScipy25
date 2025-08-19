@@ -199,12 +199,12 @@ Ole Bialas
 <h2>Provider and Manager of Identifiers</h2>
 <ul>
 <li class="fragment"><p>DataLad provides globally unique, persistent identifiers (without a central issuing service; offline and portable)</p></li>
-<li class="fragment"><p>Concept identifiers (<em>think: where can I find things?</em>)</p>
+<li class="fragment"><p>Concept identifiers</p>
 <ul>
 <li class="fragment">for datasets: DataLad dataset ID</li>
 <li class="fragment">for files in a dataset: DataLad dataset ID + path within a dataset</li>
 </ul></li>
-<li class="fragment"><p>Content/version identifiers (<em>think: where can the computer find things?</em>)</p>
+<li class="fragment"><p>Content/version identifiers</p>
 <ul>
 <li class="fragment">for datasets: Git commit SHA ID</li>
 <li class="fragment">for files: Git blob SHA / Git-annex key</li>
@@ -267,28 +267,18 @@ Ole Bialas
 </section>
 <section id="hands-on-tracking-changes" class="slide level2">
 <h2>Hands-on: Tracking Changes</h2>
+                    <div id="UNIQUE-ID"></div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            initializeTimer("UNIQUE-ID", 900, "interaction");
+                        });
+                    </script>
+                
+<p><img data-src="./img/qr.png" class="absolute" style="top: 50px; right: 200px; width: 300px; height: 300px; "></p>
 <ul>
-<li>Open the <strong>Exercises Part 2</strong> on the tutorial website 📖</li>
+<li>Website: <a href="https://olebialas.github.io/DataLad-EuroScipy25/">olebialas.github.io/DataLad-EuroScipy25</a></li>
+<li>Go to: <em>Exercises</em> &gt; <em>Part2: Tracking Changes</em></li>
 </ul>
-<iframe src="https://olebialas.github.io/DataLad-EuroScipy25/" width="100%" height="500px" frameborder="1">
-</iframe>
-<aside class="notes">
-<ul>
-<li>Let’s move to out second set of exercises!</li>
-<li>In these exercises, you’ll be able to see for your selfes how DataLad tracks the evolution of a dataset</li>
-<li>You’ll also explore a very useful feature of DataLad which is it’s ability to run and rerun code while keeping track of the inputs and outputs which implicitly builds a pipeline for your data analysis</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 
 
 </section>
