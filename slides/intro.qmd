@@ -228,7 +228,7 @@ Verifiable, portable, self-contained data structures that track all aspects of a
 
 ## Hands-on: Working with a DataLad Dataset
 
-:::{.timer #UNIQUE-ID seconds=1200 starton=interaction}
+:::{.timer #UNIQUE-ID seconds=900 starton=interaction}
 :::
 ![](./img/qr.png){.absolute top=50 right=200 width="300" height="300"}
 
