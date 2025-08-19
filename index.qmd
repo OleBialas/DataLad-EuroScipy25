@@ -27,9 +27,12 @@ To install and configure git follow these steps:
 ### Python
 
 We recommend to create a new virtual environment for this project with Python 3.8 or later using a tool like [uv](https://docs.astral.sh/uv/getting-started/installation/), [pixi](https://pixi.sh/latest/#installation) or [conda](https://conda-forge.org/download/).
-In your dedicated environment, you can install DataLad and its dependencies via pip:
-`pip install datalad datalad-next git-annex` [^2].
+In your dedicated environment, you can install DataLad and its dependencies via pip [^2]:
+
+`pip install datalad datalad-next git-annex`
+
 Some of the exercises require you to run Python scripts --- you'll have to install their dependencies as well:
+
 `pip install pandas seaborn`.
 
 ### Other
