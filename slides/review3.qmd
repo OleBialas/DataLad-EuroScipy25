@@ -21,7 +21,7 @@ date: 08-19-2025
 - bare == no worktree
   - contents of `.git` directly in the directory
   - when shared pushes can't break the worktree
-  - can be put on a server [^1]
+  - suited for storing on a server [^1]
 - with git-annex on the machine, can store git+annex
 - good default for Git & git-annex aware services
 :::
@@ -39,39 +39,46 @@ Demo: `git init --bare ~/penguins_backup`
 - The first push initializes the repository’s annex ID, the second push actually tranfers the files
 - `datalad push` acts on the contents you already got
   - to transfer specific files, use `datalad get` first
-- `git annex copy [--from=remote|--to=remote]` to download and upload (no magic)
 :::
 
 ::: {.notes}
 - Sibling demo: `datalad siblings add --name backup --url ~/penguins_backup`
-- push demo: `datalad push --to backup` (twice)
+- push demo:
+`tree -d ~/penguins_backup` 
+`datalad push --to backup`
+`datalad push --to backup`
+`tree -d ~/penguins_backup` 
+
 - Note that DataLad will only push the files that are present in the current repository. For files that are not present, we have to use `datalad get` first
-- Alternatively, you can use `git annex copy` which does the download and upload in one step
 :::
 
-## git-annex *Special Remotes*
+## Using non-Git-aware Storage Services
 
-- store and retrieve file content (not Git repo)[^2]
-- `git annex initremote ...`
-- built-in and external implementations
-  - <https://git-annex.branchable.com/special_remotes/>
-
-[^2]: but actually also Git repo bundles, with [git-remote-annex](https://git-annex.branchable.com/tips/storing_a_git_repository_on_any_special_remote/)
-
-## 3rd Party Services
-
-![](img/services.svg){.center}
-
-::: {.notes}
-DataLad supports a variety of third party services - some are by default, others via a dedicated extension. In the DataLad handbook (which is linked on our website), you'll find tutorials for many different storage services.
-In the bonus exercises for this notebook you can explore hosting your dataset on GIN which is the service we used for the penguins dataset
+::: {.fragment}
+- git-annex has **special remotes** that implement various strorage services (`git annex initremote`)
 :::
 
-## Distributed Data Management
+::: {.fragment}
+<iframe src="https://git-annex.branchable.com/special_remotes/" width="100%" height="300px" frameborder="1" ></iframe>
+:::
 
-- recall `git annex whereis` (n copies)
-- keyword: *distributed data management*
-  - can have multiple special remotes
-- git annex configuration:
-  - [preferred content](https://git-annex.branchable.com/preferred_content/)
-  - [numcopies](https://git-annex.branchable.com/git-annex-numcopies/)
+::: {.fragment}
+- you can have multiple special remotes with fine-grained configuration:
+  - [preferred content](https://git-annex.branchable.com/preferred_content/) (*think:which files should be stored?*)
+  - [numcopies](https://git-annex.branchable.com/git-annex-numcopies/) (*think: how many copies should be kept?*)
+:::
+
+
+## DataLad Supported Services
+
+::: {.fragment}
+- DataLad supports all services that are supported by git-annex
+:::
+
+::: {.fragment}
+- DataLad supports additional services via dedicated extensions (check the handbook)
+
+![](img/services.svg){.absolute top=230 right=350 width=450}
+
+:::
+
